@@ -1,1 +1,24 @@
 @import "tailwindcss";
+
+
+@tailwind utilities;
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #c9a24d;
+  border-radius: 20px;
+}
+
+/* Range Slider */
+.range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #c9a24d;
+  border: 2px solid #faf7f2;
+  box-shadow: 0 0 0 2px #e6d5c3;
+}

@@ -1,13 +1,13 @@
-import { Routes, Route, Navigate } from "react-router-dom";
-import Categories from "./components/Categories";
+import { useState } from 'react'
+import CatelogPage from './components/Catelog';
+import './App.css'
 
 function App() {
   return (
-    <Routes>
-      <Route path="/categories" element={<Categories />} />
-      <Route path="*" element={<h1>404 Page Not Found</h1>} />
-    </Routes>
-  );
+   <>
+<CatelogPage/>
+   </>
+  )
 }
 
 export default App;
