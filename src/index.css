@@ -1,1 +1,41 @@
 @import "tailwindcss";
+
+
+:root {
+  --primary: #3E2723;     /* Dark Walnut */
+  --secondary: #E6D5C3;   /* Warm Beige */
+  --accent: #C9A24D;      /* Gold */
+  --background: #FAF7F2;  /* Soft Cream */
+  --text: #2B2B2B;        /* Charcoal */
+}
+
+/* Background banner dots for Home Page */
+.hero-pattern{
+  background-image: radial-gradient(#E6D5C3 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+
+
+
+/* MEDIA QUERIES:- */
+@media (max-width: 900px) and (min-width:440px){
+  .optionsHome{
+    grid-template-columns: repeat(2,1fr)
+  }
+}
+
+@media (max-width: 439px){
+  .optionsHome{
+    grid-template-columns: repeat(1,1fr)
+  }
+}
+
+
+
+/* MEDIA QUERIES */
+@media (max-width: 480px){
+  .homeBtn{
+    flex-direction: column;
+  }
+}
