@@ -20,7 +20,7 @@ const Navbar = () => {
   return (
     <div className="bg-[#3E2723] text-[#E6D5C3]">
       {/* NAVBAR */}
-      <nav className="px-2 sm:px-20 py-4 bg-[#3E2723] fixed top-0 left-0 w-full z-40">
+      <nav className="px-8 sm:px-20 py-4 bg-[#3E2723] fixed top-0 left-0 w-full z-40">
         <div className="flex justify-between items-center">
           {/* LOGO */}
           <div className="flex items-center gap-2">

@@ -3,7 +3,6 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 import { products, productActions } from "../../assests/assests";
 
 const TrendingNow = () => {
-
   const sliderRef = useRef(null);
 
   const scrollLeft = () => {
@@ -20,36 +19,44 @@ const TrendingNow = () => {
     });
   };
 
-
   return (
     <section>
-      <div className="mx-auto px-4 md:px-10">
+      <div className="mx-auto">
         {/* HEADING AND LEFT, RIGHT ICON */}
         <div className="flex justify-between items-end mb-8">
           <div>
             <span className="text-[#C9A24D] font-bold tracking-wider text-sm uppercase">
               Best Sellers
             </span>
-            <h2 className="text-3xl md:text-4xl font-serif font-bold mt-2 text-[#3E2723]">
+            <h2 className="text-2xl sm:text-4xl font-serif font-bold mt-2 text-[#3E2723]">
               Trending Now
             </h2>
           </div>
           <div className="flex gap-2">
-            <button onClick={scrollLeft} className="size-10 rounded-full border border-[#E6D5C3] hover:bg-[#E6D5C3] flex items-center justify-center text-[#3E2723] transition cursor-pointer">
+            <button
+              onClick={scrollLeft}
+              className="size-10 rounded-full border border-[#E6D5C3] hover:bg-[#E6D5C3] flex items-center justify-center text-[#3E2723] transition cursor-pointer"
+            >
               <FaArrowLeft />
             </button>
-            <button onClick={scrollRight} className="size-10 rounded-full border border-[#E6D5C3] hover:bg-[#E6D5C3] flex items-center justify-center text-[#3E2723] transition cursor-pointer">
+            <button
+              onClick={scrollRight}
+              className="size-10 rounded-full border border-[#E6D5C3] hover:bg-[#E6D5C3] flex items-center justify-center text-[#3E2723] transition cursor-pointer"
+            >
               <FaArrowRight />
             </button>
           </div>
         </div>
 
         {/* CARDS */}
-        <div ref={sliderRef} className="flex overflow-x-auto gap-6 pb-8 no-scrollbar snap-x snap-mandatory">
+        <div
+          ref={sliderRef}
+          className="flex overflow-x-auto gap-6 pb-8 no-scrollbar snap-x snap-mandatory"
+        >
           {products.map((product) => (
             <div
               key={product.id}
-              className="min-w-70 snap-start rounded-2xl overflow-hidden group bg-[#E6D5C3] border border-[#E6D5C3]/20 shadow-xl/20"
+              className="snap-start rounded-2xl overflow-hidden group bg-[#E6D5C3] border border-[#E6D5C3]/20 shadow-xl/20 min-w-full sm:min-w-[50%] md:min-w-[33.333%] lg:min-w-[23.2%]"
             >
               <div className="aspect-4/5 relative overflow-hidden">
                 <img
@@ -90,11 +97,11 @@ const TrendingNow = () => {
 
                 <div className="flex justify-center gap-2">
                   <span className="font-bold text-[#C9A24D]">
-                    ${product.price}
+                    ₹{product.price}
                   </span>
                   {product.oldPrice && (
                     <span className="line-through text-sm text-[#2B2B2B]/40">
-                      ${product.oldPrice}
+                      ₹{product.oldPrice}
                     </span>
                   )}
                 </div>

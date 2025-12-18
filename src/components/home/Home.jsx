@@ -6,9 +6,11 @@ import { LuWallet } from "react-icons/lu";
 import { RiCustomerService2Fill } from "react-icons/ri";
 import { MdOutlineVerifiedUser } from "react-icons/md";
 import FeaturedCategories from "./FeaturedCategories";
-import {Link} from 'react-router-dom'
+import { Link} from 'react-router-dom'
 import TrendingNow from "./TrendingNow";
 import Testimonial from "./Testimonial";
+import Form from "./Form";
+import Inspiration from "./Inspiration";
 
 const Home = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -40,7 +42,7 @@ const Home = () => {
   return (
     <>
       <div className="bg-[#FAF7F2] hero-pattern">
-        <div className="grid lg:grid-cols-2 sm:px-20 pt-28 pb-15 px-2">
+        <div className="grid lg:grid-cols-2 sm:px-20 pt-28 pb-15 px-8">
           {/* LEFT SIDE */}
           <div className="mb-5">
             <div className="flex">
@@ -147,7 +149,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="bg-[#E6D5C3] border-y border-[#C9A24D]/30 px-3 sm:px-20 py-5">
+        <div className="bg-[#E6D5C3] border-y border-[#C9A24D]/30 px-8 sm:px-20 py-5">
           <div className="grid grid-cols-4 gap-2 optionsHome">
             <div className="flex items-center gap-2">
               <div className="p-4 border rounded-full border-[#C9A24D] bg-white">
@@ -193,17 +195,27 @@ const Home = () => {
       </div>
 
       {/* FEATURED CATEGORIES */}
-      <div className="bg-[#FAF7F2] sm:px-20 py-15 px-2">
+      <div className="bg-[#FAF7F2] sm:px-20 py-15 px-8">
         <FeaturedCategories />
       </div>
       
       {/* TRENDING NOW */}
-      <div className="sm:px-20 py-15 px-2">
+      <div className="sm:px-20 py-15 px-8">
         <TrendingNow />
       </div>
 
+      {/* CUSTOMIZATION FORM */}
+      <div className="bg-[#FAF7F2] sm:px-20 py-15 px-8">
+        <Form />
+      </div>
+
+      {/* INSPIRATION */}
+      <div className="sm:px-20 py-15 px-8">
+        <Inspiration />
+      </div>
+
       {/* TESTIMONIALS */}
-      <div className="sm:px-20 py-15 px-2 bg-[#E6D5C3]/20">
+      <div className="sm:px-20 py-15 px-8 bg-[#E6D5C3]/20">
         <Testimonial />
       </div>
     </>
