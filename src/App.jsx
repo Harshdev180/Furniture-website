@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Categories from "./components/Categories";
 import CategoryProducts from "./components/CategoryProducts";
-import CatelogPage from "./components/Catelog";
+
 import ProductDetail from "./components/ProductDetail";
 import Navbar from "./pages/Navbar";
 import Footer from "./pages/Footer";
@@ -18,12 +18,12 @@ function App() {
         <Route path="/" element={<Home />} />
 
         {/* Catalog and categories pages */}
-        <Route path="/catalog" element={<CatelogPage />} />
+        {/* <Route path="/catalog" element={<CatelogPage />} /> */}
         <Route path="/categories" element={<Categories />} />
         <Route path="/category/:type" element={<CategoryProducts />} />
 
         {/* Product detail page */}
-        <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="/productdetails" element={<ProductDetail />} />
 
         {/* 404 fallback */}
         <Route path="*" element={<h1>404 Page Not Found</h1>} />

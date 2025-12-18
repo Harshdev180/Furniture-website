@@ -3,7 +3,7 @@ import { IoIosCall } from "react-icons/io";
 import { MdOutlineWaterDrop } from "react-icons/md";
 import { AiOutlineThunderbolt } from "react-icons/ai";
 import { RiSofaLine } from "react-icons/ri";
-import {FaRegHeart, FaRegUser, FaShoppingCart } from "react-icons/fa";
+import { FaRegHeart, FaRegUser, FaShoppingCart } from "react-icons/fa";
 import { HiOutlineX } from "react-icons/hi";
 import { IoMenu } from "react-icons/io5";
 import { NavLink, Link } from "react-router-dom";
@@ -12,8 +12,7 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   const navLinkClass = ({ isActive }) =>
-    `block px-4 py-3 font-medium transition ${
-      isActive ? "text-white" : "hover:text-(--accent)"
+    `block px-4 py-3 font-medium transition ${isActive ? "text-white" : "hover:text-(--accent)"
     }`;
 
   return (
@@ -55,7 +54,7 @@ const Navbar = () => {
               aria-label="Open Menu"
               className="lg:hidden"
             >
-             <IoMenu className="text-[20px]" />
+              <IoMenu className="text-[20px]" />
             </button>
           </div>
         </div>
