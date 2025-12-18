@@ -43,7 +43,7 @@ const Section2 = () => {
             </li>
             <li className="hover:text-white hover:font-semibold cursor-pointer hover:pl-[9px] transition duration-150 ease-in-out flex place-items-center mb-1">
               <GoChevronRight className="h-5" />
-              <Link to="/shop">Shop</Link>
+              <Link to="/catalogue">Catalogue</Link>
             </li>
             <li className="hover:text-white hover:font-semibold cursor-pointer hover:pl-[9px] transition duration-150 ease-in-out flex place-items-center mb-1">
               <GoChevronRight className="h-5" />

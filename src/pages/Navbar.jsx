@@ -20,7 +20,7 @@ const Navbar = () => {
   return (
     <div className="bg-[#3E2723] text-[#E6D5C3]">
       {/* NAVBAR */}
-      <nav className="px-2 sm:px-10 py-4 bg-[#3E2723] fixed top-0 left-0 w-full z-40">
+      <nav className="px-2 sm:px-20 py-4 bg-[#3E2723] fixed top-0 left-0 w-full z-40">
         <div className="flex justify-between items-center">
           {/* LOGO */}
           <div className="flex items-center gap-2">
@@ -32,7 +32,7 @@ const Navbar = () => {
             <ul className="flex">
               <li><NavLink to="/" className={navLinkClass}>Home</NavLink></li>
               <li><NavLink to="/about" className={navLinkClass}>About Us</NavLink></li>
-              <li><NavLink to="/shop" className={navLinkClass}>Shop</NavLink></li>
+              <li><NavLink to="/catalogue" className={navLinkClass}>Catalogue</NavLink></li>
               <li><NavLink to="/categories" className={navLinkClass}>Categories</NavLink></li>
               <li><NavLink to="/blog" className={navLinkClass}>Blog</NavLink></li>
               <li><NavLink to="/contact" className={navLinkClass}>Contact Us</NavLink></li>
