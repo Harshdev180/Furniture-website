@@ -19,7 +19,7 @@ function App() {
         <Route path="/" element={<Home />} />
 
         {/* Catalog and categories pages */}
-        <Route path="/catalog" element={<CatelogPage />} />
+        <Route path="/catalogue" element={<CatelogPage />} />
         <Route path="/categories" element={<Categories />} />
         <Route path="/category/:type" element={<CategoryProducts />} />
 

@@ -409,7 +409,7 @@ const Categories = () => {
     );
 
     return (
-        <div className="bg-[#FAF7F2]">
+        <div className="bg-[#FAF7F2] mt-27">
             {/* ================= HERO ================= */}
             <section className="m-6 md:m-10 relative h-[420px] rounded-3xl overflow-hidden">
                 <img
@@ -417,7 +417,8 @@ const Categories = () => {
                     className="absolute inset-0 w-full h-full object-cover"
                     alt="Hero"
                 />
-                <div className="absolute inset-0 bg-black/60" />
+                {/* <div className="absolute inset-0 bg-black/60" /> */}
+                <div className="absolute inset-0 bg-[#3E2723]/70"></div>
 
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}

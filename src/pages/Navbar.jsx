@@ -26,8 +26,8 @@ const Navbar = () => {
           <div className="hidden lg:flex">
             <ul className="flex">
               <li><NavLink to="/" className={navLinkClass}>Home</NavLink></li>
-              <li><NavLink to="/about" className={navLinkClass}>About Us</NavLink></li>
-              <li><NavLink to="/catalog" className={navLinkClass}>Catalog</NavLink></li>
+              <li><NavLink to="/aboutus" className={navLinkClass}>About Us</NavLink></li>
+              <li><NavLink to="/catalogue" className={navLinkClass}>Catalogue</NavLink></li>
               <li><NavLink to="/categories" className={navLinkClass}>Categories</NavLink></li>
               <li><NavLink to="/blog" className={navLinkClass}>Blog</NavLink></li>
               <li><NavLink to="/contact" className={navLinkClass}>Contact Us</NavLink></li>
@@ -80,8 +80,8 @@ const Navbar = () => {
         {/* MOBILE LINKS */}
         <ul className="flex flex-col mt-4">
           <li><NavLink to="/" onClick={() => setOpen(false)} className={navLinkClass}>Home</NavLink></li>
-          <li><NavLink to="/about" onClick={() => setOpen(false)} className={navLinkClass}>About Us</NavLink></li>
-          <li><NavLink to="/catalog" onClick={() => setOpen(false)} className={navLinkClass}>Catalog</NavLink></li>
+          <li><NavLink to="/aboutus" onClick={() => setOpen(false)} className={navLinkClass}>About Us</NavLink></li>
+          <li><NavLink to="/catalogue" onClick={() => setOpen(false)} className={navLinkClass}>Catalogue</NavLink></li>
           <li><NavLink to="/categories" onClick={() => setOpen(false)} className={navLinkClass}>Categories</NavLink></li>
           <li><NavLink to="/blog" onClick={() => setOpen(false)} className={navLinkClass}>Blog</NavLink></li>
           <li><NavLink to="/contact" onClick={() => setOpen(false)} className={navLinkClass}>Contact Us</NavLink></li>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { MdShoppingBag } from "react-icons/md";
-import {Link} from "react-router-dom";
-import {motion} from "framer-motion";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 export default function CatalogPage() {
   /* ---------------- PRODUCT DATA ---------------- */
@@ -64,8 +64,8 @@ export default function CatalogPage() {
       material: "Walnut",
       img: "/Catelogimg/NestingTables.jpg",
     },
-     {
-      id: 4,
+    {
+      id: 7,
       name: "Cloud Modular",
       price: 5600,
       desc: "Velvet · Customizable",
@@ -74,7 +74,7 @@ export default function CatalogPage() {
       img: "/Catelogimg/CloudModular.jpg",
     },
     {
-      id: 5,
+      id: 8,
       name: "Arc Lamp",
       price: 850,
       desc: "Matte Black · LED",
@@ -83,7 +83,7 @@ export default function CatalogPage() {
       img: "/Catelogimg/ArcLamp.jpg",
     },
     {
-      id: 6,
+      id: 9,
       name: "Nesting Tables",
       price: 480,
       old: 690,
@@ -144,30 +144,31 @@ export default function CatalogPage() {
       </header>
 
       <section className="m-6 md:m-10 relative h-[420px] rounded-3xl overflow-hidden">
-                <img
-                    src="https://i.pinimg.com/736x/49/b2/2b/49b22b5021990ecd73a47db4ec50d273.jpg"
-                    className="absolute inset-0 w-full h-full object-cover"
-                    alt="Hero"
-                />
-                <div className="absolute inset-0 bg-black/60" />
+        <img
+          src="https://i.pinimg.com/736x/49/b2/2b/49b22b5021990ecd73a47db4ec50d273.jpg"
+          className="absolute inset-0 w-full h-full object-cover"
+          alt="Hero"
+        />
+        {/* <div className="absolute inset-0 bg-black/60" /> */}
+        <div className="absolute inset-0 bg-[#3E2723]/70"></div>
 
-                <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    className="relative z-10 h-full flex flex-col justify-center items-center text-center px-4"
-                >
-                    <p className="tracking-widest text-[#C9A24D] text-sm">
-                        READY FOR PRODUCTION
-                    </p>
-                    <h1 className="text-white text-4xl md:text-5xl font-serif font-bold mt-2">
-                        Curated Furniture Categories
-                    </h1>
-                    <p className="text-gray-300 max-w-xl mt-4">
-                        Explore premium furniture collections crafted for modern luxury living and style.
-                    </p>
-                </motion.div>
-            </section>
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="relative z-10 h-full flex flex-col justify-center items-center text-center px-4"
+        >
+          <p className="tracking-widest text-[#C9A24D] text-sm">
+            READY FOR PRODUCTION
+          </p>
+          <h1 className="text-white text-4xl md:text-5xl font-serif font-bold mt-2">
+            Curated Furniture Categories
+          </h1>
+          <p className="text-gray-300 max-w-xl mt-4">
+            Explore premium furniture collections crafted for modern luxury living and style.
+          </p>
+        </motion.div>
+      </section>
 
       {/* ---------------- CONTENT ---------------- */}
       <div className="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-4 gap-8 ">
@@ -243,10 +244,9 @@ export default function CatalogPage() {
                   key={m}
                   onClick={() => setMaterial(m)}
                   className={`border px-3 py-1 rounded-full text-xs transition
-                    ${
-                      material === m
-                        ? "bg-[#3e2723] text-white"
-                        : "hover:bg-[#3e2723] hover:text-white"
+                    ${material === m
+                      ? "bg-[#3e2723] text-white"
+                      : "hover:bg-[#3e2723] hover:text-white"
                     }`}
                 >
                   {m}
