@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* ===============================
-   CSS VARIABLES (OPTIONAL)
+   CSS VARIABLES
 ================================ */
 :root {
   --primary: #3E2723;
@@ -44,7 +44,7 @@
    HERO BACKGROUND
 ================================ */
 .hero-pattern {
-  background-image: radial-gradient(#E6D5C3 1px, transparent 1px);
+  background-image: radial-gradient(#E6D5C3 1.5px, transparent 1px);
   background-size: 24px 24px;
 }
 

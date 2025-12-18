@@ -8,6 +8,7 @@ import { MdOutlineVerifiedUser } from "react-icons/md";
 import FeaturedCategories from "./FeaturedCategories";
 import {Link} from 'react-router-dom'
 import TrendingNow from "./TrendingNow";
+import Testimonial from "./Testimonial";
 
 const Home = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -39,7 +40,7 @@ const Home = () => {
   return (
     <>
       <div className="bg-[#FAF7F2] hero-pattern">
-        <div className="grid lg:grid-cols-2 sm:px-10 pt-28 pb-15 px-2">
+        <div className="grid lg:grid-cols-2 sm:px-20 pt-28 pb-15 px-2">
           {/* LEFT SIDE */}
           <div className="mb-5">
             <div className="flex">
@@ -146,14 +147,14 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="bg-[#E6D5C3] border-y border-[#C9A24D]/30 px-3 sm:px-9 py-5">
+        <div className="bg-[#E6D5C3] border-y border-[#C9A24D]/30 px-3 sm:px-20 py-5">
           <div className="grid grid-cols-4 gap-2 optionsHome">
             <div className="flex items-center gap-2">
               <div className="p-4 border rounded-full border-[#C9A24D] bg-white">
                 <FiTruck />
               </div>
               <div>
-                <h4 className="font-serif text-[#3E2723] font-bold">Free Shippings</h4>
+                <h4 className=" text-[#3E2723] font-bold">Free Shippings</h4>
                 <p className="text-black/50 text-xs">For orders above $180</p>
               </div>
             </div>
@@ -163,7 +164,7 @@ const Home = () => {
                 <LuWallet />
               </div>
               <div>
-                <h4 className="font-serif text-[#3E2723] font-bold">Flexible Payment</h4>
+                <h4 className=" text-[#3E2723] font-bold">Flexible Payment</h4>
                 <p className="text-black/50 text-xs">Multiple secure options</p>
               </div>
             </div>
@@ -173,7 +174,7 @@ const Home = () => {
                 <RiCustomerService2Fill />
               </div>
               <div>
-                <h4 className="font-serif text-[#3E2723] font-bold">24x7 Supports</h4>
+                <h4 className="text-[#3E2723] font-bold">24x7 Supports</h4>
                 <p className="text-black/50 text-xs">We support online all days</p>
               </div>
             </div>
@@ -183,7 +184,7 @@ const Home = () => {
                 <MdOutlineVerifiedUser />
               </div>
               <div>
-                <h4 className="font-serif text-[#3E2723] font-bold">Secure Payment</h4>
+                <h4 className=" text-[#3E2723] font-bold">Secure Payment</h4>
                 <p className="text-black/50 text-xs">100% Secure Payment</p>
               </div>
             </div>
@@ -192,13 +193,18 @@ const Home = () => {
       </div>
 
       {/* FEATURED CATEGORIES */}
-      <div className="bg-[#FAF7F2] sm:px-10 py-15 px-2">
+      <div className="bg-[#FAF7F2] sm:px-20 py-15 px-2">
         <FeaturedCategories />
       </div>
       
       {/* TRENDING NOW */}
-      <div className="sm:px-10 py-15 px-2">
+      <div className="sm:px-20 py-15 px-2">
         <TrendingNow />
+      </div>
+
+      {/* TESTIMONIALS */}
+      <div className="sm:px-20 py-15 px-2 bg-[#E6D5C3]/20">
+        <Testimonial />
       </div>
     </>
   );

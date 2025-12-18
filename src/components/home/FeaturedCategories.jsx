@@ -89,17 +89,17 @@ const FeaturedCategories = () => {
                 450+ Items
               </span>
               <h3 className="text-3xl font-serif font-bold text-[#3E2723] mb-2">
-                Lighting
+                Bed
               </h3>
               <p className="text-sm text-[#2B2B2B]/60 mb-4">
-                Table Lights, Ceiling Lights, Wall Lights
+                Modern Bedroom with Blue Accent Wall
               </p>
             </div>
             <div className="absolute right-0 top-0 h-full w-1/2">
               <img
                 alt="Lighting"
                 className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7qPZY0XdwDNCv8JqGtZ8cxuZpJKsKTpKrsEvjmwOaEPne36_ghV6cILTNDSTi9W0D11vTmfdGSuE_oY4yQieYQBWa8uIDnUeGypjmxAT44tvwFuvFvCN3GNqsdEnvHVKQ8SzxaHQuD18ezWrW6onK5o0vKduYdFwlVsTiuCAnJDwcIKnAND-vgrF83--NIvJngpcM9d_NWj0Aty6ZmOU4HjdZZKrtwAWdpHZh-NmXRdPSvKClKOCbWWT_q5mNFbvB4M5J4a1Gn8c4"
+                src="https://img.freepik.com/free-photo/modern-bedroom-interior-design-with-blue-accent-wall_23-2151995362.jpg"
               />
             </div>
           </div>

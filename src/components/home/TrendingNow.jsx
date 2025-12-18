@@ -23,7 +23,7 @@ const TrendingNow = () => {
 
   return (
     <section>
-      <div className="max-w-7xl mx-auto px-4 md:px-10">
+      <div className="mx-auto px-4 md:px-10">
         {/* HEADING AND LEFT, RIGHT ICON */}
         <div className="flex justify-between items-end mb-8">
           <div>
@@ -49,7 +49,7 @@ const TrendingNow = () => {
           {products.map((product) => (
             <div
               key={product.id}
-              className="min-w-70 snap-start rounded-2xl overflow-hidden group bg-white border border-[#E6D5C3]/20 shadow-xl/20"
+              className="min-w-70 snap-start rounded-2xl overflow-hidden group bg-[#E6D5C3] border border-[#E6D5C3]/20 shadow-xl/20"
             >
               <div className="aspect-4/5 relative overflow-hidden">
                 <img
