@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { MdShoppingBag } from "react-icons/md";
 import {Link} from "react-router-dom";
 import {motion} from "framer-motion";
+import bannerimg from "../../public/Catelogimg/banner.png"
 
 export default function CatalogPage() {
   /* ---------------- PRODUCT DATA ---------------- */
@@ -126,7 +127,7 @@ export default function CatalogPage() {
   return (
     <div className="min-h-screen bg-[#faf7f2] text-[#2b2b2b]">
       {/* ---------------- HEADER ---------------- */}
-      <header className="flex items-center justify-between px-6 py-4 border-b bg-[#3E2723] text-white">
+      {/* <header className="flex items-center justify-between px-6 py-4 border-b bg-[#3E2723] text-white">
         <h1 className="text-xl font-bold">LUSSO</h1>
 
         <nav className="hidden md:flex gap-6 text-sm">
@@ -141,11 +142,11 @@ export default function CatalogPage() {
         <div className="bg-[#C9A24D] hover:bg-[#A6853D] px-3 py-2 rounded-full text-sm flex items-center gap-1">
           <MdShoppingBag /> Cart (2)
         </div>
-      </header>
+      </header> */}
 
-      <section className="m-6 md:m-10 relative h-[420px] rounded-3xl overflow-hidden">
+      <section className="m-6 md:m-17 relative h-[420px] rounded-3xl overflow-hidden">
                 <img
-                    src="https://i.pinimg.com/736x/49/b2/2b/49b22b5021990ecd73a47db4ec50d273.jpg"
+                    src={bannerimg}
                     className="absolute inset-0 w-full h-full object-cover"
                     alt="Hero"
                 />
@@ -158,13 +159,13 @@ export default function CatalogPage() {
                     className="relative z-10 h-full flex flex-col justify-center items-center text-center px-4"
                 >
                     <p className="tracking-widest text-[#C9A24D] text-sm">
-                        READY FOR PRODUCTION
+                        Redefine Your Space
                     </p>
                     <h1 className="text-white text-4xl md:text-5xl font-serif font-bold mt-2">
-                        Curated Furniture Categories
+                        Elevate Your Living Experience
                     </h1>
                     <p className="text-gray-300 max-w-xl mt-4">
-                        Explore premium furniture collections crafted for modern luxury living and style.
+                        Curated furniture designed for comfort, quality, and timeless appeal.
                     </p>
                 </motion.div>
             </section>
