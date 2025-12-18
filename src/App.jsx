@@ -24,6 +24,7 @@ function App() {
 
         {/* Product detail page */}
         <Route path="/productdetails" element={<ProductDetail />} />
+        <Route path="/aboutus" element={<Aboutus />} />
 
         {/* 404 fallback */}
         <Route path="*" element={<h1>404 Page Not Found</h1>} />
