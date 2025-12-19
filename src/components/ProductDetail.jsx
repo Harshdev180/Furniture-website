@@ -9,7 +9,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { motion } from "framer-motion";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 
 /* ===================== MAY WE SUGGEST (5 PRODUCTS) ===================== */
 const mayWeSuggest = [
@@ -135,7 +135,7 @@ export default function ProductDetailPage() {
 
   /* ===================== UI ===================== */
   return (
-    <div className="min-h-screen bg-[#FAF7F2] text-[#2B2B2B]">
+    <div className="min-h-screen bg-[#FAF7F2] text-[#2B2B2B] mt-20">
 
       {/* PRODUCT */}
       <section className="max-w-7xl mx-auto px-10 py-14 grid md:grid-cols-2 gap-14">
@@ -153,11 +153,10 @@ export default function ProductDetailPage() {
                 key={i}
                 src={img}
                 onClick={() => setActiveImage(i)}
-                className={`w-20 h-20 cursor-pointer rounded-lg border-2 ${
-                  activeImage === i
-                    ? "border-[#C9A24D]"
-                    : "border-[#E6D5C3]"
-                }`}
+                className={`w-20 h-20 cursor-pointer rounded-lg border-2 ${activeImage === i
+                  ? "border-[#C9A24D]"
+                  : "border-[#E6D5C3]"
+                  }`}
               />
             ))}
           </div>
@@ -188,9 +187,8 @@ export default function ProductDetailPage() {
                     setActiveColor(color);
                     setActiveImage(0);
                   }}
-                  className={`w-10 h-10 rounded-full border-2 ${
-                    activeColor === color ? "ring-2 ring-black" : ""
-                  }`}
+                  className={`w-10 h-10 rounded-full border-2 ${activeColor === color ? "ring-2 ring-black" : ""
+                    }`}
                   style={{ backgroundColor: data.colorCode }}
                 />
               ))}
@@ -206,9 +204,9 @@ export default function ProductDetailPage() {
             </div>
 
             <Link to="#">
-            <button className="bg-[#3E2723] text-white px-6 py-3 rounded-xl">
-              Add to Cart
-            </button></Link> 
+              <button className="bg-[#3E2723] text-white px-6 py-3 rounded-xl">
+                Add to Cart
+              </button></Link>
 
 
             <Link to="/"><button className="bg-[#C9A24D] text-white px-6 py-3 rounded-xl">
@@ -220,9 +218,9 @@ export default function ProductDetailPage() {
 
           {/* TRUST */}
           <div className="grid grid-cols-3 gap-4 text-sm mb-8">
-            <div className="flex items-center gap-2"><Truck size={16}/> Free Delivery</div>
-            <div className="flex items-center gap-2"><RefreshCcw size={16}/> Easy Returns</div>
-            <div className="flex items-center gap-2"><ShieldCheck size={16}/> 5 Yr Warranty</div>
+            <div className="flex items-center gap-2"><Truck size={16} /> Free Delivery</div>
+            <div className="flex items-center gap-2"><RefreshCcw size={16} /> Easy Returns</div>
+            <div className="flex items-center gap-2"><ShieldCheck size={16} /> 5 Yr Warranty</div>
           </div>
 
           {/* TABS */}
@@ -231,9 +229,8 @@ export default function ProductDetailPage() {
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`pb-3 ${
-                  activeTab === tab ? "border-b-2 border-[#C9A24D]" : ""
-                }`}
+                className={`pb-3 ${activeTab === tab ? "border-b-2 border-[#C9A24D]" : ""
+                  }`}
               >
                 {tab}
               </button>
