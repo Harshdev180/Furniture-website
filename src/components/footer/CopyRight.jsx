@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 const CopyRight = () => {
   return (
-    <div className='mt-3 flex justify-between flex-col lg:flex-row items-center'>
+    <div className='mt-3 flex justify-center items-center'>
         <h4 className='mb-3 md:text-[16px] text-[14px] font-bold'>Copyright 2025 <span className='text-[#C9A24D]'> Graphura India Private Limited.</span> All Rights Reserved.</h4>
 
-        <ul className='flex gap-5 text-gray-400 justify-center'>
+        {/* <ul className='flex gap-5 text-gray-400 justify-center'>
             <li className='hover:text-white cursor-pointer md:text-[16px] text-[11px]'>
                 <Link to=''>Term of Service</Link>
             </li>
@@ -16,7 +16,7 @@ const CopyRight = () => {
             <li className='hover:text-white cursor-pointer md:text-[16px] text-[11px]'>
                 <Link to=''>Cookie Policy</Link>
             </li>
-        </ul>
+        </ul> */}
     </div>
   );
 };

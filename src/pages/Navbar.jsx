@@ -40,9 +40,9 @@ const Navbar = () => {
           </div>
 
           {/* ICONS */}
-          <div className="flex items-center gap-4 ml-5 sm:ml-0">
+          <div className="flex items-center gap-4 ml-8 sm:ml-0">
             <FaRegHeart className="text-[20px] cursor-pointer hover:text-[#C9A24D]  hidden sm:block" />
-            <FaRegUser className="text-[20px] cursor-pointer hover:text-[#C9A24D]  hidden sm:block" />
+            <FaRegUser className="text-[20px] cursor-pointer hover:text-[#C9A24D]" />
             <FaShoppingCart className="text-[20px] cursor-pointer hover:text-[#C9A24D] " />
 
             {/* MENU BUTTON */}

@@ -67,14 +67,14 @@ const Home = () => {
             {/* BUTTONS OF LEFT SIDE */}
             <div className="flex gap-4 homeBtn mb-20">
               <Link to="/shop">
-                <button className="bg-[#3E2723] px-10 py-3 text-white rounded-full flex items-center gap-2 shadow-[0_8px_20px_rgba(0,0,0,0.35),0_4px_12px_#3E2723] hover:shadow-[0_12px_20px_rgba(0,0,0,0.45),0_6px_18px_#3E2723] transition group cursor-pointer place-content-center">
+                <button className="bg-[#C9A24D] px-10 py-3 text-white rounded-full flex items-center gap-2 shadow-[0_8px_20px_rgba(0,0,0,0.25),0_4px_12px_#C9A24D] hover:shadow-[0_12px_20px_rgba(0,0,0,0.35),0_6px_18px_#C9A24D] transition  group cursor-pointer place-content-center duration-300">
                   Shop Now
                   <FaArrowRight className="transform transition-transform duration-300 group-hover:translate-x-2" />
                 </button>
               </Link>
 
               <Link to="/categories">
-                <button className="px-10 py-3 border border-[#3E2723] text-[#3E2723] rounded-full cursor-pointer shadow-[0_8px_20px_rgba(0,0,0,0.35),0_4px_12px_#FAF7F2] hover:shadow-[0_12px_20px_rgba(0,0,0,0.45),0_6px_18px_#FAF7F2] transition duration-300 hover:bg-[#3E2723] hover:text-white">
+                <button className="px-10 py-3 border border-[#C9A24D] text-[#3E2723] rounded-full cursor-pointer shadow-[0_8px_20px_rgba(0,0,0,0.25),0_4px_12px_#C9A24D] hover:shadow-[0_12px_20px_rgba(0,0,0,0.35),0_6px_18px_#C9A24D] transition duration-300 hover:bg-[#C9A24D] hover:text-white">
                   View All Products
                 </button>
               </Link>
@@ -157,7 +157,7 @@ const Home = () => {
               </div>
               <div>
                 <h4 className=" text-[#3E2723] font-bold">Free Shippings</h4>
-                <p className="text-black/50 text-xs">For orders above $180</p>
+                <p className="text-black/50 text-xs">For orders above ₹180</p>
               </div>
             </div>
 

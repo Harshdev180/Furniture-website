@@ -19,10 +19,10 @@ const FeaturedCategories = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-        <div className="md:col-span-5 bg-white rounded-3xl p-8 relative overflow-hidden group shadow-soft hover:shadow-xl transition-shadow border border-[#C9A24D]/50">
+        <div className="md:col-span-5 bg-[#E6D5C3]/40 rounded-3xl p-8 relative overflow-hidden group shadow-soft hover:shadow-xl transition-shadow border border-[#C9A24D]/50">
           {/* LEDT CARD */}
           <div className="relative z-10 mb-32 md:mb-0">
-            <span className="bg-[#E6D5C3] text-[#3E2723] text-xs font-bold px-2 py-1 rounded mb-2 inline-block">
+            <span className="bg-[#C9A24D] text-[#3E2723] text-xs font-bold px-2 py-1 rounded mb-2 inline-block">
               1500+ Items
             </span>
             <h3 className="text-3xl font-serif font-bold text-[#3E2723] mb-2">
@@ -58,9 +58,9 @@ const FeaturedCategories = () => {
 
         {/* RIGHT CARD */}
         <div className="md:col-span-7 flex flex-col gap-6">
-          <div className="bg-white rounded-3xl p-8 relative overflow-hidden h-75 group shadow-soft hover:shadow-xl transition-shadow flex items-center border border-[#C9A24D]/50">
+          <div className="bg-[#E6D5C3]/40 rounded-3xl p-8 relative overflow-hidden h-75 group shadow-soft hover:shadow-xl transition-shadow flex items-center border border-[#C9A24D]/50">
             <div className="w-1/2 relative z-10">
-              <span className="bg-[#E6D5C3] text-[#3E2723] text-xs font-bold px-2 py-1 rounded mb-2 inline-block">
+              <span className="bg-[#C9A24D] text-[#3E2723] text-xs font-bold px-2 py-1 rounded mb-2 inline-block">
                 750+ Items
               </span>
               <h3 className="text-3xl font-serif font-bold text-[#3E2723] mb-2">
@@ -83,9 +83,9 @@ const FeaturedCategories = () => {
             </div>
           </div>
 
-          <div className="bg-white rounded-3xl p-8 relative overflow-hidden h-62.5 group shadow-soft hover:shadow-xl transition-shadow flex items-center border border-[#C9A24D]/50">
+          <div className="bg-[#E6D5C3]/40 rounded-3xl p-8 relative overflow-hidden h-62.5 group shadow-soft hover:shadow-xl transition-shadow flex items-center border border-[#C9A24D]/50">
             <div className="w-1/2 relative z-10">
-              <span className="bg-[#E6D5C3] text-[#3E2723] text-xs font-bold px-2 py-1 rounded mb-2 inline-block">
+              <span className="bg-[#C9A24D] text-[#3E2723] text-xs font-bold px-2 py-1 rounded mb-2 inline-block">
                 450+ Items
               </span>
               <h3 className="text-3xl font-serif font-bold text-[#3E2723] mb-2">

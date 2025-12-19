@@ -16,13 +16,13 @@ export const products = [
   {
     id: 1,
     category: "Chair",
-    title: "Luna Lounge Chair",
+    title: "Green Armchair",
     price: 799,
     oldPrice: 999,
     badge: "-20%",
     badgeColor: "bg-[#D32F2F]",
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCv3hB2LAYwZH8Psw0uMu0dMP9NksxaGqJzATPsIdKNxxjhmnLXAuNPKFwUvK5QLru1NrDMAhJy3YhkLaP3o7HMFAhlc5qfgR2YgsQPKProHzmbN6saReCe0FWcPRgoVMmyZ-9GONX97j6AFFf_B9zXXk5DKwKbr56xAhg5ebJbOrkIxrcD-RbbMgbN-_GXi0RYFzQGrDY5zCX_e5xA7ZNLlkJ40sOm-pJ1nhCSDtdRCUF1mRxAdC7jHFgTAfaFdhUHaKw4gJozkYT5",
+      "https://img.freepik.com/free-photo/green-armchair-lamp-modern-interior_23-2152020453.jpg",
   },
   {
     id: 2,
@@ -76,5 +76,5 @@ export const card = [
     },
     {
       image: banner3
-    },
+    }
 ]

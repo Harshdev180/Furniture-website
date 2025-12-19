@@ -60,8 +60,8 @@ const Form = () => {
             </div>
 
             <button
-              class="mt-4 w-full bg-[#3E2723] text-white font-bold py-4 rounded-lg transition-all duration-300 shadow-lg shadow-[#3E2723]/80 hover:shadow-[#3E2723]/40 transform hover:-translate-y-2 flex items-center justify-center gap-2 cursor-pointer font-serif"
-              type="button"
+              class="mt-4 w-full bg-[#3E2723] text-white font-bold py-4 rounded-lg transition-all duration-300 shadow-lg shadow-[#3E2723]/50 hover:shadow-[#3E2723]/80 transform flex items-center justify-center gap-2 cursor-pointer font-serif"
+              type="submit"
             >
               <span className="text-lg">Send Request</span>
             </button>
@@ -90,11 +90,11 @@ const Form = () => {
               >
                 <input
                   class="w-full border border-[#3E2723]/20 rounded-lg bg-white text-center h-12 px-4 text-sm text-[#2B2B2B]/90 placeholder:text-[#2B2B2B]/80 focus:bg-white focus:outline-none focus:border-[#C9A24D] transition-all"
-                  placeholder="Enter your email"
-                  required=""
+                  placeholder="Enter your Email"
+                  required
                   type="email"
                 />
-                <button class="w-full bg-[#C9A24D] hover:bg-[#C9A24D]/90 text-white font-bold py-3 rounded-lg text-sm transition-colors shadow-md cursor-pointer">
+                <button class="w-full bg-[#C9A24D] hover:bg-[#C9A24D]/90 text-white font-bold py-3 rounded-lg text-sm transition-colors shadow-md cursor-pointer" type="submit">
                   Subscribe Now
                 </button>
               </form>
@@ -110,10 +110,10 @@ const Form = () => {
             <MdOutlineCall className="text-2xl" />
           </div>
           <div>
-            <p class="font-bold text-xs text-[#C9A24D] uppercase tracking-wider mb-1">
+            <p class="font-bold text-sm text-[#C9A24D] uppercase tracking-wider mb-1">
               Call Us
             </p>
-            <p class="font-serif text-lg text-[#2B2B2B]/80 group-hover:text-[#3E2723] dark:group-hover:text-[#C9A24D] transition-colors">
+            <p class="text-md text-[#2B2B2B]/80 group-hover:text-[#3E2723] dark:group-hover:text-[#C9A24D] transition-colors">
               +91 7378021327
             </p>
           </div>
@@ -123,10 +123,10 @@ const Form = () => {
             <MdOutlineMail className="text-2xl" />
           </div>
           <div>
-            <p class="font-bold text-xs text-[#C9A24D] uppercase tracking-wider mb-1">
+            <p class="font-bold text-sm text-[#C9A24D] uppercase tracking-wider mb-1">
               Email Us
             </p>
-            <p class="font-serif text-lg text-[#2B2B2B]/80 group-hover:text-[#3E2723] dark:group-hover:text-[#C9A24D] transition-colors">
+            <p class="text-md text-[#2B2B2B]/80 group-hover:text-[#3E2723] dark:group-hover:text-[#C9A24D] transition-colors">
               official@graphura.in
             </p>
           </div>
@@ -136,10 +136,10 @@ const Form = () => {
             <MdLocationPin className="text-2xl" />
           </div>
           <div>
-            <p class="font-bold text-xs text-[#C9A24D] uppercase tracking-wider mb-1">
+            <p class="font-bold text-sm text-[#C9A24D] uppercase tracking-wider mb-1">
               Office
             </p>
-            <p class="font-serif text-lg text-[#2B2B2B]/80 group-hover:text-[#3E2723] dark:group-hover:text-[#C9A24D] transition-colors">
+            <p class="text-md text-[#2B2B2B]/80 group-hover:text-[#3E2723] dark:group-hover:text-[#C9A24D] transition-colors">
               near RSF, Pataudi, Gurgaon, Haryana 122503
             </p>
           </div>

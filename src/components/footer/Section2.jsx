@@ -8,7 +8,7 @@ const Section2 = () => {
   return (
     <div className="mt-8">
       {/* Left Content */}
-      <div className="left grid sm:grid-cols-3 gap-10 mb-10">
+      <div className="left grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
         {/* Head Office address */}
         <div>
           <h4 className="text-xl font-bold mb-3 font-serif">Head Office</h4>
@@ -82,6 +82,31 @@ const Section2 = () => {
               <GoChevronRight className="h-5" />
               <Link to="/office" className="">
                 Office
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+        {/* Policy */}
+        <div>
+          <h4 className="text-xl font-bold mb-3 font-serif">Policy</h4>
+          <ul className="text-gray-300">
+            <li className="hover:text-white hover:font-semibold cursor-pointer hover:pl-[9px] transition duration-150 ease-in-out flex place-items-center mb-1">
+              <GoChevronRight className="h-5" />
+              <Link to="" className="">
+                Term of Services
+              </Link>
+            </li>
+            <li className="hover:text-white hover:font-semibold cursor-pointer hover:pl-[9px] transition duration-150 ease-in-out flex place-items-center mb-1">
+              <GoChevronRight className="h-5" />
+              <Link to="" className="">
+                Privacy policy
+              </Link>
+            </li>
+            <li className="hover:text-white cursor-pointer hover:pl-[9px] transition duration-150 ease-in-out flex place-items-center mb-1">
+              <GoChevronRight className="h-5" />
+              <Link to="" className="">
+                Cookie Policy
               </Link>
             </li>
           </ul>
