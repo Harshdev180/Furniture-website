@@ -23,7 +23,7 @@ export default function WhyChooseUs() {
   ];
 
   return (
-    <section className="py-24 bg-[#FAF7F2]">
+    <section className="pb-24 bg-[#FAF7F2]">
       <div className="max-w-7xl mx-auto px-4">
 
         {/* Heading */}

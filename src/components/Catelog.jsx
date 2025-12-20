@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { MdShoppingBag } from "react-icons/md";
-
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import bannerimg from "../../public/Catelogimg/banner.png"
 
-export default function CatalogPage() {
+// ✅ Correct way to import image in Vite
+import bannerimg from "/Catelogimg/banner.png";
+
+const CatalogPage = () => {
   /* ---------------- PRODUCT DATA ---------------- */
   const products = [
     {
@@ -66,35 +67,6 @@ export default function CatalogPage() {
       material: "Walnut",
       img: "/Catelogimg/NestingTables.jpg",
     },
-    {
-      id: 7,
-      name: "Cloud Modular",
-      price: 5600,
-      desc: "Velvet · Customizable",
-      category: "Sofas & Armchairs",
-      material: "Velvet",
-      img: "/Catelogimg/CloudModular.jpg",
-    },
-    {
-      id: 8,
-      name: "Arc Lamp",
-      price: 850,
-      desc: "Matte Black · LED",
-      category: "Lighting",
-      material: "Brass",
-      img: "/Catelogimg/ArcLamp.jpg",
-    },
-    {
-      id: 9,
-      name: "Nesting Tables",
-      price: 480,
-      old: 690,
-      tag: "-20%",
-      desc: "Walnut Finish · Set of 2",
-      category: "Storage & Shelving",
-      material: "Walnut",
-      img: "/Catelogimg/NestingTables.jpg",
-    },
   ];
 
   /* ---------------- FILTER STATES ---------------- */
@@ -115,7 +87,9 @@ export default function CatalogPage() {
 
   /* ---------------- FILTER LOGIC ---------------- */
   const filteredProducts = products
-    .filter((p) => p.name.toLowerCase().includes(search.toLowerCase()))
+    .filter((p) =>
+      p.name.toLowerCase().includes(search.toLowerCase())
+    )
     .filter((p) => (category ? p.category === category : true))
     .filter((p) => (material ? p.material === material : true))
     .filter((p) => p.price <= maxPrice)
@@ -125,35 +99,17 @@ export default function CatalogPage() {
       return 0;
     });
 
+
   return (
-    <div className="min-h-screen bg-[#faf7f2] text-[#2b2b2b] mt-27">
-      {/* ---------------- HEADER ---------------- */}
-      {/* <header className="flex items-center justify-between px-6 py-4 border-b bg-[#3E2723] text-white">
-        <h1 className="text-xl font-bold">LUSSO</h1>
-
-        <nav className="hidden md:flex gap-6 text-sm">
-          <a href="#">Collections</a>
-          <a href="#" className="font-semibold text-[#c9a24d]">
-            Catalog
-          </a>
-          <a href="#">Design Studio</a>
-          <a href="#">About</a>
-        </nav>
-
-        <div className="bg-[#C9A24D] hover:bg-[#A6853D] px-3 py-2 rounded-full text-sm flex items-center gap-1">
-          <MdShoppingBag /> Cart (2)
-        </div>
-      </header> */}
-
-
-      <section className="m-6 md:m-17 relative h-[420px] rounded-3xl overflow-hidden">
+    <div className="min-h-screen bg-[#faf7f2] text-[#2b2b2b] ">
+      {/* ---------------- HERO ---------------- */}
+      <section className="m-6 md:m-8 relative h-[420px] rounded-3xl overflow-hidden">
         <img
           src={bannerimg}
+          alt="Catalog Banner"
           className="absolute inset-0 w-full h-full object-cover"
-          alt="Hero"
         />
-        {/* <div className="absolute inset-0 bg-black/60" /> */}
-        <div className="absolute inset-0 bg-[#3E2723]/70"></div>
+        <div className="absolute inset-0 bg-[#3E2723]/70" />
 
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -174,18 +130,16 @@ export default function CatalogPage() {
       </section>
 
       {/* ---------------- CONTENT ---------------- */}
-      <div className="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-4 gap-8 ">
+      <div className="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-4 gap-8">
         {/* ---------------- SIDEBAR ---------------- */}
         <aside className="space-y-6 bg-[#E6D5C3] rounded-2xl p-4 h-fit">
-          {/* Clear Filters */}
           <button
             onClick={clearFilters}
-            className="w-full text-sm border border-[#3e2723] text-[#3e2723] py-2 rounded-lg hover:bg-[#3e2723] hover:text-white transition"
+            className="w-full text-sm border border-[#3e2723] bg-[#3e2723] text-[#FAF7F2] py-2 rounded-lg hover:bg-[#C9A24D] hover:text-[#FAF7F2] transition"
           >
             Clear All Filters
           </button>
 
-          {/* Search */}
           <input
             type="text"
             placeholder="Search collection..."
@@ -204,13 +158,9 @@ export default function CatalogPage() {
                 "Lighting",
                 "Storage & Shelving",
               ].map((cat) => (
-                <label
-                  key={cat}
-                  className="flex items-center gap-2 cursor-pointer"
-                >
+                <label key={cat} className="flex items-center gap-2">
                   <input
                     type="radio"
-                    name="category"
                     checked={category === cat}
                     onChange={() => setCategory(cat)}
                     className="accent-[#3e2723]"
@@ -232,9 +182,9 @@ export default function CatalogPage() {
               onChange={(e) => setMaxPrice(Number(e.target.value))}
               className="w-full accent-[#c9a24d]"
             />
-            <div className="flex justify-between text-xs text-gray-500 mt-1">
-              <span>$500</span>
-              <span>${maxPrice}</span>
+            <div className="flex justify-between text-xs mt-1">
+              <span>₹500</span>
+              <span>₹{maxPrice}</span>
             </div>
           </div>
 
@@ -246,10 +196,9 @@ export default function CatalogPage() {
                 <button
                   key={m}
                   onClick={() => setMaterial(m)}
-                  className={`border px-3 py-1 rounded-full text-xs transition
-                    ${material === m
-                      ? "bg-[#3e2723] text-white"
-                      : "hover:bg-[#3e2723] hover:text-white"
+                  className={`border px-3 py-1 rounded-full text-xs transition ${material === m
+                    ? "bg-[#3e2723] text-white"
+                    : "hover:bg-[#3e2723] hover:text-white"
                     }`}
                 >
                   {m}
@@ -257,6 +206,7 @@ export default function CatalogPage() {
               ))}
             </div>
           </div>
+
           <div className="bg-[#3e2723] text-white p-5 rounded-xl">
             <h4 className="font-semibold">Summer Studio Collection</h4>
             <p className="text-xs mt-2 opacity-80">
@@ -270,12 +220,17 @@ export default function CatalogPage() {
 
         {/* ---------------- PRODUCTS ---------------- */}
         <main className="lg:col-span-3">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-semibold font-serif">Products</h2>
+          <div className="flex justify-between mb-6">
+            <h2 className="text-2xl font-serif font-semibold">Products</h2>
 
             <select
+              value={sort}
               onChange={(e) => setSort(e.target.value)}
-              className="border rounded-md px-2 py-1 text-sm"
+              className="border rounded-md px-2 py-1 text-sm hover:border-[#C9A24D]
+    focus:outline-none
+    focus:ring-2 focus:ring-[#C9A24D]
+    focus:border-[#C9A24D]
+    transition"
             >
               <option value="recommended">Recommended</option>
               <option value="low">Price: Low to High</option>
@@ -288,36 +243,44 @@ export default function CatalogPage() {
           )}
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* ✅ Proper Link */}
             {filteredProducts.map((p) => (
-              <div
-                key={p.id}
-                className=" rounded-xl overflow-hidden shadow-sm hover:shadow-md transition bg-[#E6D5C3]"
-              >
-                <img
-                  src={p.img}
-                  alt={p.name}
-                  className="h-56 w-full object-cover"
-                />
+              <Link to={`/product/${p.id}`}>
+                <div
+                  key={p.id}
+                  className="rounded-xl overflow-hidden bg-[#E6D5C3] hover:shadow-md transition"
+                >
+                  <img
+                    src={p.img}
+                    alt={p.name}
+                    className="h-56 w-full object-cover"
+                  />
 
-                <div className="p-4">
-                  <h3 className="font-medium">{p.name}</h3>
-                  <p className="text-xs text-gray-500">{p.desc}</p>
+                  <div className="p-4">
+                    <h3 className="font-medium">{p.name}</h3>
+                    <p className="text-xs text-gray-600">{p.desc}</p>
 
-                  <div className="flex items-center justify-between mt-3">
-                    <span className="font-semibold">₹{p.price}</span>
+                    <div className="flex justify-between items-center mt-3">
+                      <span className="font-semibold">₹{p.price}</span>
 
-                    <Link>
+
                       <button className="px-4 py-1.5 text-sm rounded-full bg-[#3e2723] text-white hover:bg-[#C9A24D] transition">
                         Add to Cart
                       </button>
-                    </Link>
+
+                    </div>
                   </div>
+
                 </div>
-              </div>
+              </Link>
             ))}
+
           </div>
+
         </main>
-      </div>
+      </div >
     </div >
   );
-}
+};
+
+export default CatalogPage;

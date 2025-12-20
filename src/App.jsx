@@ -1,14 +1,17 @@
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./pages/Navbar";
 import Footer from "./pages/Footer";
+
 import Home from "./components/home/Home";
 import Categories from "./components/Categories";
 import CategoryProducts from "./components/CategoryProducts";
-import CatelogPage from "./components/Catelog";
+import CatalogPage from "./components/Catelog";
 import ProductDetail from "./components/ProductDetail";
+
 import Contact from "./pages/contact/Contact";
-import ScrollTop from "./components/ScrollTop";
 import AboutHero from "./components/about/AboutHero";
+import ScrollTop from "./components/ScrollTop";
+
 import "./App.css";
 
 function App() {
@@ -22,23 +25,28 @@ function App() {
         <Route path="/" element={<Home />} />
 
         {/* Catalog & Categories */}
-        <Route path="/catalogue" element={<CatelogPage />} />
+        <Route path="/catalogue" element={<CatalogPage />} />
         <Route path="/categories" element={<Categories />} />
         <Route path="/category/:type" element={<CategoryProducts />} />
 
-        {/* Product Detail */}
-        <Route path="/productdetails" element={<ProductDetail />} />
+        {/* Product Detail (WITH PARAM) */}
+        <Route path="/product/:id" element={<ProductDetail />} />
 
-
-        {/* About page */}
+        {/* About */}
         <Route path="/aboutus" element={<AboutHero />} />
-
 
         {/* Contact */}
         <Route path="/contact" element={<Contact />} />
 
         {/* 404 */}
-        <Route path="*" element={<h1>404 Page Not Found</h1>} />
+        <Route
+          path="*"
+          element={
+            <div className="min-h-[60vh] flex items-center justify-center">
+              <h1 className="text-3xl font-bold">404 | Page Not Found</h1>
+            </div>
+          }
+        />
       </Routes>
 
       <Footer />

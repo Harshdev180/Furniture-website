@@ -507,30 +507,31 @@ const Categories = () => {
                                             transition={{ type: "spring", stiffness: 200 }}
                                             className="group bg-[#E6D5C3] rounded-2xl shadow-md hover:shadow-xl overflow-hidden"
                                         >
-                                            <Link to={`/category/${item.typeKey}`} className="block h-full">
-                                                {/* IMAGE */}
-                                                <div
-                                                    className="relative w-full aspect-[4/3] overflow-hidden"
-                                                    style={{ backgroundColor: item.bg }}
-                                                >
-                                                    <img
-                                                        src={item.image}
-                                                        alt={item.name}
-                                                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                                                    />
-                                                </div>
 
-                                                {/* CONTENT */}
-                                                <div className="relative p-5 pb-14">
-                                                    <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">
-                                                        {item.type}
-                                                    </p>
+                                            {/* IMAGE */}
+                                            <div
+                                                className="relative w-full aspect-[4/3] overflow-hidden"
+                                                style={{ backgroundColor: item.bg }}
+                                            >
+                                                <img
+                                                    src={item.image}
+                                                    alt={item.name}
+                                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                                />
+                                            </div>
 
-                                                    <h3 className="font-semibold text-lg text-[#3E2723]">
-                                                        {item.name}
-                                                    </h3>
+                                            {/* CONTENT */}
+                                            <div className="relative p-5 pb-14">
+                                                <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">
+                                                    {item.type}
+                                                </p>
 
-                                                    {/* SEE MORE BUTTON */}
+                                                <h3 className="font-semibold text-lg text-[#3E2723]">
+                                                    {item.name}
+                                                </h3>
+
+                                                {/* SEE MORE BUTTON */}
+                                                <Link to={`/category/${item.typeKey}`} className="block h-full">
                                                     <span
                                                         className="absolute right-4 bottom-4 inline-flex items-center gap-2
             px-4 py-2 rounded-full bg-[#3E2723] text-[#FAF7F2] text-xs
@@ -538,8 +539,9 @@ const Categories = () => {
                                                     >
                                                         See more →
                                                     </span>
-                                                </div>
-                                            </Link>
+                                                </Link>
+                                            </div>
+
                                         </motion.div>
                                     ))}
                                 </div>
