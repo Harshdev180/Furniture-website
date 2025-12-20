@@ -8,19 +8,22 @@ const Inspiration = () => {
     <section>
       <div className="mx-auto">
         {/* HEADING */}
-        <div className="flex justify-between items-end mb-12">
+        <div className="block sm:flex justify-between items-end mb-12">
           <div>
             <span className="text-[#C9A24D] font-bold tracking-wider text-sm uppercase">
               Inspiration
             </span>
-            <h2 className="text-3xl font-serif font-bold mb-4 text-[#3E2723] mt-2">
-              Featured Furniture Templates
+            <div>
+              <h2 className="text-2xl sm:text-4xl font-serif font-bold mb-4 text-[#3E2723] mt-2">
+              Furniture Templates
             </h2>
-            <p className="text-[#2B2B2B]/70">
-             Explore featured furniture templates with pre-selected furniture sets, delivered straight to your home.
+            </div>
+            
+            <p className="text-[#2B2B2B]/70 mb-2 sm:mb-0">
+             Explore featured furniture templates with pre-selected furniture sets.
             </p>
           </div>
-          <Link to="/categories" className="hidden md:flex items-center gap-2 font-bold text-[#C9A24D] hover:text-[#3E2723] transition-colors">
+          <Link to="/categories" className="text-sm flex items-center gap-2 font-bold text-[#C9A24D] hover:text-[#3E2723] transition-colors">
             See all Templates
             <FaArrowRightLong />
           </Link>

@@ -42,7 +42,7 @@ const Home = () => {
   return (
     <>
       <div className="bg-[#FAF7F2] hero-pattern">
-        <div className="grid lg:grid-cols-2 sm:px-20 pt-28 pb-15 px-8">
+        <div className="grid lg:grid-cols-2 sm:px-20 pt-28 pb-15 px-3">
           {/* LEFT SIDE */}
           <div className="mb-5">
             <div className="flex">
@@ -81,7 +81,7 @@ const Home = () => {
             </div>
 
             {/* RATING */}
-            <div className="flex items-center sm:flex-row flex-col">
+            <div className="flex sm:items-center sm:flex-row flex-col">
               <div className="flex -space-x-3 pr-1">
                 <img
                   src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200"
@@ -149,7 +149,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="bg-[#E6D5C3] border-y border-[#C9A24D]/30 px-8 sm:px-20 py-5">
+        <div className="bg-[#E6D5C3] border-y border-[#C9A24D]/30 px-3 sm:px-20 py-5">
           <div className="grid grid-cols-4 gap-2 optionsHome">
             <div className="flex items-center gap-2">
               <div className="p-4 border rounded-full border-[#C9A24D] bg-white">
@@ -195,27 +195,27 @@ const Home = () => {
       </div>
 
       {/* FEATURED CATEGORIES */}
-      <div className="bg-[#FAF7F2] sm:px-20 py-15 px-8">
+      <div className="bg-[#FAF7F2] sm:px-20 py-15 px-3">
         <FeaturedCategories />
       </div>
       
       {/* TRENDING NOW */}
-      <div className="sm:px-20 py-15 px-8">
+      <div className="sm:px-20 py-15 px-3">
         <TrendingNow />
       </div>
 
       {/* CUSTOMIZATION FORM */}
-      <div className="bg-[#FAF7F2] sm:px-20 py-15 px-8">
+      <div className="bg-[#FAF7F2] sm:px-20 py-15 px-3">
         <Form />
       </div>
 
       {/* INSPIRATION */}
-      <div className="sm:px-20 py-15 px-8">
+      <div className="sm:px-20 py-15 px-3">
         <Inspiration />
       </div>
 
       {/* TESTIMONIALS */}
-      <div className="sm:px-20 py-15 px-8 bg-[#E6D5C3]/20">
+      <div className="sm:px-20 py-15 px-3 bg-[#E6D5C3]/20">
         <Testimonial />
       </div>
     </>

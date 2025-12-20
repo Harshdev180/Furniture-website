@@ -2,7 +2,7 @@ import React from "react";
 
 const TestimonialCard = ({ name, role, img }) => {
   return (
-    <div className="text-sm w-80 mx-auto border border-gray-200 pb-6 rounded-lg bg-white shadow-xl shadow-black/30">
+    <div className="text-sm w-70 mx-auto border border-gray-200 pb-6 rounded-lg bg-white shadow-xl shadow-black/30">
       {/* Profile */}
       <div className="flex flex-col items-center px-5 py-4 relative">
         <img

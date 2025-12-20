@@ -3,7 +3,7 @@ import { IoMdSend } from "react-icons/io";
 
 const Form = () => {
   return (
-    <div className="md:grid lg:grid-cols-2 bg-white md:mx-auto rounded-4xl max-h-[40rem] overflow-hidden border border-[#3E2723]/20 shadow-xl shadow-[#3E2723]/80">
+    <div className="md:grid lg:grid-cols-2 bg-white md:mx-auto rounded-4xl max-h-[50rem] overflow-hidden border border-[#3E2723]/20 shadow-xl shadow-[#3E2723]/80">
       <img
         src="https://img.freepik.com/free-photo/handsome-carpenter-working-with-wood_1157-26131.jpg"
         alt="carpenter img"
