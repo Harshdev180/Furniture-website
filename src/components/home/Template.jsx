@@ -86,7 +86,7 @@ export default function Template() {
     <div className="bg-[#FAF7F2] min-h-screen">
       {/* HERO */}
       {/* HERO BANNER */}
-<section className="max-w-7xl mx-auto mt-10 px-6 pt-10">
+<section className="max-w-7xl mx-auto  px-6 pt-10">
   <div className="relative rounded-2xl overflow-hidden h-[420px] md:h-[480px]">
 
     {/* Background Image */}
