@@ -14,7 +14,7 @@ const Navbar = () => {
 
   const navLinkClass = ({ isActive }) =>
     `block px-4 py-3 font-medium transition ${
-      isActive ? "text-white" : "hover:text-[#C9A24D]"
+      isActive ? "text-[#C9A24D]" : "hover:text-[#C9A24D]"
     }`;
 
   return (
