@@ -33,7 +33,7 @@ const Categories = () => {
                 {
                     name: "Modern Selves",
                     type: "Selves",
-                    typeKey: "selves",
+                    typeKey: "shelf",
                     bg: "#BFDCE5",
                     image:
                         "https://i.pinimg.com/736x/ea/9a/21/ea9a21ba60809ebf869fa7657dca4f75.jpg",
@@ -41,7 +41,7 @@ const Categories = () => {
                 {
                     name: "Bed Table",
                     type: "Bed Table",
-                    typeKey: "bedtable",
+                    typeKey: "bedTable",
                     bg: "#BFDCE5",
                     image:
                         "https://i.pinimg.com/736x/d5/cc/45/d5cc45061fd43a0849632c31465e9163.jpg",
@@ -49,7 +49,7 @@ const Categories = () => {
                 {
                     name: "Dressing Table",
                     type: "Dressing Table",
-                    typeKey: "dressingtable",
+                    typeKey: "dressingTable",
                     bg: "#BFDCE5",
                     image:
                         "https://i.pinimg.com/736x/42/83/2d/42832d420b649e2481f26357b886382e.jpg",
@@ -57,7 +57,7 @@ const Categories = () => {
                 {
                     name: "Bed Room Couch",
                     type: "Couch",
-                    typeKey: "couch",
+                    typeKey: "bedroomCouch",
                     bg: "#BFDCE5",
                     image:
                         "https://i.pinimg.com/736x/4f/7f/5d/4f7f5d5538a30b604c742ffa0ccc5147.jpg",
@@ -389,7 +389,7 @@ const Categories = () => {
                         setActiveCategory(tempCategory);
                         setShowFilter(false);
                     }}
-                    className="flex-1 py-2 rounded-lg bg-[#3E2723] text-[#FAF7F2] text-sm cursor-pointer hover:bg-[#3E2723]/90"
+                    className="flex-1 py-2 rounded-lg bg-[#3E2723] text-[#FAF7F2] text-sm cursor-pointer hover:bg-[#C9A24D]/90"
                 >
                     Apply Filters
                 </button>
@@ -400,7 +400,7 @@ const Categories = () => {
                         setActiveCategory("All");
                         setShowFilter(false);
                     }}
-                    className="flex-1 py-2 rounded-lg border border-[#3E2723] text-[#3E2723] text-sm cursor-pointer hover:bg-[#3E2723]/10"
+                    className="flex-1 py-2 rounded-lg border border-[#3E2723] text-[#3E2723] text-sm cursor-pointer hover:bg-[#C9A24D] hover:text-[#FAF7F2]"
                 >
                     Clear
                 </button>
@@ -508,39 +508,52 @@ const Categories = () => {
                                             className="group bg-[#E6D5C3] rounded-2xl shadow-md hover:shadow-xl overflow-hidden"
                                         >
 
-                                            {/* IMAGE */}
-                                            <div
-                                                className="relative w-full aspect-[4/3] overflow-hidden"
-                                                style={{ backgroundColor: item.bg }}
-                                            >
-                                                <img
-                                                    src={item.image}
-                                                    alt={item.name}
-                                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                                                />
-                                            </div>
+                                            <Link to={`/category/${item.typeKey}`} className="block h-full">
+                                                {/* IMAGE */}
+                                                <div
+                                                    className="relative w-full aspect-4/3 overflow-hidden"
+                                                    style={{ backgroundColor: item.bg }}
+                                                >
+                                                    <img
+                                                        src={item.image}
+                                                        alt={item.name}
+                                                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                                    />
+                                                </div>
+                                                {/* IMAGE */}
+                                                <div
+                                                    className="relative w-full aspect-[4/3] overflow-hidden"
+                                                    style={{ backgroundColor: item.bg }}
+                                                >
+                                                    <img
+                                                        src={item.image}
+                                                        alt={item.name}
+                                                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                                    />
+                                                </div>
 
-                                            {/* CONTENT */}
-                                            <div className="relative p-5 pb-14">
-                                                <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">
-                                                    {item.type}
-                                                </p>
+                                                {/* CONTENT */}
+                                                <div className="relative p-5 pb-14">
+                                                    <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">
+                                                        {item.type}
+                                                    </p>
 
-                                                <h3 className="font-semibold text-lg text-[#3E2723]">
-                                                    {item.name}
-                                                </h3>
+                                                    <h3 className="font-semibold text-lg text-[#3E2723]">
+                                                        {item.name}
+                                                    </h3>
 
-                                                {/* SEE MORE BUTTON */}
-                                                <Link to={`/category/${item.typeKey}`} className="block h-full">
-                                                    <span
-                                                        className="absolute right-4 bottom-4 inline-flex items-center gap-2
+                                                    {/* SEE MORE BUTTON */}
+                                                    <Link to={`/category/${item.typeKey}`} className="block h-full">
+                                                        <span
+                                                            className="absolute right-4 bottom-4 inline-flex items-center gap-2
             px-4 py-2 rounded-full bg-[#3E2723] text-[#FAF7F2] text-xs
-            transition-all duration-300 group-hover:bg-[#2d1c18]"
-                                                    >
-                                                        See more →
-                                                    </span>
-                                                </Link>
-                                            </div>
+            transition-all duration-300 group-hover:bg-[#C9A24D]"
+                                                        >
+                                                            See more →
+                                                        </span>
+                                                    </Link>
+                                                </div>
+                                            </Link>
 
                                         </motion.div>
                                     ))}

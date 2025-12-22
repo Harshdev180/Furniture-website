@@ -1,17 +1,14 @@
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./pages/Navbar";
 import Footer from "./pages/Footer";
-
 import Home from "./components/home/Home";
 import Categories from "./components/Categories";
 import CategoryProducts from "./components/CategoryProducts";
 import CatalogPage from "./components/Catelog";
 import ProductDetail from "./components/ProductDetail";
-
 import Contact from "./pages/contact/Contact";
 import AboutHero from "./components/about/AboutHero";
 import ScrollTop from "./components/ScrollTop";
-
 import "./App.css";
 import Template from "./components/home/Template";
 
@@ -28,7 +25,7 @@ function App() {
         {/* Catalog & Categories */}
         <Route path="/catalogue" element={<CatalogPage />} />
         <Route path="/categories" element={<Categories />} />
-        <Route path="/category/:type" element={<CategoryProducts />} />
+        <Route path="/category/:typeKey" element={<CategoryProducts />} />
 
         {/* Product Detail (WITH PARAM) */}
         <Route path="/product/:id" element={<ProductDetail />} />
