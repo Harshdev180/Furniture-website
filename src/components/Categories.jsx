@@ -33,7 +33,7 @@ const Categories = () => {
                 {
                     name: "Modern Selves",
                     type: "Selves",
-                    typeKey: "selves",
+                    typeKey: "shelf",
                     bg: "#BFDCE5",
                     image:
                         "https://i.pinimg.com/736x/ea/9a/21/ea9a21ba60809ebf869fa7657dca4f75.jpg",
@@ -41,7 +41,7 @@ const Categories = () => {
                 {
                     name: "Bed Table",
                     type: "Bed Table",
-                    typeKey: "bedtable",
+                    typeKey: "bedTable",
                     bg: "#BFDCE5",
                     image:
                         "https://i.pinimg.com/736x/d5/cc/45/d5cc45061fd43a0849632c31465e9163.jpg",
@@ -49,7 +49,7 @@ const Categories = () => {
                 {
                     name: "Dressing Table",
                     type: "Dressing Table",
-                    typeKey: "dressingtable",
+                    typeKey: "dressingTable",
                     bg: "#BFDCE5",
                     image:
                         "https://i.pinimg.com/736x/42/83/2d/42832d420b649e2481f26357b886382e.jpg",
@@ -57,7 +57,7 @@ const Categories = () => {
                 {
                     name: "Bed Room Couch",
                     type: "Couch",
-                    typeKey: "couch",
+                    typeKey: "bedroomCouch",
                     bg: "#BFDCE5",
                     image:
                         "https://i.pinimg.com/736x/4f/7f/5d/4f7f5d5538a30b604c742ffa0ccc5147.jpg",
@@ -389,7 +389,7 @@ const Categories = () => {
                         setActiveCategory(tempCategory);
                         setShowFilter(false);
                     }}
-                    className="flex-1 py-2 rounded-lg bg-[#3E2723] text-[#FAF7F2] text-sm cursor-pointer hover:bg-[#A6853D]/90"
+                    className="flex-1 py-2 rounded-lg bg-[#3E2723] text-[#FAF7F2] text-sm cursor-pointer hover:bg-[#C9A24D]/90"
                 >
                     Apply Filters
                 </button>
@@ -400,7 +400,7 @@ const Categories = () => {
                         setActiveCategory("All");
                         setShowFilter(false);
                     }}
-                    className="flex-1 py-2 rounded-lg border border-[#3E2723] text-[#3E2723] text-sm cursor-pointer hover:bg-[#A6853D] hover:text-[#FAF7F2]"
+                    className="flex-1 py-2 rounded-lg border border-[#3E2723] text-[#3E2723] text-sm cursor-pointer hover:bg-[#C9A24D] hover:text-[#FAF7F2]"
                 >
                     Clear
                 </button>
@@ -510,7 +510,7 @@ const Categories = () => {
                                             <Link to={`/category/${item.typeKey}`} className="block h-full">
                                                 {/* IMAGE */}
                                                 <div
-                                                    className="relative w-full aspect-[4/3] overflow-hidden"
+                                                    className="relative w-full aspect-4/3 overflow-hidden"
                                                     style={{ backgroundColor: item.bg }}
                                                 >
                                                     <img
@@ -534,7 +534,7 @@ const Categories = () => {
                                                     <span
                                                         className="absolute right-4 bottom-4 inline-flex items-center gap-2
             px-4 py-2 rounded-full bg-[#3E2723] text-[#FAF7F2] text-xs
-            transition-all duration-300 group-hover:bg-[#A6853D]"
+            transition-all duration-300 group-hover:bg-[#C9A24D]"
                                                     >
                                                         See more →
                                                     </span>

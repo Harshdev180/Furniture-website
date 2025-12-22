@@ -24,10 +24,10 @@ function App() {
         {/* Catalog & Categories */}
         <Route path="/catalogue" element={<CatelogPage />} />
         <Route path="/categories" element={<Categories />} />
-        <Route path="/category/:type" element={<CategoryProducts />} />
+        <Route path="/category/:typeKey" element={<CategoryProducts />} />
 
         {/* Product Detail */}
-        <Route path="/productdetails" element={<ProductDetail />} />
+        <Route path="/productdetails/:id" element={<ProductDetail />} />
 
 
         {/* About page */}

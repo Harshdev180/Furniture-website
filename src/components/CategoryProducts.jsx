@@ -1,237 +1,242 @@
-import React, { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
+import { furnitureData } from "../assests/furnitureData";
+import { useMemo, useState } from "react";
 
 const CategoryProducts = () => {
-    const { type } = useParams(); // bed / sofa / chair etc
-    const [activeCategory, setActiveCategory] = useState("All");
+    const { typeKey } = useParams();
+    const [showFilter, setShowFilter] = useState(false);
+    const [filters, setFilters] = useState({});
+    const navigate = useNavigate();
 
-    /* ================= DATA ================= */
+    /* ================= FIND DATA ================= */
+    const matchedSection = furnitureData.find(
+        (section) => section.products[typeKey]
+    );
 
-    const furnitureSections = [
-        {
-            heading: "Bedroom Furniture",
-            category: "Bedroom",
-            description:
-                "Transform your bedroom into a refined retreat with thoughtfully designed beds and storage.",
-            items: [
-                {
-                    name: "Luxury Bed",
-                    type: "Bed",
-                    typeKey: "bed",
-                    bg: "#D1C4B2",
-                    image:
-                        "https://i.pinimg.com/736x/ef/ff/34/efff34937ef6991f999af0dc07a723ff.jpg",
-                },
-                {
-                    name: "Modern Wardrobe",
-                    type: "Storage",
-                    typeKey: "wardrobe",
-                    bg: "#BFDCE5",
-                    image:
-                        "https://i.pinimg.com/1200x/32/b3/9e/32b39e7a85a97f1a07df6484a14c82b1.jpg",
-                },
-            ],
-        },
+    if (!matchedSection) {
+        return (
+            <p className="text-center mt-20 text-xl text-gray-500">
+                No products found
+            </p>
+        );
+    }
 
-        {
-            heading: "Living Room Furniture",
-            category: "Living",
-            description:
-                "Create an inviting living space with modern sofas and accent seating.",
-            items: [
-                {
-                    name: "Luxury Sofa Set",
-                    type: "Sofa",
-                    typeKey: "sofa",
-                    bg: "#1E5F74",
-                    image:
-                        "https://i.pinimg.com/1200x/af/bd/cf/afbdcf71db5b292e7f58d84ba6bc407d.jpg",
-                },
-                {
-                    name: "Accent Chair",
-                    type: "Chair",
-                    typeKey: "chair",
-                    bg: "#B6A44C",
-                    image:
-                        "https://i.pinimg.com/1200x/00/71/11/0071110882356dcfe138a82494212e1f.jpg",
-                },
-            ],
-        },
-
-        {
-            heading: "Study Furniture",
-            category: "Study",
-            description:
-                "Design a focused workspace with ergonomic furniture.",
-            items: [
-                {
-                    name: "Study Table",
-                    type: "Desk",
-                    typeKey: "studytable",
-                    bg: "#E3B23C",
-                    image:
-                        "https://i.pinimg.com/1200x/d5/fb/23/d5fb23f8a9a02376da29570e9d70157a.jpg",
-                },
-            ],
-        },
-
-        {
-            heading: "Bathroom Furniture",
-            category: "Bathroom",
-            description:
-                "Sleek storage and functional furniture for modern bathrooms.",
-            items: [
-                {
-                    name: "Vanity Unit",
-                    type: "Vanity",
-                    typeKey: "vanity",
-                    bg: "#E2DED6",
-                    image:
-                        "https://i.pinimg.com/1200x/8b/49/25/8b49255acfa55b3177ceb58a7d728e62.jpg",
-                },
-            ],
-        },
-
-        {
-            heading: "Garden Furniture",
-            category: "Garden",
-            description:
-                "Relax outdoors with durable and elegant garden furniture.",
-            items: [
-                {
-                    name: "Outdoor Sofa Set",
-                    type: "Seating",
-                    typeKey: "outdoorsofa",
-                    bg: "#D6E2D1",
-                    image:
-                        "https://i.pinimg.com/1200x/38/46/bc/3846bc52ece40f7926c1e3a8be68caea.jpg",
-                },
-            ],
-        },
-
-        {
-            heading: "Kitchen Furniture",
-            category: "Kitchen",
-            description:
-                "Optimize space with functional and elegant kitchen furniture.",
-            items: [
-                {
-                    name: "Kitchen Island",
-                    type: "Island",
-                    typeKey: "kitchenisland",
-                    bg: "#DAD1C3",
-                    image:
-                        "https://i.pinimg.com/1200x/71/bb/cb/71bbcb9c8561f9c9ad34dbe68982d67a.jpg",
-                },
-            ],
-        },
-    ];
+    const productData = matchedSection.products[typeKey];
 
     /* ================= FILTER LOGIC ================= */
+    const attributeConfig = [
+        { key: "size", label: "Size" },
+        { key: "material", label: "Material" },
+        { key: "storage", label: "Storage" },
+        { key: "headboard", label: "Headboard" },
+        { key: "doors", label: "Doors" },
+        { key: "style", label: "Style" },
+        { key: "seating", label: "Seating" },
+        { key: "shape", label: "Shape" },
+        { key: "top", label: "Top" },
+    ];
 
-    const filteredSections = furnitureSections
-        .map((section) => ({
-            ...section,
-            items: section.items.filter(
-                (item) =>
-                    (!type || item.typeKey === type) &&
-                    (activeCategory === "All" ||
-                        section.category === activeCategory)
-            ),
-        }))
-        .filter((section) => section.items.length > 0);
+    const availableAttributes = useMemo(() => {
+        return attributeConfig
+            .map((attr) => {
+                const options = new Set();
+                productData.items.forEach((item) => {
+                    const value = item[attr.key];
+                    if (Array.isArray(value)) {
+                        value.forEach((v) => options.add(v));
+                    }
+                });
+                return { ...attr, options: Array.from(options) };
+            })
+            .filter((attr) => attr.options.length > 0);
+    }, [attributeConfig, productData.items]);
 
-    /* ================= UI ================= */
+    const activeFilters = Object.entries(filters).filter(
+        ([, value]) => value && value !== ""
+    );
+
+    const filteredItems = productData.items.filter((item) =>
+        activeFilters.every(
+            ([key, value]) => Array.isArray(item[key]) && item[key].includes(value)
+        )
+    );
+
+    /* ================= FILTER COMPONENT ================= */
+    const FilterBlock = ({ title, options, value, onChange }) => (
+        <div className="mb-6">
+            <h4 className="font-semibold text-[#3E2723] mb-3">{title}</h4>
+            <div className="flex flex-wrap gap-2">
+                {options.map((opt) => (
+                    <button
+                        key={opt}
+                        onClick={() => onChange(opt)}
+                        className={`px-4 py-2 rounded-full border transition-all text-sm font-medium
+              ${value === opt
+                                ? "bg-[#3E2723] text-white border-[#3E2723] shadow-md"
+                                : "bg-[#FAF7F2] text-[#3E2723] border-[#D1C4B2] hover:bg-[#C9A24D]/80 hover:text-white"
+                            }`}
+                    >
+                        {opt}
+                    </button>
+                ))}
+            </div>
+        </div>
+    );
+
+    const FilterContent = () => (
+        <div>
+            {availableAttributes.map((attr) => (
+                <FilterBlock
+                    key={attr.key}
+                    title={attr.label}
+                    options={attr.options}
+                    value={filters[attr.key] || ""}
+                    onChange={(v) =>
+                        setFilters({
+                            ...filters,
+                            [attr.key]: filters[attr.key] === v ? "" : v,
+                        })
+                    }
+                />
+            ))}
+
+            <button
+                onClick={() => setFilters({})}
+                className="mt-4 w-full py-2 rounded-lg bg-[#3E2723] text-white font-semibold hover:bg-[#C9A24D] transition"
+            >
+                Clear Filters
+            </button>
+        </div>
+    );
 
     return (
         <div className="bg-[#FAF7F2] min-h-screen">
-            {/* HERO */}
-            <section className="m-6 md:m-10 relative h-[420px] rounded-3xl overflow-hidden">
+            {/* ================= HERO ================= */}
+            <section className="relative h-[420px]">
                 <img
-                    src="https://i.pinimg.com/736x/fc/5d/01/fc5d01f42f2cb6ef995b51d59ed26f15.jpg"
+                    src={matchedSection.heroImage}
                     className="absolute inset-0 w-full h-full object-cover"
-                    alt="Hero"
+                    alt={productData.title}
                 />
-                <div className="absolute inset-0 bg-black/60" />
-
+                <div className="absolute inset-0 bg-[#3E2723]/70" />
                 <div className="relative z-10 h-full flex flex-col justify-center items-center text-center px-4">
                     <h1 className="text-white text-4xl md:text-5xl font-serif font-bold">
-                        Curated Furniture Categories
+                        {productData.title}
                     </h1>
+                    <p className="text-gray-200 mt-3 max-w-xl">
+                        {productData.description}
+                    </p>
                 </div>
             </section>
 
-            {/* CONTENT */}
+            {/* ================= CONTENT ================= */}
             <section className="max-w-7xl mx-auto px-4 py-16">
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
-                    {/* FILTER */}
-                    <aside className="sticky top-24 h-fit rounded-2xl p-6 bg-[#E6D5C3]">
-                        <h3 className="font-semibold mb-4">Category</h3>
-
-                        {[
-                            "All",
-                            "Bedroom",
-                            "Living",
-                            "Study",
-                            "Bathroom",
-                            "Garden",
-                            "Kitchen",
-                        ].map((cat) => (
-                            <p
-                                key={cat}
-                                onClick={() => setActiveCategory(cat)}
-                                className={`cursor-pointer mb-2 ${activeCategory === cat
-                                    ? "text-[#C9A24D] font-semibold"
-                                    : "text-[#3E2723]"
-                                    }`}
-                            >
-                                {cat}
-                            </p>
-                        ))}
+                    {/* DESKTOP FILTER */}
+                    <aside className="hidden lg:block sticky top-24 h-fit rounded-2xl p-6 bg-[#E6D5C3] shadow-lg">
+                        <h3 className="text-xl font-semibold mb-6 text-[#3E2723]">
+                            Filters
+                        </h3>
+                        <FilterContent />
                     </aside>
 
-                    {/* SECTIONS */}
-                    <div className="lg:col-span-3 space-y-20">
-                        {filteredSections.map((section) => (
-                            <div key={section.heading}>
-                                <h2 className="text-3xl font-serif mb-2">
-                                    {section.heading}
-                                </h2>
-                                <p className="text-gray-600 mb-6">
-                                    {section.description}
-                                </p>
+                    {/* PRODUCTS */}
+                    <div className="lg:col-span-3">
+                        {/* MOBILE FILTER BUTTON */}
+                        <div className="lg:hidden mb-6 flex justify-end">
+                            <button
+                                onClick={() => setShowFilter(true)}
+                                className="px-4 py-2 rounded-full bg-[#3E2723] text-white font-medium hover:bg-[#C9A24D] transition"
+                            >
+                                ☰ Filters
+                            </button>
+                        </div>
 
-                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                                    {section.items.map((item) => (
-                                        <motion.div
-                                            key={item.name}
-                                            whileHover={{ y: -8 }}
-                                            className="bg-[#E6D5C3] rounded-2xl overflow-hidden shadow"
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {filteredItems.length === 0 ? (
+                                <div className="col-span-full text-center py-16 bg-[#F4E8D9] rounded-2xl border border-dashed border-[#C9A24D]/60">
+                                    <h3 className="text-lg font-semibold text-[#3E2723] mb-3">
+                                        No products available
+                                    </h3>
+                                    <p className="text-sm text-[#3E2723]/70 mb-6 max-w-md mx-auto">
+                                        We couldn&apos;t find any products matching your current filters.
+                                        Try clearing filters or exploring another category.
+                                    </p>
+                                    <div className="flex flex-wrap gap-3 justify-center">
+                                        <button
+                                            onClick={() => setFilters({})}
+                                            className="px-5 py-2 rounded-full bg-[#3E2723] text-white text-sm hover:bg-[#C9A24D] transition"
                                         >
-                                            <Link to={`/category/${item.typeKey}`}>
-                                                <img
-                                                    src={item.image}
-                                                    alt={item.name}
-                                                    className="h-52 w-full object-cover"
-                                                />
-                                                <div className="p-4 relative">
-                                                    <h3 className="font-semibold">
-                                                        {item.name}
-                                                    </h3>
-                                                    <span className="absolute right-4 bottom-4 w-9 h-9 rounded-full bg-[#3E2723] text-white flex items-center justify-center">
-                                                        →
-                                                    </span>
-                                                </div>
-                                            </Link>
-                                        </motion.div>
-                                    ))}
+                                            Clear Filters
+                                        </button>
+                                        <button
+                                            onClick={() => navigate("/categories")}
+                                            className="px-5 py-2 rounded-full border border-[#3E2723] text-[#3E2723] text-sm hover:bg-[#3E2723] hover:text-white transition"
+                                        >
+                                            Back to Categories
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            ) : (
+                                filteredItems.map((item) => (
+
+                                    <motion.div
+                                        key={item.id}
+                                        whileHover={{ y: -8 }}
+                                        className="bg-[#E6D5C3] rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-shadow"
+                                    >
+                                        <Link to={`/productdetails/${item.id}`}>
+                                            <img
+                                                src={item.image}
+                                                alt={item.name}
+                                                className="h-56 w-full object-cover"
+                                            />
+                                        </Link>
+                                        <div className="p-5 space-y-3">
+                                            <h3 className="text-lg font-semibold text-[#3E2723]">
+                                                {item.name}
+                                            </h3>
+                                            <p className="text-sm text-gray-600">{item.description}</p>
+                                            <p className="font-bold text-[#3E2723]">₹{item.price}</p>
+                                            <div className="flex gap-3 pt-3">
+                                                <button
+                                                    onClick={() => navigate("/cart")}
+                                                    className="flex-1 py-2 rounded-lg border border-[#3E2723] text-[#3E2723] hover:bg-[#C9A24D] hover:text-white transition"
+                                                >
+                                                    Add to Cart
+                                                </button>
+                                                <button
+                                                    onClick={() => navigate("/checkout")}
+                                                    className="flex-1 py-2 rounded-lg bg-[#3E2723] text-white hover:bg-[#C9A24D] transition"
+                                                >
+                                                    Buy Now
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </motion.div>
+
+                                ))
+                            )}
+                        </div>
                     </div>
                 </div>
             </section>
+
+            {/* MOBILE FILTER MODAL */}
+            {showFilter && (
+                <div className="fixed inset-0 bg-black/40 z-50 flex justify-end">
+                    <div className="w-80 bg-[#FAF7F2] p-6 shadow-xl overflow-y-auto">
+                        <FilterContent />
+                        <button
+                            onClick={() => setShowFilter(false)}
+                            className="mt-4 w-full py-2 bg-[#3E2723] text-white rounded-lg hover:bg-[#C9A24D] transition"
+                        >
+                            Close
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
