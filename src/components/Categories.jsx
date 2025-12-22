@@ -409,7 +409,7 @@ const Categories = () => {
     );
 
     return (
-        <div className="bg-[#FAF7F2]">
+        <div className="bg-[#FAF7F2] mt-27">
             {/* ================= HERO ================= */}
             <section className="m-6 md:m-10 relative h-[420px] rounded-3xl overflow-hidden">
                 <img
@@ -511,6 +511,7 @@ const Categories = () => {
                                             <Link to={`/category/${item.typeKey}`} className="block h-full">
                                                 {/* IMAGE */}
                                                 <div
+<<<<<<< Updated upstream
                                                     className="relative w-full aspect-4/3 overflow-hidden"
                                                     style={{ backgroundColor: item.bg }}
                                                 >
@@ -522,6 +523,8 @@ const Categories = () => {
                                                 </div>
                                                 {/* IMAGE */}
                                                 <div
+=======
+>>>>>>> Stashed changes
                                                     className="relative w-full aspect-[4/3] overflow-hidden"
                                                     style={{ backgroundColor: item.bg }}
                                                 >
@@ -538,6 +541,7 @@ const Categories = () => {
                                                         {item.type}
                                                     </p>
 
+<<<<<<< Updated upstream
                                                     <h3 className="font-semibold text-lg text-[#3E2723]">
                                                         {item.name}
                                                     </h3>
@@ -554,11 +558,34 @@ const Categories = () => {
                                                     </Link>
                                                 </div>
                                             </Link>
+=======
+                                                    {/* CONTENT */}
+                                                    <div className="relative p-5 pb-14">
+                                                        <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">
+                                                            {item.type}
+                                                        </p>
 
+>>>>>>> Stashed changes
+
+                                                        <h3 className="font-semibold text-lg text-[#3E2723]">
+                                                            {item.name}
+                                                        </h3>
+
+                                                        {/* SEE MORE BUTTON */}
+                                                        <Link to={`/category/${item.typeKey}`} className="absolute right-4 bottom-4">
+                                                            {/* SEE MORE BUTTON */}
+                                                            <span
+                                                                className="absolute right-4 bottom-4 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#3E2723] text-[#FAF7F2] text-xstransition-all duration-300 group-hover:bg-[#2d1c18]"
+                                                            >
+                                                                See more →
+                                                            </span>
+                                                        </Link>
+                                                    </div>
+                                                </div>
+                                            </Link>
                                         </motion.div>
                                     ))}
                                 </div>
-
                             </motion.div>
                         ))}
                     </div>
