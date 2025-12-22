@@ -9,7 +9,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 
 /* ===================== MAY WE SUGGEST (5 PRODUCTS) ===================== */
 const mayWeSuggest = [
@@ -102,15 +102,40 @@ const mayWeSuggest = [
 
 /* ===================== COMPONENT ===================== */
 export default function ProductDetailPage() {
+  const location = useLocation();
+  const productFromList = location.state?.product;
+
+  const buildMainProductFromItem = (item) => {
+    if (!item) return mayWeSuggest[0];
+
+    const priceString =
+      typeof item.price === "number" ? `₹${item.price}` : item.price || "₹0";
+
+    return {
+      id: item.id,
+      name: item.name,
+      price: priceString,
+      rating: item.rating || 4.3,
+      reviews: item.reviews || 10,
+      colors: {
+        Default: {
+          colorCode: "#D6C5B3",
+          images: [item.image, item.image, item.image],
+        },
+      },
+    };
+  };
+
+  const initialMainProduct = buildMainProductFromItem(productFromList);
+  const initialColor = Object.keys(initialMainProduct.colors)[0];
+
   const [qty, setQty] = useState(1);
   const [activeTab, setActiveTab] = useState("info");
   const [activeImage, setActiveImage] = useState(0);
   const [suggestIndex, setSuggestIndex] = useState(0);
 
-  const [mainProduct, setMainProduct] = useState(mayWeSuggest[0]);
-  const [activeColor, setActiveColor] = useState(
-    Object.keys(mayWeSuggest[0].colors)[0]
-  );
+  const [mainProduct, setMainProduct] = useState(initialMainProduct);
+  const [activeColor, setActiveColor] = useState(initialColor);
 
   const activeImages = mainProduct.colors[activeColor].images;
 

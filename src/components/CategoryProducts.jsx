@@ -186,7 +186,18 @@ const CategoryProducts = () => {
                                         whileHover={{ y: -8 }}
                                         className="bg-[#E6D5C3] rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-shadow"
                                     >
-                                        <Link to={`/productdetails/${item.id}`}>
+                                        <Link
+                                            to={`/product/${item.id}`}
+                                            state={{
+                                                product: item,
+                                                meta: {
+                                                    typeKey,
+                                                    sectionHeading: matchedSection.heading,
+                                                    heroImage: matchedSection.heroImage,
+                                                    title: productData.title,
+                                                },
+                                            }}
+                                        >
                                             <img
                                                 src={item.image}
                                                 alt={item.name}

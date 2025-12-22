@@ -409,7 +409,7 @@ const Categories = () => {
     );
 
     return (
-        <div className="bg-[#FAF7F2] mt-27">
+        <div className="bg-[#FAF7F2]">
             {/* ================= HERO ================= */}
             <section className="m-6 md:m-10 relative h-[420px] rounded-3xl overflow-hidden">
                 <img
