@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { MdShoppingBag } from "react-icons/md";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 // ✅ Correct way to import image in Vite
 import bannerimg from "/Catelogimg/banner.png";
@@ -76,6 +75,12 @@ const CatalogPage = () => {
   const [maxPrice, setMaxPrice] = useState(12000);
   const [sort, setSort] = useState("recommended");
 
+  /* ---------------- MOBILE FILTER STATES ---------------- */
+  const [showFilter, setShowFilter] = useState(false);
+  const [tempCategory, setTempCategory] = useState(category);
+  const [tempMaterial, setTempMaterial] = useState(material);
+  const [tempMaxPrice, setTempMaxPrice] = useState(maxPrice);
+
   /* ---------------- CLEAR FILTERS ---------------- */
   const clearFilters = () => {
     setSearch("");
@@ -99,9 +104,120 @@ const CatalogPage = () => {
       return 0;
     });
 
+  /* ---------------- FILTER CONTENT (REUSABLE) ---------------- */
+  const FilterContent = ({ isMobile = false }) => (
+    <div className="space-y-6">
+      {isMobile && (
+        <input
+          type="text"
+          placeholder="Search collection..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="w-full border rounded-lg px-3 py-2 text-sm"
+        />
+      )}
+
+      {/* Categories */}
+      <div>
+        <h3 className="text-xs font-semibold mb-3">CATEGORIES</h3>
+        <div className="space-y-2 text-sm">
+          {[
+            "Sofas & Armchairs",
+            "Dining Tables",
+            "Lighting",
+            "Storage & Shelving",
+          ].map((cat) => (
+            <label key={cat} className="flex items-center gap-2">
+              <input
+                type="radio"
+                checked={(isMobile ? tempCategory : category) === cat}
+                onChange={() =>
+                  isMobile ? setTempCategory(cat) : setCategory(cat)
+                }
+                className="accent-[#3e2723]"
+              />
+              {cat}
+            </label>
+          ))}
+        </div>
+      </div>
+
+      {/* Price */}
+      <div>
+        <h3 className="text-xs font-semibold mb-3">PRICE RANGE</h3>
+        <input
+          type="range"
+          min="500"
+          max="12000"
+          value={isMobile ? tempMaxPrice : maxPrice}
+          onChange={(e) =>
+            isMobile
+              ? setTempMaxPrice(Number(e.target.value))
+              : setMaxPrice(Number(e.target.value))
+          }
+          className="w-full accent-[#c9a24d]"
+        />
+        <div className="flex justify-between text-xs mt-1">
+          <span>₹500</span>
+          <span>₹{isMobile ? tempMaxPrice : maxPrice}</span>
+        </div>
+      </div>
+
+      {/* Material */}
+      <div>
+        <h3 className="text-xs font-semibold mb-3">MATERIAL</h3>
+        <div className="flex flex-wrap gap-2">
+          {["Velvet", "Leather", "Walnut", "Marble", "Brass"].map((m) => (
+            <button
+              key={m}
+              onClick={() =>
+                isMobile ? setTempMaterial(m) : setMaterial(m)
+              }
+              className={`border px-3 py-1 rounded-full text-xs transition ${
+                (isMobile ? tempMaterial : material) === m
+                  ? "bg-[#3e2723] text-white"
+                  : "hover:bg-[#3e2723] hover:text-white"
+              }`}
+            >
+              {m}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {isMobile && (
+        <div className="flex gap-3 pt-4">
+          <button
+            onClick={() => {
+              setCategory(tempCategory);
+              setMaterial(tempMaterial);
+              setMaxPrice(tempMaxPrice);
+              setShowFilter(false);
+            }}
+            className="flex-1 py-2 rounded-lg bg-[#3e2723] text-white"
+          >
+            Apply
+          </button>
+
+          <button
+            onClick={() => {
+              setTempCategory("");
+              setTempMaterial("");
+              setTempMaxPrice(12000);
+              clearFilters();
+              setShowFilter(false);
+            }}
+            className="flex-1 py-2 rounded-lg border border-[#3e2723]"
+          >
+            Clear
+          </button>
+        </div>
+      )}
+    </div>
+  );
 
   return (
-    <div className="min-h-screen bg-[#faf7f2] text-[#2b2b2b] ">
+    <div className="min-h-screen bg-[#faf7f2] text-[#2b2b2b]">
       {/* ---------------- HERO ---------------- */}
       <section className="md:m-8 relative h-[420px] rounded-3xl overflow-hidden m-6">
         <img
@@ -131,11 +247,11 @@ const CatalogPage = () => {
 
       {/* ---------------- CONTENT ---------------- */}
       <div className="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-4 gap-8">
-        {/* ---------------- SIDEBAR ---------------- */}
-        <aside className="space-y-6 bg-[#E6D5C3] rounded-2xl p-4 h-fit">
+        {/* ---------------- DESKTOP SIDEBAR ---------------- */}
+        <aside className="hidden lg:block space-y-6 bg-[#E6D5C3] rounded-2xl p-4 h-fit">
           <button
             onClick={clearFilters}
-            className="w-full text-sm border border-[#3e2723] bg-[#3e2723] text-[#FAF7F2] py-2 rounded-lg hover:bg-[#C9A24D] hover:text-[#FAF7F2] transition"
+            className="w-full text-sm bg-[#3e2723] text-white py-2 rounded-lg"
           >
             Clear All Filters
           </button>
@@ -148,138 +264,72 @@ const CatalogPage = () => {
             className="w-full border rounded-lg px-3 py-2 text-sm"
           />
 
-          {/* Categories */}
-          <div>
-            <h3 className="text-xs font-semibold mb-3">CATEGORIES</h3>
-            <div className="space-y-2 text-sm">
-              {[
-                "Sofas & Armchairs",
-                "Dining Tables",
-                "Lighting",
-                "Storage & Shelving",
-              ].map((cat) => (
-                <label key={cat} className="flex items-center gap-2">
-                  <input
-                    type="radio"
-                    checked={category === cat}
-                    onChange={() => setCategory(cat)}
-                    className="accent-[#3e2723]"
-                  />
-                  {cat}
-                </label>
-              ))}
-            </div>
-          </div>
-
-          {/* Price */}
-          <div>
-            <h3 className="text-xs font-semibold mb-3">PRICE RANGE</h3>
-            <input
-              type="range"
-              min="500"
-              max="12000"
-              value={maxPrice}
-              onChange={(e) => setMaxPrice(Number(e.target.value))}
-              className="w-full accent-[#c9a24d]"
-            />
-            <div className="flex justify-between text-xs mt-1">
-              <span>₹500</span>
-              <span>₹{maxPrice}</span>
-            </div>
-          </div>
-
-          {/* Material */}
-          <div>
-            <h3 className="text-xs font-semibold mb-3">MATERIAL</h3>
-            <div className="flex flex-wrap gap-2">
-              {["Velvet", "Leather", "Walnut", "Marble", "Brass"].map((m) => (
-                <button
-                  key={m}
-                  onClick={() => setMaterial(m)}
-                  className={`border px-3 py-1 rounded-full text-xs transition ${material === m
-                    ? "bg-[#3e2723] text-white"
-                    : "hover:bg-[#3e2723] hover:text-white"
-                    }`}
-                >
-                  {m}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="bg-[#3e2723] text-white p-5 rounded-xl">
-            <h4 className="font-semibold">Summer Studio Collection</h4>
-            <p className="text-xs mt-2 opacity-80">
-              Discover new arrivals for your outdoor sanctuary.
-            </p>
-            <button className="mt-4 text-sm font-medium text-[#c9a24d] hover:text-[#A6853D] cursor-pointer">
-              Explore Now →
-            </button>
-          </div>
+          <FilterContent />
         </aside>
 
         {/* ---------------- PRODUCTS ---------------- */}
         <main className="lg:col-span-3">
-          <div className="flex justify-between mb-6">
-            <h2 className="text-2xl font-serif font-semibold">Products</h2>
-
-            <select
-              value={sort}
-              onChange={(e) => setSort(e.target.value)}
-              className="border rounded-md px-2 py-1 text-sm hover:border-[#C9A24D]
-    focus:outline-none
-    focus:ring-2 focus:ring-[#C9A24D]
-    focus:border-[#C9A24D]
-    transition"
+          {/* MOBILE FILTER BUTTON */}
+          <div className="lg:hidden mb-6">
+            <button
+              onClick={() => setShowFilter(true)}
+              className="px-4 py-2 rounded-full bg-[#3e2723] text-white"
             >
-              <option value="recommended">Recommended</option>
-              <option value="low">Price: Low to High</option>
-              <option value="high">Price: High to Low</option>
-            </select>
+              ☰ Filters
+            </button>
           </div>
 
-          {filteredProducts.length === 0 && (
-            <p className="text-sm text-gray-500">No products found.</p>
-          )}
-
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* ✅ Proper Link */}
             {filteredProducts.map((p) => (
-              <Link to={`/product/${p.id}`}>
-                <div
-                  key={p.id}
-                  className="rounded-xl overflow-hidden bg-[#E6D5C3] hover:shadow-md transition"
-                >
-                  <img
-                    src={p.img}
-                    alt={p.name}
-                    className="h-56 w-full object-cover"
-                  />
-
+              <Link key={p.id} to={`/product/${p.id}`}>
+                <div className="rounded-xl overflow-hidden bg-[#E6D5C3]">
+                  <img src={p.img} className="h-56 w-full object-cover" />
                   <div className="p-4">
                     <h3 className="font-medium">{p.name}</h3>
                     <p className="text-xs text-gray-600">{p.desc}</p>
-
-                    <div className="flex justify-between items-center mt-3">
+                    <div className="flex justify-between mt-3">
                       <span className="font-semibold">₹{p.price}</span>
-
-
-                      <button className="px-4 py-1.5 text-sm rounded-full bg-[#3e2723] text-white hover:bg-[#C9A24D] transition">
+                      <button className="px-4 py-1.5 text-sm rounded-full bg-[#3e2723] text-white">
                         Add to Cart
                       </button>
-
                     </div>
                   </div>
-
                 </div>
               </Link>
             ))}
-
           </div>
-
         </main>
-      </div >
-    </div >
+      </div>
+
+      {/* ---------------- MOBILE FILTER DRAWER ---------------- */}
+      <AnimatePresence>
+        {showFilter && (
+          <>
+            <motion.div
+              className="fixed inset-0 bg-black z-40"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.5 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setShowFilter(false)}
+            />
+
+            <motion.div
+              className="fixed top-0 right-0 h-full w-[85%] max-w-sm bg-[#E6D5C3] z-50 p-6 overflow-y-auto"
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+            >
+              <div className="flex justify-between mb-6">
+                <h3 className="font-semibold">Filters</h3>
+                <button onClick={() => setShowFilter(false)}>✕</button>
+              </div>
+
+              <FilterContent isMobile />
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </div>
   );
 };
 
