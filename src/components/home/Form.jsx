@@ -79,7 +79,7 @@ const Form = () => {
 
             <button
               class="mt-4 w-full bg-[#C9A24D] text-[#3E2723] font-bold py-4 rounded-lg hover:bg-white hover:text-[#3E2723] transition-colors flex items-center justify-center gap-2 shadow-lg cursor-pointer"
-              type="button"
+              type="submit"
             >
               <span>Send Request</span>
               <IoMdSend />

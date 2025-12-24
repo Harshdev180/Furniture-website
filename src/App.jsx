@@ -5,6 +5,7 @@ import Footer from "./pages/Footer";
 import Home from "./components/home/Home";
 import Contact from "./pages/contact/Contact";
 import ScrollTop from "./components/ScrollTop";
+import Checkout from "./components/checkoutPage/Checkout";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/checkoutPage" element={<Checkout />} />
         {/* <Route path="/categories" element={<Categories />} />
         <Route path="*" element={<h1>404 Page Not Found</h1>} /> */}
       </Routes>
