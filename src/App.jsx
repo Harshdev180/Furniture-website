@@ -14,6 +14,7 @@ import ScrollTop from "./components/ScrollTop";
 
 import "./App.css";
 import Template from "./components/home/Template";
+import AddToCart from "../src/components/Cart/AddToCart"
 
 function App() {
   return (
@@ -39,6 +40,10 @@ function App() {
 
         {/* Contact */}
         <Route path="/contact" element={<Contact />} />
+          
+
+          {/*add to cart */}
+        <Route path="/cart" element={<AddToCart />} />
 
         {/* 404 */}
         <Route
