@@ -40,6 +40,10 @@ function App() {
 
         {/* Contact */}
         <Route path="/contact" element={<Contact />} />
+          
+
+          {/*add to cart */}
+        <Route path="/cart" element={<AddToCart />} />
 
         {/* Auth */}
         <Route path="/auth" element={<AuthFlip />} />
