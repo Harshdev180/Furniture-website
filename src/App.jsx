@@ -13,6 +13,7 @@ import "./App.css";
 import Template from "./components/home/Template";
 import AuthFlip from "./components/AuthFlip";
 import Customize from "./components/customization/Customize";
+import AddToCart from "./components/Cart/AddToCart"
 
 
 function App() {
@@ -40,9 +41,9 @@ function App() {
 
         {/* Contact */}
         <Route path="/contact" element={<Contact />} />
-          
 
-          {/*add to cart */}
+
+        {/*add to cart */}
         <Route path="/cart" element={<AddToCart />} />
 
         {/* Auth */}
