@@ -14,7 +14,7 @@ import Template from "./components/home/Template";
 import AuthFlip from "./components/AuthFlip";
 import Customize from "./components/customization/Customize";
 import AddToCart from "./components/Cart/AddToCart"
-
+import Checkout from "./components/checkoutPage/Checkout";
 
 function App() {
   return (
@@ -43,8 +43,13 @@ function App() {
         <Route path="/contact" element={<Contact />} />
 
 
+
+
         {/*add to cart */}
         <Route path="/cart" element={<AddToCart />} />
+
+        {/* Checkout */}
+        <Route path="/checkoutPage" element={<Checkout />} />
 
         {/* Auth */}
         <Route path="/auth" element={<AuthFlip />} />
@@ -58,12 +63,13 @@ function App() {
             </div>
           }
         />
+
+
+        <Footer />
       </Routes>
-
-      <Footer />
     </>
-  );
+  )
 }
+export default App
 
-export default App;
 

@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+<<<<<<< HEAD
 /* ===============================
    CSS VARIABLES
 ================================ */
@@ -24,6 +25,15 @@
 ::-webkit-scrollbar {
   width: 6px;
 }
+=======
+/* :root {
+  --primary: #3E2723;     
+  --secondary: #E6D5C3;   
+  --accent: #C9A24D;     
+  --background: #FAF7F2;  
+  --text: #2B2B2B; 
+} */
+>>>>>>> origin/Home-Page
 
 ::-webkit-scrollbar-thumb {
   background-color: var(--accent);
@@ -40,6 +50,7 @@
   scrollbar-width: none;
 }
 
+<<<<<<< HEAD
 /* ===============================
    HERO BACKGROUND
 ================================ */
@@ -53,12 +64,38 @@
 ================================ */
 
 /* Tablet */
+=======
+/* Background banner dots for Home Page */
+.hero-pattern {
+  background-image: radial-gradient(#e6d5c3 1.5px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Payment Method */
+.custom-radio:checked + div {
+  border-color: #4a3426;
+  background-color: #f5f1ed;
+  color: #4a3426;
+}
+.custom-radio:checked + div .radio-icon {
+  color: #4a3426;
+}
+.custom-radio:checked + div .check-mark {
+  opacity: 1;
+  transform: scale(1);
+}
+
+
+
+/* MEDIA QUERIES:- */
+>>>>>>> origin/Home-Page
 @media (max-width: 900px) and (min-width: 440px) {
   .optionsHome {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
+<<<<<<< HEAD
 /* Mobile */
 @media (max-width: 439px) {
   .optionsHome {
@@ -67,8 +104,20 @@
 }
 
 /* Small screens */
+=======
+>>>>>>> origin/Home-Page
 @media (max-width: 480px) {
   .homeBtn {
     flex-direction: column;
   }
+<<<<<<< HEAD
 }
+=======
+}
+
+@media (max-width: 439px) {
+  .optionsHome {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+>>>>>>> origin/Home-Page

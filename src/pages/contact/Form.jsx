@@ -104,7 +104,7 @@ const Form = () => {
       </div>
 
       {/* Contact Information */}
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <Link to="tel:+917378021327" className="bg-surface-light dark:bg-surface-dark p-6 rounded-2xl border border-[#3E2723]/30 flex items-center gap-5 hover:border-[#C9A24D]/50 hover:shadow-md transition-all group shadow-md shadow-[#3E2723]/50">
           <div class="size-14 rounded-full bg-[#E6D5C3]/20 flex items-center justify-center text-[#3E2723] group-hover:bg-[#3E2723] group-hover:text-white transition-colors duration-300 shrink-0">
             <MdOutlineCall className="text-2xl" />
