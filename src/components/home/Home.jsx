@@ -6,218 +6,150 @@ import { LuWallet } from "react-icons/lu";
 import { RiCustomerService2Fill } from "react-icons/ri";
 import { MdOutlineVerifiedUser } from "react-icons/md";
 import FeaturedCategories from "./FeaturedCategories";
-import { Link} from 'react-router-dom'
 import TrendingNow from "./TrendingNow";
 import Testimonial from "./Testimonial";
 import Form from "./Form";
 import Inspiration from "./Inspiration";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // const handlePrev = () => {
-  //   setCurrentIndex((prevIndex) =>
-  //     prevIndex === 0 ? card.length - 1 : prevIndex - 1
-  //   );
-  // };
-
-  // const handleNext = () => {
-  //   setCurrentIndex((prevIndex) =>
-  //     prevIndex === card.length - 1 ? 0 : prevIndex + 1
-  //   );
-  // };
-
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) =>
-        prevIndex === card.length - 1 ? 0 : prevIndex + 1
+      setCurrentIndex((prev) =>
+        prev === card.length - 1 ? 0 : prev + 1
       );
-    }, 3000); 
+    }, 3000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [card.length]);
 
   const currentCard = card[currentIndex];
 
   return (
     <>
-      <div className="bg-[#FAF7F2] hero-pattern">
-        <div className="grid lg:grid-cols-2 sm:px-20 pt-28 pb-15 px-3">
-          {/* LEFT SIDE */}
-          <div className="mb-5">
-            <div className="flex">
-              <div className="border border-[#C9A24D] rounded-2xl px-4 py-2 bg-white flex items-center gap-2">
-                <FaMicrophone className="text-[#C9A24D]" />
-                <span className="text-sm">The Best online Furniture Store</span>
-              </div>
+      {/* HERO SECTION */}
+      <section className="bg-[#FAF7F2] hero-pattern">
+        <div className="grid lg:grid-cols-2 gap-10 px-4 sm:px-10 lg:px-20 pt-24 pb-12">
+
+          {/* LEFT */}
+          <div>
+            <div className="inline-flex items-center gap-2 border border-[#C9A24D] bg-white px-4 py-2 rounded-2xl">
+              <FaMicrophone className="text-[#C9A24D]" />
+              <span className="text-sm">The Best Online Furniture Store</span>
             </div>
 
-            <div className="mt-5 mb-5">
-              <h1 className="text-5xl sm:text-6xl lg:text-6xl font-serif font-black leading-[1.1] text-[#3E2723] mb-5 font-bolder">
-                Explore Our <br />{" "}
-                <span className="text-[#C9A24D] italic">Modern</span> <br />{" "}
-                Furniture <br /> Collection
-              </h1>
-              <p className="text-black/40 leading-relaxed sm:text-lg text-sm sm:pr-40">
-                Premium craftsmanship meets contemporary design. Discover pieces
-                that transform your house into a home.
-              </p>
-            </div>
+            <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-serif font-black leading-tight text-[#3E2723]">
+              Explore Our <br />
+              <span className="text-[#C9A24D] italic">Modern</span> <br />
+              Furniture Collection
+            </h1>
 
-            {/* BUTTONS OF LEFT SIDE */}
-            <div className="flex gap-4 homeBtn mb-20">
-              <Link to="/shop">
-                <button className="bg-[#C9A24D] px-10 py-3 text-white rounded-full flex items-center gap-2 shadow-[0_8px_20px_rgba(0,0,0,0.25),0_4px_12px_#C9A24D] hover:shadow-[0_12px_20px_rgba(0,0,0,0.35),0_6px_18px_#C9A24D] transition  group cursor-pointer place-content-center duration-300">
+            <p className="mt-4 text-black/50 max-w-xl">
+              Premium craftsmanship meets contemporary design. Discover pieces
+              that transform your house into a home.
+            </p>
+
+            {/* BUTTONS */}
+            <div className="mt-8 flex flex-col sm:flex-row gap-4">
+              <Link to="/categories">
+                <button className="bg-[#C9A24D] px-8 py-3 text-white rounded-full flex items-center gap-2 shadow-lg hover:scale-105 transition">
                   Shop Now
-                  <FaArrowRight className="transform transition-transform duration-300 group-hover:translate-x-2" />
+                  <FaArrowRight />
                 </button>
               </Link>
 
-              <Link to="/categories">
-                <button className="px-10 py-3 border border-[#C9A24D] text-[#3E2723] rounded-full cursor-pointer shadow-[0_8px_20px_rgba(0,0,0,0.25),0_4px_12px_#C9A24D] hover:shadow-[0_12px_20px_rgba(0,0,0,0.35),0_6px_18px_#C9A24D] transition duration-300 hover:bg-[#C9A24D] hover:text-white">
+              <Link to="/catalogue">
+                <button className="px-8 py-3 border border-[#C9A24D] rounded-full hover:bg-[#C9A24D] hover:text-white transition">
                   View All Products
                 </button>
               </Link>
             </div>
 
             {/* RATING */}
-            <div className="flex sm:items-center sm:flex-row flex-col">
-              <div className="flex -space-x-3 pr-1">
-                <img
-                  src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200"
-                  alt="image"
-                  className="w-12 h-12 rounded-full border-2 border-white hover:-translate-y-1 transition z-1"
-                />
-                <img
-                  src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200"
-                  alt="image"
-                  className="w-12 h-12 rounded-full border-2 border-white hover:-translate-y-1 transition z-[2]"
-                />
-                <img
-                  src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200&h=200&auto=format&fit=crop"
-                  alt="image"
-                  className="w-12 h-12 rounded-full border-2 border-white hover:-translate-y-1 transition z-[3]"
-                />
-                <img
-                  src="https://randomuser.me/api/portraits/men/75.jpg"
-                  alt="image"
-                  className="w-12 h-12 rounded-full border-2 border-white hover:-translate-y-1 transition z-[4]"
-                />
+            <div className="mt-8 flex flex-col sm:flex-row sm:items-center gap-4">
+              <div className="flex -space-x-3">
+                {[
+                  "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
+                  "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde",
+                  "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
+                  "https://randomuser.me/api/portraits/men/75.jpg",
+                ].map((img, i) => (
+                  <img
+                    key={i}
+                    src={img}
+                    alt="user"
+                    className="w-12 h-12 rounded-full border-2 border-white"
+                  />
+                ))}
               </div>
-              <div className="pl-3">
+
+              <div>
                 <div className="flex items-center text-[#C9A24D]">
                   <FaRegStar />
-                  <p className="font-medium ml-2">4.9 Ratings+</p>
+                  <span className="ml-2 font-medium">4.9 Ratings+</span>
                 </div>
-                <p className="text-sm text-black/40">
+                <p className="text-sm text-black/50">
                   Trusted by 50k+ Customers
                 </p>
               </div>
             </div>
           </div>
 
-          {/* RIGHT SIDE */}
-          <div className="flex items-center justify-center mb-5">
-            <div className="relative">
-              {/* Image */}
-              <img
-                src={currentCard.image}
-                alt="Card"
-                className="rounded-xl w-full h-100 object-cover transition-opacity duration-700"
-              />
-
-              {/* Left Button */}
-              {/* <button
-                onClick={handlePrev}
-                className="absolute -left-5 top-1/2 -translate-y-1/2 
-                bg-[#3E2723] text-[#C9A24D] p-2 rounded-full
-                hover:bg-(--accent) hover:text-[#3E2723] transition-all cursor-pointer duration-300"
-              >
-                <MdKeyboardArrowLeft className="text-3xl" />
-              </button> */}
-
-              {/* Right Button */}
-              {/* <button
-                onClick={handleNext}
-                className="absolute -right-5 top-1/2 -translate-y-1/2 
-                bg-[#3E2723] text-[#C9A24D] p-2 rounded-full
-                hover:bg-(--accent) hover:text-[#3E2723] transition-all cursor-pointer duration-300"
-              >
-                <MdKeyboardArrowRight className="text-3xl" />
-              </button> */}
-            </div>
+          {/* RIGHT */}
+          <div className="flex justify-center items-center">
+            <img
+              src={currentCard.image}
+              alt="Furniture"
+              className="w-full max-w-lg h-[420px] sm:h-[500px] object-cover rounded-xl transition-all duration-700"
+            />
           </div>
         </div>
 
-        <div className="bg-[#E6D5C3] border-y border-[#C9A24D]/30 px-3 sm:px-20 py-5">
-          <div className="grid grid-cols-4 gap-2 optionsHome">
-            <div className="flex items-center gap-2">
-              <div className="p-4 border rounded-full border-[#C9A24D] bg-white">
-                <FiTruck />
+        {/* FEATURES BAR */}
+        <div className="bg-[#E6D5C3] border-y border-[#C9A24D]/30 px-4 sm:px-10 lg:px-20 py-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { icon: <FiTruck />, title: "Free Shipping", text: "Orders above ₹180" },
+              { icon: <LuWallet />, title: "Flexible Payment", text: "Secure options" },
+              { icon: <RiCustomerService2Fill />, title: "24x7 Support", text: "Always available" },
+              { icon: <MdOutlineVerifiedUser />, title: "Secure Payment", text: "100% protection" },
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-3">
+                <div className="p-4 bg-white border rounded-full border-[#C9A24D]">
+                  {item.icon}
+                </div>
+                <div>
+                  <h4 className="font-bold text-[#3E2723]">{item.title}</h4>
+                  <p className="text-xs text-black/50">{item.text}</p>
+                </div>
               </div>
-              <div>
-                <h4 className=" text-[#3E2723] font-bold">Free Shippings</h4>
-                <p className="text-black/50 text-xs">For orders above ₹180</p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <div className="p-4 border rounded-full border-[#C9A24D] bg-white">
-                <LuWallet />
-              </div>
-              <div>
-                <h4 className=" text-[#3E2723] font-bold">Flexible Payment</h4>
-                <p className="text-black/50 text-xs">Multiple secure options</p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <div className="p-4 border rounded-full border-[#C9A24D] bg-white">
-                <RiCustomerService2Fill />
-              </div>
-              <div>
-                <h4 className="text-[#3E2723] font-bold">24x7 Supports</h4>
-                <p className="text-black/50 text-xs">We support online all days</p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <div className="p-4 border rounded-full border-[#C9A24D] bg-white">
-                <MdOutlineVerifiedUser />
-              </div>
-              <div>
-                <h4 className=" text-[#3E2723] font-bold">Secure Payment</h4>
-                <p className="text-black/50 text-xs">100% Secure Payment</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* FEATURED CATEGORIES */}
-      <div className="bg-[#FAF7F2] sm:px-20 py-15 px-3">
+      {/* OTHER SECTIONS */}
+      <section className="bg-[#FAF7F2] px-4 sm:px-20 py-16">
         <FeaturedCategories />
-      </div>
-      
-      {/* TRENDING NOW */}
-      <div className="sm:px-20 py-15 px-3">
+      </section>
+
+      <section className="px-4 sm:px-20 py-16">
         <TrendingNow />
-      </div>
+      </section>
 
-      {/* CUSTOMIZATION FORM */}
-      <div className="bg-[#FAF7F2] sm:px-20 py-15 px-3">
+      <section className="bg-[#FAF7F2] px-4 sm:px-20 py-16">
         <Form />
-      </div>
+      </section>
 
-      {/* INSPIRATION */}
-      <div className="sm:px-20 py-15 px-3">
+      <section className="px-4 sm:px-20 py-16">
         <Inspiration />
-      </div>
+      </section>
 
-      {/* TESTIMONIALS */}
-      <div className="sm:px-20 py-15 px-3 bg-[#E6D5C3]/20">
+      <section className="bg-[#E6D5C3]/20 px-4 sm:px-20 py-16">
         <Testimonial />
-      </div>
+      </section>
     </>
   );
 };

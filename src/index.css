@@ -40,6 +40,22 @@
   border-radius: 20px;
 }
 
+/* Custom scrollbar for checkout order summary */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #FAF7F2;
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #E6D5C3;
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #C9A24D;
+}
+
 /* Hide scrollbar but keep scroll */
 .no-scrollbar::-webkit-scrollbar {
   display: none;

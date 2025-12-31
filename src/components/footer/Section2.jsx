@@ -62,26 +62,26 @@ const Section2 = () => {
           <ul className="text-gray-300">
             <li className="hover:text-white hover:font-semibold cursor-pointer hover:pl-[9px] transition duration-150 ease-in-out flex place-items-center mb-1">
               <GoChevronRight className="h-5" />
-              <Link to="/living-room" className="">
-                Living Room
+              <Link to="/category/sofa" className="">
+                Sofa
               </Link>
             </li>
             <li className="hover:text-white hover:font-semibold cursor-pointer hover:pl-[9px] transition duration-150 ease-in-out flex place-items-center mb-1">
               <GoChevronRight className="h-5" />
-              <Link to="/bedroom" className="">
-                Bedroom
+              <Link to="/category/bed" className="">
+                Bed
               </Link>
             </li>
             <li className="hover:text-white cursor-pointer hover:pl-[9px] transition duration-150 ease-in-out flex place-items-center mb-1">
               <GoChevronRight className="h-5" />
-              <Link to="/dining" className="">
-                Dining
+              <Link to="/category/kitchentable" className="">
+                Dinning Table
               </Link>
             </li>
             <li className="hover:text-white cursor-pointer hover:pl-[9px] transition duration-150 ease-in-out flex place-items-center mb-1">
               <GoChevronRight className="h-5" />
-              <Link to="/office" className="">
-                Office
+              <Link to="/category/chair" className="">
+                Chair
               </Link>
             </li>
           </ul>
