@@ -68,46 +68,52 @@ const Navbar = () => {
           {/* ICONS */}
           <div className="flex items-center gap-3 sm:gap-4 text-[#E6D5C3]">
 
-            {/* WISHLIST */}
-            <Link to="/wishlist" className="relative group">
-              {wishlistCount > 0 ? (
-                <FaHeart className="text-xl cursor-pointer text-red-500 hover:text-red-600 transition-colors" />
-              ) : (
-                <FaRegHeart className="text-xl cursor-pointer hover:text-[#C9A24D] transition-colors" />
-              )}
+            {/* DESKTOP ICONS (Hidden on mobile) */}
+            <div className="hidden lg:flex items-center gap-3 sm:gap-4">
 
-              {wishlistCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-red-600 text-white text-[10px] sm:text-xs font-bold min-w-[18px] h-[18px] px-1 rounded-full flex items-center justify-center">
-                  {wishlistCount > 99 ? "99+" : wishlistCount}
-                </span>
-              )}
-            </Link>
+              {/* WISHLIST */}
+              <Link to="/wishlist" className="relative group">
+                {wishlistCount > 0 ? (
+                  <FaHeart className="text-xl cursor-pointer text-red-500 hover:text-red-600 transition-colors" />
+                ) : (
+                  <FaRegHeart className="text-xl cursor-pointer hover:text-[#C9A24D] transition-colors" />
+                )}
 
-            {/* USER */}
-            <Link
-              to={isAuthenticated ? "/profile" : "/auth"}
-              className="relative group"
-              title={isAuthenticated ? userEmail : "Sign In"}
-            >
-              <FaRegUser className={`text-xl cursor-pointer hover:text-[#C9A24D] transition-colors ${isAuthenticated ? "text-[#C9A24D]" : ""
-                }`} />
-              {isAuthenticated && (
-                <span className="absolute -top-1 -right-1 w-2 h-2 bg-green-500 rounded-full border-2 border-[#3E2723]"></span>
-              )}
-            </Link>
+                {wishlistCount > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-red-600 text-white text-[10px] sm:text-xs font-bold min-w-[18px] h-[18px] px-1 rounded-full flex items-center justify-center">
+                    {wishlistCount > 99 ? "99+" : wishlistCount}
+                  </span>
+                )}
+              </Link>
 
-            {/* CART */}
-            <Link to="/cart" className="relative group">
-              <FaShoppingCart className="text-xl cursor-pointer hover:text-[#C9A24D] transition-colors" />
+              {/* USER */}
+              <Link
+                to={isAuthenticated ? "/profile" : "/auth"}
+                className="relative group"
+                title={isAuthenticated ? userEmail : "Sign In"}
+              >
+                <FaRegUser
+                  className={`text-xl cursor-pointer hover:text-[#C9A24D] transition-colors ${isAuthenticated ? "text-[#C9A24D]" : ""
+                    }`}
+                />
+                {isAuthenticated && (
+                  <span className="absolute -top-1 -right-1 w-2 h-2 bg-green-500 rounded-full border-2 border-[#3E2723]" />
+                )}
+              </Link>
 
-              {cartCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-red-600 text-white text-[10px] sm:text-xs font-bold min-w-[18px] h-[18px] px-1 rounded-full flex items-center justify-center">
-                  {cartCount > 99 ? "99+" : cartCount}
-                </span>
-              )}
-            </Link>
+              {/* CART */}
+              <Link to="/cart" className="relative group">
+                <FaShoppingCart className="text-xl cursor-pointer hover:text-[#C9A24D] transition-colors" />
 
-            {/* MOBILE MENU BUTTON */}
+                {cartCount > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-red-600 text-white text-[10px] sm:text-xs font-bold min-w-[18px] h-[18px] px-1 rounded-full flex items-center justify-center">
+                    {cartCount > 99 ? "99+" : cartCount}
+                  </span>
+                )}
+              </Link>
+            </div>
+
+            {/* MOBILE MENU BUTTON (Visible only on mobile) */}
             <button
               onClick={() => setOpen(true)}
               className="lg:hidden p-1 hover:text-[#C9A24D] transition-colors"
@@ -115,7 +121,9 @@ const Navbar = () => {
             >
               <IoMenu className="text-2xl" />
             </button>
+
           </div>
+
         </div>
       </nav>
 
