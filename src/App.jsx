@@ -13,6 +13,13 @@ import "./App.css";
 import Template from "./components/home/Template";
 import AuthFlip from "./components/AuthFlip";
 import Customize from "./components/Customize";
+import Terms from "./components/policy/Terms";
+import Cookies from "./components/policy/Cookies";
+import Newprivacy from "./components/policy/Newprivacy";
+import Newreturn from "./components/policy/Newreturn";
+
+
+
 
 function App() {
   return (
@@ -37,6 +44,21 @@ function App() {
         {/* About */}
         <Route path="/aboutus" element={<AboutHero />} />
 
+        {/* Policy */}
+        <Route path="/terms" element={<Terms />} />
+
+
+        {/* Cookies */}
+         <Route path="/cookies" element={<Cookies />} />
+
+       
+        {/* Privacy */}
+      <Route path="/privacy" element={<Newprivacy />} />
+
+        {/*Return */}
+      <Route path="/return" element={<Newreturn />} />
+
+     
         {/* Contact */}
         <Route path="/contact" element={<Contact />} />
 
