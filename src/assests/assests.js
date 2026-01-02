@@ -83,13 +83,38 @@ export const products = [
 
 
 export const card = [
-    {
-      image: banner1
-    },
-    {
-      image: banner2
-    },
-    {
-      image: banner3
-    }
+  {
+    image: banner1
+  },
+  {
+    image: banner2
+  },
+  {
+    image: banner3
+  }
 ]
+
+
+export const orderItems = [
+  {
+    id: 1,
+    name: "Mid-Century Sofa",
+    variant: "Velvet Green / Gold Legs",
+    price: 1200,
+    image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7",
+  },
+  {
+    id: 2,
+    name: "Oak Coffee Table",
+    variant: "Natural Finish",
+    price: 350,
+    image: "https://images.unsplash.com/photo-1616627451515-cbc80e5ece35",
+  },
+  {
+    id: 3,
+    name: "Modern Arm Chair",
+    variant: "Beige Fabric",
+    price: 420,
+    image: "https://images.unsplash.com/photo-1615874959474-d609969a20ed",
+  },
+];

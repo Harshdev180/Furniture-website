@@ -3,29 +3,42 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 
 import "swiper/css";
+import "swiper/css/autoplay";
+
 import TestimonialCard from "./TestimonialCard";
 
 const Testimonial = () => {
   return (
-    <>
-      <div className="text-center">
-        <h2 className="text-3xl md:text-4xl font-serif font-bold mt-2 text-[#3E2723]">
+    <section className="px-4 sm:px-6 lg:px-8 bg-[#FAF7F2]">
+      {/* Heading */}
+      <div className="text-center max-w-3xl mx-auto">
+        <span className="text-[#C9A24D] font-semibold tracking-wider text-sm uppercase">
+          Testimonials
+        </span>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold mt-3 text-[#3E2723]">
           What Our Customers Say
         </h2>
+        <p className="mt-3 text-[#2B2B2B]/70 text-sm sm:text-base">
+          Real experiences from customers who love our furniture.
+        </p>
       </div>
 
-      <div className="pt-14 pb-5 mt-10">
+      {/* Slider */}
+      <div className="mt-14">
         <Swiper
           modules={[Autoplay]}
           autoplay={{
             delay: 3000,
             disableOnInteraction: false,
           }}
-          loop={true}
-          spaceBetween={30}
+          loop
+          spaceBetween={24}
           breakpoints={{
             0: {
               slidesPerView: 1,
+            },
+            640: {
+              slidesPerView: 1.2,
             },
             768: {
               slidesPerView: 2,
@@ -36,7 +49,6 @@ const Testimonial = () => {
           }}
           className="max-w-6xl mx-auto"
         >
-          {/* Slide 1 */}
           <SwiperSlide>
             <TestimonialCard
               name="Donald Jackman"
@@ -45,7 +57,6 @@ const Testimonial = () => {
             />
           </SwiperSlide>
 
-          {/* Slide 2 */}
           <SwiperSlide>
             <TestimonialCard
               name="Richard Nelson"
@@ -54,7 +65,6 @@ const Testimonial = () => {
             />
           </SwiperSlide>
 
-          {/* Slide 3 */}
           <SwiperSlide>
             <TestimonialCard
               name="Stella Smith"
@@ -63,7 +73,6 @@ const Testimonial = () => {
             />
           </SwiperSlide>
 
-          {/* Slide 4 */}
           <SwiperSlide>
             <TestimonialCard
               name="James Washington"
@@ -72,17 +81,16 @@ const Testimonial = () => {
             />
           </SwiperSlide>
 
-          {/* Slide 5 */}
           <SwiperSlide>
             <TestimonialCard
-              name="James Washington"
-              role="Marketing Manager"
+              name="Michael Brown"
+              role="Business Owner"
               img="https://randomuser.me/api/portraits/men/75.jpg"
             />
           </SwiperSlide>
         </Swiper>
       </div>
-    </>
+    </section >
   );
 };
 

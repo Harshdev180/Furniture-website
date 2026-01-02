@@ -1,6 +1,10 @@
-// src/pages/CatalogPage.jsx
 import { useState } from "react";
-import tembanner from "../../../public/templateimg/templatebanner.jpg"
+import { Link, useNavigate } from "react-router-dom";
+import QuoteRequest from "../QuoteRequest";
+import { useCart } from "../context/AddtocartContext";
+import WishlistButton from "../WishlistButton";
+
+const tembanner = "/templateimg/templatebanner.jpg";
 
 const categories = [
   "All Templates",
@@ -8,8 +12,8 @@ const categories = [
   "Tables",
   "Storage",
   "Lighting",
+  "Beds",
 ];
-
 
 const products = [
   {
@@ -19,8 +23,7 @@ const products = [
     price: 4200,
     tag: "NEW ARRIVAL",
     desc: "Modular seating system with deep cushions.",
-    image:
-      "https://images.unsplash.com/photo-1615873968403-89e068629265",
+    image: "https://images.unsplash.com/photo-1615873968403-89e068629265",
   },
   {
     id: 2,
@@ -29,8 +32,7 @@ const products = [
     price: 3500,
     tag: "WALNUT",
     desc: "Solid walnut base with beveled edge top.",
-    image:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
   },
   {
     id: 3,
@@ -39,8 +41,7 @@ const products = [
     price: 1800,
     tag: "LEATHER",
     desc: "Full grain leather with brass accents.",
-    image:
-      "https://images.unsplash.com/photo-1582582621959-48d27397dc69",
+    image: "https://images.unsplash.com/photo-1582582621959-48d27397dc69",
   },
   {
     id: 4,
@@ -49,18 +50,16 @@ const products = [
     price: 2900,
     tag: "OAK",
     desc: "Hand-finished solid oak console drawers.",
-    image:
-      "https://images.unsplash.com/photo-1601760562234-9814eea6663a",
+    image: "https://images.unsplash.com/photo-1601760562234-9814eea6663a",
   },
   {
     id: 5,
     name: "Luxe Bed Frame",
-    category: "Seating",
+    category: "Beds",
     price: 3200,
     tag: "LINEN",
     desc: "Upholstered headboard with floating base.",
-    image:
-      "https://images.unsplash.com/photo-1616594039964-ae9021a400a0",
+    image: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0",
   },
   {
     id: 6,
@@ -69,130 +68,149 @@ const products = [
     price: 950,
     tag: "BRASS",
     desc: "Brushed brass housing with LED filament.",
-    image:
-      "https://images.unsplash.com/photo-1505691938895-1758d7feb511",
+    image: "https://images.unsplash.com/photo-1505691938895-1758d7feb511",
   },
 ];
 
 export default function Template() {
   const [activeCategory, setActiveCategory] = useState("All Templates");
+  const [showQuoteRequest, setShowQuoteRequest] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const navigate = useNavigate();
+  const { addToCart } = useCart();
 
   const filteredProducts =
     activeCategory === "All Templates"
       ? products
-      : products.filter((item) => item.category === activeCategory);
+      : products.filter((p) => p.category === activeCategory);
+
+  const handleRequestQuote = (product) => {
+    setSelectedProduct(product);
+    setShowQuoteRequest(true);
+  };
+
+  const handleCloseQuoteRequest = () => {
+    setShowQuoteRequest(false);
+    setSelectedProduct(null);
+  };
 
   return (
     <div className="bg-[#FAF7F2] min-h-screen">
       {/* HERO */}
-      {/* HERO BANNER */}
-<section className="max-w-7xl mx-auto  px-6 pt-10">
-  <div className="relative rounded-2xl overflow-hidden h-[420px] md:h-[480px]">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-8">
+        <div className="relative rounded-2xl overflow-hidden h-[360px] sm:h-[420px] md:h-[480px]">
+          <img
+            src={tembanner}
+            alt="Luxury Furniture"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/65" />
 
-    {/* Background Image */}
-    <img
-      src={tembanner}
-      alt="Luxury Furniture"
-      className="absolute inset-0 w-full h-full object-cover"
-    />
+          <div className="relative z-10 h-full flex flex-col justify-center px-6 sm:px-10 text-white">
+            <p className="text-xs tracking-widest text-[#C9A24D] mb-3">
+              READY FOR PRODUCTION
+            </p>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold">
+              Curated Luxury <br /> Templates
+            </h1>
+            <p className="text-sm text-[#E6D5C3] max-w-md mt-4">
+              Explore pre-designed furniture templates crafted for elegance and precision.
+            </p>
 
-    {/* Overlay */}
-    <div className="absolute inset-0 bg-[#000]/65" />
+            <div className="flex flex-wrap gap-4 mt-6">
+              <button
+                onClick={() => {
+                  setActiveCategory("All Templates");
+                  document.querySelector('section[class*="py-10"]')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="bg-[#C9A24D] px-6 py-3 rounded-full text-sm font-medium text-black hover:bg-[#B8923D] transition"
+              >
+                Browse All
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    {/* Content */}
-    <div className="relative z-10 h-full flex flex-col justify-center px-8 md:px-14 text-white">
-      <p className="text-xs tracking-widest text-[#C9A24D] mb-3">
-        READY FOR PRODUCTION
-      </p>
-
-      <h1 className="text-4xl md:text-5xl font-semibold leading-tight">
-        Curated Luxury <br /> Templates
-      </h1>
-
-      <p className="text-sm md:text-base text-[#E6D5C3] max-w-md mt-4">
-        Explore our pre-designed furniture templates. Crafted for elegance,
-        dimensionally accurate, and ready for bespoke finishes.
-      </p>
-
-      <div className="flex gap-4 mt-7">
-        <button className="bg-[#C9A24D] text-black px-7 py-3 rounded-full text-sm font-medium hover:opacity-90 transition">
-          Browse All
-        </button>
-
-        <button className="border border-[#E6D5C3]/60 text-[#E6D5C3] px-7 py-3 rounded-full text-sm hover:bg-[#E6D5C3] hover:text-[#2B2B2B] transition">
-          How it Works
-        </button>
-      </div>
-    </div>
-  </div>
-</section>
       {/* FILTERS */}
-      {/* FILTERS */}
-<section className="max-w-7xl mx-auto px-6 mt-8">
-  <div className="flex flex-wrap gap-3 items-center">
-    {categories.map((cat) => (
-      <button
-        key={cat}
-        onClick={() => setActiveCategory(cat)}
-        className={`px-4 py-2 rounded-full text-sm transition 
-          ${
-            activeCategory === cat
-              ? "bg-[#3e2723] text-white"
-              : "bg-white border  hover:text-white hover:bg-[#3e2723]"
-          }`}
-      >
-        {cat}
-      </button>
-    ))}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 mt-8">
+        <div className="flex gap-3 overflow-x-auto no-scrollbar pb-2">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className={`px-4 py-2 whitespace-nowrap rounded-full text-sm transition
+                ${activeCategory === cat
+                  ? "bg-[#3E2723] text-white"
+                  : "bg-white border border-[#3E2723] hover:bg-[#3E2723] hover:text-white"
+                }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+      </section>
 
-    {/* CLEAR FILTER BUTTON */}
-    {/* {activeCategory !== "All Templates" && (
-      <button
-        onClick={() => setActiveCategory("All Templates")}
-        className="px-2 text-sm border border-[#3e2723] text-[#3e2723] py-2 rounded-lg hover:bg-[#3e2723] hover:text-white transition"
-      >
-        Clear Filters
-      </button>
-    )} */}
-  </div>
-</section>
-
-
-      {/* PRODUCTS GRID */}
-      <section className="max-w-7xl mx-auto px-6 py-10">
+      {/* PRODUCTS */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProducts.map((item) => (
             <div
               key={item.id}
-              className="bg-[#F4EBDD] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition"
+              className="bg-[#F4EBDD] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition flex flex-col"
             >
               <div className="relative">
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className="h-56 w-full object-cover"
-                />
+                <Link to={`/product/${item.id}`}>
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="h-56 w-full object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                </Link>
                 <span className="absolute top-3 left-3 bg-black text-white text-xs px-2 py-1 rounded">
                   {item.tag}
                 </span>
+                {/* Wishlist Button */}
+                <div className="absolute top-3 right-3 z-10">
+                  <WishlistButton 
+                    product={item} 
+                    className="bg-white/90 hover:bg-white rounded-full p-2 shadow-md"
+                  />
+                </div>
               </div>
 
-              <div className="p-5">
+              <div className="p-5 flex flex-col flex-1">
                 <h3 className="font-semibold text-lg text-[#2B2B2B]">
                   {item.name}
                 </h3>
-                <p className="text-sm text-gray-600 mt-1">{item.desc}</p>
+                <p className="text-sm text-gray-600 mt-1 flex-1">
+                  {item.desc}
+                </p>
 
                 <p className="text-[#C9A24D] font-medium mt-3">
-                  ${item.price.toLocaleString()}
+                  ₹{item.price.toLocaleString()}
                 </p>
 
                 <div className="flex gap-3 mt-4">
-                  <button className="px-4 py-1.5 text-sm rounded-full bg-[#3e2723] text-white hover:bg-[#C9A24D] transition cursor-pointer">
-                    REQUEST QUOTE
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      addToCart(item);
+                    }}
+                    className="flex-1 py-2 text-sm rounded-full bg-[#3E2723] text-white hover:bg-[#C9A24D] transition font-medium"
+                  >
+                    Add to Cart
                   </button>
-                  <button className="px-4 py-1.5 text-sm rounded-full bg-[#3e2723] text-white hover:bg-[#C9A24D] transition cursor-pointer">
-                    CUSTOMIZE
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      handleRequestQuote(item);
+                    }}
+                    className="flex-1 py-2 text-sm rounded-full border-2 border-[#3E2723] text-[#3E2723] hover:bg-[#3E2723] hover:text-white transition font-medium"
+                  >
+                    Request Quote
                   </button>
                 </div>
               </div>
@@ -206,6 +224,14 @@ export default function Template() {
           </p>
         )}
       </section>
+
+      {/* Quote Request Modal */}
+      {showQuoteRequest && (
+        <QuoteRequest
+          onClose={handleCloseQuoteRequest}
+          initialProduct={selectedProduct?.name || ""}
+        />
+      )}
     </div>
   );
 }

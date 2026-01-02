@@ -1,9 +1,15 @@
 import { useRef, useState } from "react";
 import { FaArrowLeft, FaArrowRight, FaTimes } from "react-icons/fa";
 import { products, productActions } from "../../assests/assests";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useWishlist } from "../context/WishlistContext";
+import WishlistButton from "../WishlistButton";
+import { useCart } from "../context/AddtocartContext";
 
 const TrendingNow = () => {
+  const { addToWishlist } = useWishlist();
+  const { addToCart } = useCart();
+  const navigate = useNavigate();
   const sliderRef = useRef(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
@@ -83,17 +89,30 @@ const TrendingNow = () => {
 
                 {/* ACTION ICONS */}
                 <div className="absolute bottom-7 left-0 right-0 flex justify-center gap-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all translate-y-4 group-hover:translate-y-0">
-                  {productActions.map(({ id, icon: Icon }) => (
-                    <button
-                      key={id}
-                      onClick={() =>
-                        id === "view" && setSelectedProduct(product)
-                      }
-                      className="bg-white text-[#3E2723] p-4 rounded-full shadow-lg hover:bg-[#C9A24D] hover:text-white"
-                    >
-                      <Icon />
-                    </button>
-                  ))}
+                  {productActions.map(({ id, icon: Icon }) => {
+                    if (id === "wishlist") {
+                      return (
+                        <div
+                          key={id}
+                          className="bg-white p-4 rounded-full shadow-lg hover:bg-[#C9A24D] transition"
+                        >
+                          <WishlistButton product={product} size={20} className="text-[#3E2723]" />
+                        </div>
+                      );
+                    }
+                    return (
+                      <button
+                        key={id}
+                        onClick={() => {
+                          if (id === "cart") addToCart(product);
+                          if (id === "view") setSelectedProduct(product);
+                        }}
+                        className="bg-white text-[#3E2723] p-4 rounded-full shadow-lg hover:bg-[#C9A24D] hover:text-white"
+                      >
+                        <Icon />
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
 
@@ -120,9 +139,8 @@ const TrendingNow = () => {
             </div>
           ))}
         </div>
-      </div>
+      </div >
 
-      {/* ================= QUICK VIEW MODAL ================= */}
       {selectedProduct && (
         <div
           onClick={closeModal}
@@ -131,62 +149,79 @@ const TrendingNow = () => {
           {/* MODAL CARD */}
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative bg-[#E6D5C3] rounded-2xl max-w-3xl w-full grid md:grid-cols-2 overflow-hidden"
+            className="relative bg-[#E6D5C3] rounded-2xl w-full max-w-md sm:max-w-3xl grid grid-cols-1 md:grid-cols-2 overflow-hidden"
           >
             {/* CLOSE ICON */}
             <button
               onClick={closeModal}
-              className="absolute top-4 right-4 text-[#3E2723] hover:text-red-600"
+              className="absolute top-3 right-3 text-[#3E2723] hover:text-red-600 z-10"
             >
               <FaTimes size={22} />
             </button>
 
             {/* IMAGE */}
-            <div className="h-[300px] md:h-full">
+            <div className="w-full h-[250px] sm:h-[300px] md:h-full">
               <img
                 src={selectedProduct.image}
                 alt={selectedProduct.title}
-                className="w-full sm:h-[500px] object-cover"
+                className="w-full h-full object-cover"
               />
             </div>
 
             {/* CONTENT */}
-            <div className="p-6 flex flex-col justify-center text-center md:text-left">
+            <div className="p-4 sm:p-6 flex flex-col justify-center text-center md:text-left">
               <p className="text-xs uppercase font-bold text-[#2B2B2B]/60">
                 {selectedProduct.category}
               </p>
 
-              <h2 className="font-serif text-2xl font-bold text-[#3E2723] mt-2">
+              <h2 className="font-serif text-xl sm:text-2xl font-bold text-[#3E2723] mt-1 sm:mt-2">
                 {selectedProduct.title}
               </h2>
-              <p className="text-black/40 leading-relaxed sm:text-lg text-sm">
+
+              <p className="text-black/50 leading-relaxed text-sm sm:text-base mt-2">
                 {selectedProduct.description}
               </p>
 
-              <div className="flex justify-center md:justify-start gap-3 mt-4">
-                <span className="text-xl font-bold text-[#C9A24D]">
+              {/* PRICE */}
+              <div className="flex justify-center md:justify-start gap-3 mt-3">
+                <span className="text-lg sm:text-xl font-bold text-[#C9A24D]">
                   ₹{selectedProduct.price}
                 </span>
-
                 {selectedProduct.oldPrice && (
-                  <span className="line-through text-[#2B2B2B]/50">
+                  <span className="line-through text-[#2B2B2B]/50 text-sm sm:text-base">
                     ₹{selectedProduct.oldPrice}
                   </span>
                 )}
               </div>
-              <div className="mt-6 flex flex-col md:flex-row gap-4 justify-center md:justify-start">
-                <Link to={`/product/${selectedProduct.id}`} className="inline-block px-6 py-3 bg-[#3E2723] text-white font-semibold rounded-full hover:bg-[#C9A24D] transition">
+
+              {/* ACTION BUTTONS */}
+              <div className="mt-4 flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
+                <button
+                  onClick={() => {
+                    addToCart(selectedProduct);
+                    closeModal();
+                  }}
+                  className="px-5 py-2 bg-[#3E2723] text-white font-semibold rounded-full hover:bg-[#C9A24D] transition"
+                >
                   Add to Cart
-                </Link>
-                <Link to={`/product/${selectedProduct.id}`} className="inline-block px-6 py-3 bg-[#3E2723] text-white font-semibold rounded-full hover:bg-[#C9A24D] transition">
+                </button>
+                <button
+                  onClick={() => {
+                    addToCart(selectedProduct);
+                    closeModal();
+                    navigate("/checkoutPage");
+                  }}
+                  className="px-5 py-2 bg-[#3E2723] text-white font-semibold rounded-full hover:bg-[#C9A24D] transition"
+                >
                   Buy Now
-                </Link>
+                </button>
               </div>
             </div>
           </div>
         </div>
       )}
-    </section>
+
+    </section >
   );
 };
 

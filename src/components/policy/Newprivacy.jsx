@@ -1,16 +1,15 @@
 
+
 import { useEffect } from "react";
-import { FaCalendarCheck } from "react-icons/fa";
-import { MdOutlineLocalShipping } from "react-icons/md";
-import { MdPayments } from "react-icons/md";
+import { FaCalendarCheck, FaCheckCircle } from "react-icons/fa";
+import { MdOutlineLocalShipping, MdPayments, MdMarkEmailRead } from "react-icons/md";
 import { SiGoogleanalytics } from "react-icons/si";
-import { MdMarkEmailRead } from "react-icons/md";
-import { FaCheckCircle } from "react-icons/fa";
+
 const sections = [
   { id: "introduction", label: "Introduction" },
   { id: "information-we-collect", label: "Information We Collect" },
   { id: "how-we-use", label: "How We Use Your Information" },
-  { id: "cookies-tracking", label:"Cookies,Tracking Technologies" },
+  { id: "cookies-tracking", label: "Cookies,Tracking Technologies" },
   { id: "sharing", label: "Third-Party Sharing" },
   { id: "security", label: "Your Data Protection Rights" },
   { id: "contact", label: "Contact Us" },
@@ -41,104 +40,75 @@ export default function PrivacyPolicy() {
   }, []);
 
   return (
-   
-<div className="bg-[#FAF7F2] text-[#2B2B2B]">
-  <div className="max-w-7xl mx-auto px-6 pt-16 pb-10 text-center">
+    <div className="bg-[#FAF7F2] text-[#2B2B2B]">
+      {/* HERO */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-8 text-center">
+        <div className="relative overflow-hidden rounded-3xl mb-8
+                        h-[260px] sm:h-[340px] md:h-[420px]">
 
-    <div className="relative overflow-hidden rounded-3xl mb-8 h-100">
-      {/* <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "url(https://images.unsplash.com/photo-1524758631624-e2822e304c36)",
-        }}
-      /> */}
-       <img
-            src="https://images.unsplash.com/photo-1524758631624-e2822e304c36" 
-            
-                    className="absolute inset-0 w-full h-full object-cover opacity-50"
-                    alt="Hero"
-                />
-                {/* <div className="absolute inset-0 bg-black/60" /> */}
-                <div className="absolute inset-0 bg-[#2f6b4f]/70"></div>
+          <img
+            src="https://images.unsplash.com/photo-1524758631624-e2822e304c36"
+            className="absolute inset-0 w-full h-full object-cover opacity-50"
+            alt="Hero"
+          />
+          <div className="absolute inset-0 bg-[#2f6b4f]/70"></div>
 
+          <div className="relative z-10 h-full flex flex-col justify-center px-4 sm:px-10">
+            <h1 className="text-2xl sm:text-3xl md:text-5xl font-serif font-bold text-[#F5E6C8]">
+              Privacy Policy
+            </h1>
 
-      {/* <div className="absolute inset-0 bg-black/40" /> */}
+            <p className="text-[#F5E6C8] max-w-2xl mx-auto mt-4 text-sm sm:text-base">
+              At Graphura, your privacy matters to us. This Privacy Policy describes how we collect, use, and protect your personal information when you use our website and services.
+            </p>
 
-
-      <div className="relative z-10 p-25">
-        <h1 className="mt-2 text-3xl md:text-5xl font-serif font-bold text-[#F5E6C8]">
-          Privacy Policy
-        </h1>
-
-        <p className="text-[#F5E6C8] max-w-2xl mx-auto mt-4">
-          At Graphura, your privacy matters to us. This Privacy Policy describes how we collect, use, and protect your personal information when you use our website and services.
-        </p>
-        <nav className=" text-[#F5E6C8] transition hover:text-[#C9A24D] rounded-full font-bold px-6 py-3 w-fit mx-auto shadow p-5">
-      <span className="flex items-center gap-2">
-        <FaCalendarCheck className="text-lg" />
-        <span>Last updated: December 2025</span>
-      </span>
-    </nav>
+            <nav className="mt-5 mx-auto">
+              <span className="inline-flex items-center gap-2 rounded-full bg-black/30 px-4 py-2 text-xs sm:text-sm text-[#F5E6C8] font-bold">
+                <FaCalendarCheck />
+                Last updated: December 2025
+              </span>
+            </nav>
+          </div>
+        </div>
       </div>
 
-    </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6
+                      grid grid-cols-1 lg:grid-cols-[280px_1fr]
+                      gap-8 lg:gap-12 pb-24">
 
+        <aside className="hidden lg:block">
+          <div className="sticky top-24 p-6 rounded-3xl min-h-[350px]
+                          bg-[#3e2723] text-[#F5E6C8] shadow-lg">
+            <p className="font-bold mb-6 text-[#F5E6C8]/80">
+              Table of Contents
+            </p>
 
-    
+            <ul className="space-y-4 text-sm">
+              {sections.map((item, index) => (
+                <li key={item.id}>
+                  <a
+                    href={`#${item.id}`}
+                    data-id={item.id}
+                    className="pp-link block pl-4 -ml-4 font-semibold
+                               border-l-2 border-transparent
+                               hover:text-[#C9A24D] hover:border-[#C9A24D]
+                               transition"
+                  >
+                    {index + 1}. {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </aside>
 
-  </div>
-
-
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-12 pb-24">
-       
-<aside className="hidden lg:block">
-  <div
-    className="
-      sticky top-24
-      p-8 rounded-3xl min-h-[350px]
-      border-l-2 border-[#C9A24D]/30
-      bg-[#3e2723]
-      text-[#F5E6C8]
-      shadow-lg
-    "
-  >
-    <p className="font-bold mb-6  text-[#F5E6C8]/80
-              hover:text-[#C9A24D]
-              hover:border-[#C9A24D]
-              transition-all duration-200">
-      Table of Contents
-    </p>
-
-    <ul className="space-y-4 text-sm">
-      {sections.map((item, index) => (
-        <li key={item.id}>
-          <a
-            href={`#${item.id}`}
-            data-id={item.id}
-             className="text-[#F5E6C8]  font-semibold hover:text-[#C9A24D] border-[#C9A24D] pl-4 -ml-4"
-          >
-            <span className="mr-2 font-semibold ">
-              {index + 1}.
-            </span>
-            {item.label}
-          </a>
-        </li>
-      ))}
-    </ul>
-  </div>
-</aside>
-
-
-
-
-
-        {/* CONTENT  */}
-        <main className="rounded-3xl p-8 md:p-12 space-y-14">
+        <main className="rounded-3xl p-5 sm:p-8 md:p-12 space-y-14">
           <section id="introduction" className="scroll-mt-28">
-            <h2 className="text-3xl font-bold font-serif mb-4">1. Introduction</h2>
-            <p className="text-[#2B2B2B] leading-relaxed pl-5">
-            At Graphura Interiors, we are committed to maintaining the trust and confidence of our visitors to our website. In particular, we want you to know that Luxe Interiors is not in the business of selling, renting, or trading email lists with other companies for marketing purposes. This Privacy Policy details when and why we collect your personal information, how we use it, the limited conditions under which we may disclose it to others, and how we keep it secure.
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold font-serif mb-4">
+              1. Introduction
+            </h2>
+            <p className="leading-relaxed pl-2 sm:pl-5">
+              At Graphura Interiors, we are committed to maintaining the trust and confidence of our visitors to our website...
             </p>
           </section>
 
@@ -150,19 +120,21 @@ export default function PrivacyPolicy() {
               2. Information We Collect
             </h2>
 
-            <div class="overflow-hidden rounded-xl bg-[#FAF7F2]   ">
- <div class="divide-y divide-[#fde0d6] ">
- <div class="grid grid-cols-1 md:grid-cols-[30%_1fr] gap-4 p-6">
- <div class="font-semibold text-[#2B2B2B] font-serif">Personal Information</div>
- <div class="text-[#2B2B2B] leading-relaxed">Name, email address, phone number, and shipping address provided during checkout or account creation.</div>
+            
+ <div className="rounded-xl bg-[#FAF7F2] p-5 sm:p-6">
+  <div className="divide-y divide-[#fde0d6]">
+
+ <div className="grid grid-cols-1 md:grid-cols-[30%_1fr] gap-4 p-6">
+ <div className="font-semibold text-[#2B2B2B] font-serif">Personal Information</div>
+ <div className="text-[#2B2B2B] leading-relaxed">Name, email address, phone number, and shipping address provided during checkout or account creation.</div>
  </div>
- <div class="grid grid-cols-1 md:grid-cols-[30%_1fr] gap-4 p-6">
- <div class="font-semibold text-[#2B2B2B] font-serif">Usage Data</div>
- <div class="text-[#2B2B2B] leading-relaxed">Information on how the Service is accessed and used (e.g., page views, time spent on pages, device information).</div>
+ <div className="grid grid-cols-1 md:grid-cols-[30%_1fr] gap-4 p-6">
+ <div className="font-semibold text-[#2B2B2B] font-serif">Usage Data</div>
+ <div className="text-[#2B2B2B] leading-relaxed">Information on how the Service is accessed and used (e.g., page views, time spent on pages, device information).</div>
  </div>
- <div class="grid grid-cols-1 md:grid-cols-[30%_1fr] gap-4 p-6">
-<div class="font-semibold text-[#2B2B2B] font-serif">Payment Information</div>
-<div class="text-[#2B2B2B] leading-relaxed">We do not store full credit card information. Payments are processed via secure third-party payment processors.</div>
+ <div className="grid grid-cols-1 md:grid-cols-[30%_1fr] gap-4 p-6">
+<div className="font-semibold text-[#2B2B2B] font-serif">Payment Information</div>
+<div className="text-[#2B2B2B] leading-relaxed">We do not store full credit card information. Payments are processed via secure third-party payment processors.</div>
  </div>
  </div>
  </div>
@@ -204,7 +176,7 @@ export default function PrivacyPolicy() {
             
           </section>
 
-          <section id="sharing " className="scroll-mt-28 text-[#2B2B2B]">
+          <section id="sharing" className="scroll-mt-28 text-[#2B2B2B]">
             <h2 className="text-3xl font-bold mb-4 font-serif">
               5. Third-Party Sharing
             </h2>
@@ -212,28 +184,28 @@ export default function PrivacyPolicy() {
             We may employ third party companies and individuals to facilitate our Service ("Service Providers"), to provide the Service on our behalf, to perform Service-related services, or to assist us in analyzing how our Service is used. These third parties have access to your Personal Data only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose.
              </p>
          
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 p-6">
-           <div class="p-4 rounded-lg bg-[#f5ead6] font-serif flex items-center gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-6">
+           <div className="p-4 rounded-lg bg-[#f5ead6] font-serif flex items-center gap-3">
            <span className="flex items-center gap-2">
-           <MdOutlineLocalShipping className="w-10 h-10" />&nbsp;&nbsp;
+           <MdOutlineLocalShipping className="w-8 h-8 sm:w-10 sm:h-10"/>&nbsp;&nbsp;
             <span>Logistics Partners</span>
           </span>
          </div>
-         <div class="p-4 rounded-lg bg-[#f5ead6] font-serif flex items-center gap-3">
+         <div className="p-4 rounded-lg bg-[#f5ead6] font-serif flex items-center gap-3">
          <span className="flex items-center gap-2">
-         <MdPayments className="w-10 h-10" />&nbsp;&nbsp;
+         <MdPayments className="w-8 h-8 sm:w-10 sm:h-10" />&nbsp;&nbsp;
             <span>Payment Processors</span>
           </span>
          </div>
-         <div class="p-4 rounded-lg bg-[#f5ead6] flex items-center font-serif gap-3">
+         <div className="p-4 rounded-lg bg-[#f5ead6] flex items-center font-serif gap-3">
          <span className="flex items-center gap-2">
-         <SiGoogleanalytics className="w-10 h-10" />&nbsp;&nbsp;
+         <SiGoogleanalytics className="w-8 h-8 sm:w-10 sm:h-10" />&nbsp;&nbsp;
             <span>Analytics Providers </span>
           </span>
          </div>
          <div class="p-4 rounded-lg bg-[#f5ead6] font-serif flex items-center gap-3">
          <span className="flex items-center gap-2">
-         <MdMarkEmailRead className="w-10 h-10"/>&nbsp;&nbsp;
+         <MdMarkEmailRead className="w-8 h-8 sm:w-10 sm:h-10"/>&nbsp;&nbsp;
             <span>Email Services</span>
           </span>
         </div>
@@ -253,7 +225,8 @@ export default function PrivacyPolicy() {
           </section>
 
           <section id="contact" className="scroll-mt-28">
-          <div className="relative overflow-hidden rounded-xl bg-[#3e2723] px-8 py-10 shadow-lg">
+          <div className="relative z-10 flex flex-col md:flex-row bg-[#3e2723] p-10 rounded-xl items-start md:items-center gap-6 md:gap-10">
+
 
    
     <div
@@ -294,5 +267,3 @@ export default function PrivacyPolicy() {
     
   );
 }
-
-

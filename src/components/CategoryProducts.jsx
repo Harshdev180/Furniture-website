@@ -2,12 +2,15 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { furnitureData } from "../assests/furnitureData";
 import { useMemo, useState } from "react";
+import { useCart } from "./context/AddtocartContext";
+import WishlistButton from "./WishlistButton";
 
 const CategoryProducts = () => {
     const { typeKey } = useParams();
     const [showFilter, setShowFilter] = useState(false);
     const [filters, setFilters] = useState({});
     const navigate = useNavigate();
+    const { addToCart } = useCart();
 
     /* ================= FIND DATA ================= */
     const matchedSection = furnitureData.find(
@@ -186,42 +189,66 @@ const CategoryProducts = () => {
                                         whileHover={{ y: -8 }}
                                         className="bg-[#E6D5C3] rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-shadow"
                                     >
-                                        <Link
-                                            to={`/product/${item.id}`}
-                                            state={{
-                                                product: item,
-                                                meta: {
-                                                    typeKey,
-                                                    sectionHeading: matchedSection.heading,
-                                                    heroImage: matchedSection.heroImage,
-                                                    title: productData.title,
-                                                },
-                                            }}
-                                        >
-                                            <img
-                                                src={item.image}
-                                                alt={item.name}
-                                                className="h-56 w-full object-cover"
-                                            />
-                                        </Link>
+                                        <div className="relative">
+                                            <Link
+                                                to={`/product/${item.id}`}
+                                                state={{
+                                                    product: item,
+                                                    meta: {
+                                                        typeKey,
+                                                        sectionHeading: matchedSection.heading,
+                                                        heroImage: matchedSection.heroImage,
+                                                        title: productData.title,
+                                                    },
+                                                }}
+                                            >
+                                                <img
+                                                    src={item.image}
+                                                    alt={item.name}
+                                                    className="h-56 w-full object-cover"
+                                                />
+                                            </Link>
+                                            <div className="absolute top-3 right-3">
+                                                <WishlistButton product={item} size={20} />
+                                            </div>
+                                        </div>
                                         <div className="p-5 space-y-3">
                                             <h3 className="text-lg font-semibold text-[#3E2723]">
                                                 {item.name}
                                             </h3>
                                             <p className="text-sm text-gray-600">{item.description}</p>
                                             <p className="font-bold text-[#3E2723]">₹{item.price}</p>
-                                            <div className="flex gap-3 pt-3">
+                                            <div className="flex flex-col gap-2 pt-3">
+                                                <div className="flex gap-2">
+                                                    <button
+                                                        onClick={() => {
+                                                            addToCart(item);
+                                                            navigate("/cart");
+                                                        }}
+                                                        className="flex-1 py-2 rounded-lg border border-[#3E2723] text-[#3E2723] hover:bg-[#C9A24D] hover:text-white transition text-sm"
+                                                    >
+                                                        Add to Cart
+                                                    </button>
+                                                    <button
+                                                        onClick={() => {
+                                                            addToCart(item);
+                                                            navigate("/checkoutPage");
+                                                        }}
+                                                        className="flex-1 py-2 rounded-lg bg-[#3E2723] text-white hover:bg-[#C9A24D] transition text-sm"
+                                                    >
+                                                        Buy Now
+                                                    </button>
+                                                </div>
                                                 <button
-                                                    onClick={() => navigate("/cart")}
-                                                    className="flex-1 py-2 rounded-lg border border-[#3E2723] text-[#3E2723] hover:bg-[#C9A24D] hover:text-white transition"
+                                                    onClick={() => navigate("/customize", {
+                                                        state: {
+                                                            product: item,
+                                                            typeKey: typeKey,
+                                                        }
+                                                    })}
+                                                    className="w-full py-2 rounded-lg bg-[#C9A24D] text-white hover:bg-[#B8923D] transition font-medium text-sm"
                                                 >
-                                                    Add to Cart
-                                                </button>
-                                                <button
-                                                    onClick={() => navigate("/checkout")}
-                                                    className="flex-1 py-2 rounded-lg bg-[#3E2723] text-white hover:bg-[#C9A24D] transition"
-                                                >
-                                                    Buy Now
+                                                    Customize
                                                 </button>
                                             </div>
                                         </div>

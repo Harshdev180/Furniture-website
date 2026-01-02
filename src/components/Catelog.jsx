@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { useCart } from "./context/AddtocartContext";
+import WishlistButton from "./WishlistButton";
 
 // ✅ Correct way to import image in Vite
 import bannerimg from "/Catelogimg/banner.png";
 
 const CatalogPage = () => {
+  const { addToCart } = useCart();
+
   /* ---------------- PRODUCT DATA ---------------- */
   const products = [
     {
@@ -281,21 +285,39 @@ const CatalogPage = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredProducts.map((p) => (
-              <Link key={p.id} to={`/product/${p.id}`}>
-                <div className="rounded-xl overflow-hidden bg-[#E6D5C3]">
-                  <img src={p.img} className="h-56 w-full object-cover" />
-                  <div className="p-4">
-                    <h3 className="font-medium">{p.name}</h3>
-                    <p className="text-xs text-gray-600">{p.desc}</p>
-                    <div className="flex justify-between mt-3">
-                      <span className="font-semibold">₹{p.price}</span>
-                      <button className="px-4 py-1.5 text-sm rounded-full bg-[#3e2723] text-white">
-                        Add to Cart
-                      </button>
+              <div key={p.id} className="rounded-xl overflow-hidden bg-[#E6D5C3] relative group">
+                <Link to={`/product/${p.id}`}>
+                  <div className="relative">
+                    <img src={p.img} className="h-56 w-full object-cover" alt={p.name} />
+                    {/* Wishlist Button */}
+                    <div className="absolute top-3 right-3 z-10">
+                      <WishlistButton 
+                        product={p} 
+                        className="bg-white/90 hover:bg-white rounded-full p-2 shadow-md"
+                      />
                     </div>
                   </div>
+                </Link>
+                <div className="p-4">
+                  <Link to={`/product/${p.id}`}>
+                    <h3 className="font-medium hover:text-[#C9A24D] transition">{p.name}</h3>
+                    <p className="text-xs text-gray-600">{p.desc}</p>
+                  </Link>
+                  <div className="flex justify-between items-center mt-3">
+                    <span className="font-semibold">₹{p.price.toLocaleString()}</span>
+                    <button 
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        addToCart(p);
+                      }}
+                      className="px-4 py-1.5 text-sm rounded-full bg-[#3e2723] text-white hover:bg-[#C9A24D] transition"
+                    >
+                      Add to Cart
+                    </button>
+                  </div>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         </main>
