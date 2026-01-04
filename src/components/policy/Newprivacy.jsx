@@ -22,7 +22,8 @@ export default function PrivacyPolicy() {
 
       sections.forEach((item) => {
         const section = document.getElementById(item.id);
-        if (section && section.getBoundingClientRect().top <= 150) {
+          if (section && section.getBoundingClientRect().top <= 180) {
+
           currentId = item.id;
         }
       });
@@ -51,7 +52,7 @@ export default function PrivacyPolicy() {
             className="absolute inset-0 w-full h-full object-cover opacity-50"
             alt="Hero"
           />
-          <div className="absolute inset-0 bg-[#2f6b4f]/70"></div>
+          <div className="absolute inset-0 bg-black/60"></div>
 
           <div className="relative z-10 h-full flex flex-col justify-center px-4 sm:px-10">
             <h1 className="text-2xl sm:text-3xl md:text-5xl font-serif font-bold text-[#F5E6C8]">
@@ -103,10 +104,19 @@ export default function PrivacyPolicy() {
         </aside>
 
         <main className="rounded-3xl p-5 sm:p-8 md:p-12 space-y-14">
-          <section id="introduction" className="scroll-mt-28">
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold font-serif mb-4">
-              1. Introduction
-            </h2>
+          {/* <section id="introduction" className="scroll-mt-28"> */}
+          <section className="relative">
+  {/* anchor spacer */}
+  <span
+    id="introduction"
+    className="absolute -top-[200px] sm:-top-[220px] md:-top-[240px]"
+  />
+
+
+<h2 className="text-3xl font-bold font-serif mb-6">
+  1. Introduction
+</h2>
+
             <p className="leading-relaxed pl-2 sm:pl-5">
               At Graphura Interiors, we are committed to maintaining the trust and confidence of our visitors to our website...
             </p>
@@ -114,7 +124,8 @@ export default function PrivacyPolicy() {
 
           <section
             id="information-we-collect"
-            className="scroll-mt-28 mb-12"
+            className="scroll-mt-[140px] sm:scroll-mt-[160px] md:scroll-mt-[180px]"
+
           >
             <h2 className="text-3xl font-bold mb-6 font-serif">
               2. Information We Collect
@@ -140,26 +151,46 @@ export default function PrivacyPolicy() {
  </div>
           </section>
 
-          <section id="how-we-use" className="scroll-mt-28">
+          <section id="how-we-use" className="scroll-mt-[140px] sm:scroll-mt-[160px] md:scroll-mt-[180px]"
+          >
             <h2 className="text-3xl font-bold font-serif mb-4">
               3. How We Use Your Information
             </h2>
             <p className="text-[#2B2B2B] leading-relaxed p-3">
              We use the collected data for various purposes, primarily to provide and maintain our Service. Specifically, we use your data to:
              </p>
-             <ul className="p-4 text-[#2B2B2B] ">
-             <li className="p-3 flex items-center gap-3">
-             <FaCheckCircle className="text-[#2B2B2B]"/>&nbsp;&nbsp; Process and fulfill your orders, including sending emails to confirm your order status and shipment.</li>
-             <li className="p-3 flex items-center gap-3"><FaCheckCircle className="text-[#2B2B2B]" />&nbsp;&nbsp; Provide customer support and respond to your inquiries.
-             </li>
-             <li className="p-3 flex items-center gap-3"><FaCheckCircle className="text-[#2B2B2B]" />&nbsp;&nbsp; Gather analysis or valuable information so that we can improve our Service.
-             </li>
-             <li className="p-3 flex items-center gap-3"><FaCheckCircle className="text-[#2B2B2B]" />&nbsp;&nbsp; Monitor the usage of our Service to detect, prevent, and address technical issues.
-             </li>
+             {/* <ul className="p-4 text-[#2B2B2B] "> */}
+             <ul className="space-y-3 px-2 sm:px-4">
+             <li className="flex items-start gap-3">
+  <FaCheckCircle className="text-[#2B2B2B] w-5 h-5 mt-1 flex-shrink-0" />
+  <span>
+    Process and fulfill your orders, including sending emails to confirm your order status and shipment.
+  </span>
+</li>
+<li className="flex items-start gap-3">
+  <FaCheckCircle className="text-[#2B2B2B] w-5 h-5 mt-1 flex-shrink-0" />
+  <span>
+  Provide customer support and respond to your inquiries.
+  </span>
+</li>
+<li className="flex items-start gap-3">
+  <FaCheckCircle className="text-[#2B2B2B] w-5 h-5 mt-1 flex-shrink-0" />
+  <span>
+  Gather analysis or valuable information so that we can improve our Service.
+  </span>
+</li>
+<li className="flex items-start gap-3">
+  <FaCheckCircle className="text-[#2B2B2B] w-5 h-5 mt-1 flex-shrink-0" />
+  <span>
+  Monitor the usage of our Service to detect, prevent, and address technical issues.
+  </span>
+</li>
+
              </ul>
           </section>
 
-          <section id="cookies-tracking" className="scroll-mt-28 text-[#2B2B2B]">
+          <section id="cookies-tracking" className="scroll-mt-[140px] sm:scroll-mt-[160px] md:scroll-mt-[180px]"
+          >
             <h2 className="text-3xl font-bold mb-4 font-serif">
               4. Cookies & Tracking Technologies
             </h2>
@@ -176,7 +207,8 @@ export default function PrivacyPolicy() {
             
           </section>
 
-          <section id="sharing" className="scroll-mt-28 text-[#2B2B2B]">
+          <section id="sharing" className="scroll-mt-[140px] sm:scroll-mt-[160px] md:scroll-mt-[180px]"
+          >
             <h2 className="text-3xl font-bold mb-4 font-serif">
               5. Third-Party Sharing
             </h2>
@@ -213,7 +245,8 @@ export default function PrivacyPolicy() {
 </div>
           </section>
 
-          <section id="security" className="scroll-mt-28">
+          <section id="security" className="scroll-mt-[140px] sm:scroll-mt-[160px] md:scroll-mt-[180px]"
+>
             <h2 className="text-3xl font-bold font-serif mb-4">
               6. Your Data Protection Rights
             </h2>
@@ -224,21 +257,15 @@ export default function PrivacyPolicy() {
             </p>
           </section>
 
-          <section id="contact" className="scroll-mt-28">
-          <div className="relative z-10 flex flex-col md:flex-row bg-[#3e2723] p-10 rounded-xl items-start md:items-center gap-6 md:gap-10">
+          <section id="contact" className="scroll-mt-[140px] sm:scroll-mt-[160px] md:scroll-mt-[180px]"
+>
+          {/* <div className="relative z-10 flex flex-col md:flex-row bg-[#3e2723] p-10 rounded-xl items-start md:items-center gap-6 md:gap-10"> */}
 
 
-   
-    <div
-      className="absolute inset-0 opacity-10"
-       style={{
-         backgroundImage: "radial-gradient(#bd580f 1px, transparent 1px)",
-         backgroundSize: "20px 20px",
-       }}
-     />
 
-    <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-      
+    {/* <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6"> */}
+    <div className="relative z-10 flex flex-col md:flex-row bg-[#3e2723] p-8 sm:p-10 rounded-xl items-center md:items-center gap-6 md:gap-10 text-center md:text-left">
+
        <div>
          <h2 className="text-3xl font-bold font-serif text-[#F5E6C8] mb-2">
           Have questions about your data?
@@ -258,12 +285,23 @@ export default function PrivacyPolicy() {
         </a>
       </div>
 
-     </div>
+     {/* </div> */}
   </div>
           </section>
+
         </main>
       </div>
     </div>
     
   );
 }
+
+// import React from 'react'
+
+// const Newprivacy = () => {
+//   return (
+//     <div>Newprivacy</div>
+//   )
+// }
+
+// export default Newprivacy

@@ -34,7 +34,9 @@ export default function CookiePolicy() {
   }, []);
 
   return (
-    <div className="bg-[#FAF7F2] text-[#2B2B2B]">
+    // <div className="bg-[#FAF7F2] text-[#2B2B2B]">
+    <div className="bg-[#FAF7F2] text-[#2B2B2B] overflow-x-hidden">
+
 
       {/* HERO */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-10 text-center">
@@ -45,7 +47,7 @@ export default function CookiePolicy() {
             className="absolute inset-0 w-full h-full object-cover opacity-50"
             alt="Hero"
           />
-          <div className="absolute inset-0 bg-[#3E2723]/70"></div>
+          <div className="absolute inset-0 bg-black/60"></div>
 
           <div className="relative z-10 px-4 sm:px-6 py-12 md:py-20">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-[#F5E6C8]">
@@ -66,30 +68,39 @@ export default function CookiePolicy() {
       </div>
 
       {/* CONTENT */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-10 pb-24">
+      {/* <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-10 pb-24 overflow-x-hidden items-start"> */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12
+                grid grid-cols-1 lg:grid-cols-4 gap-10">
 
-        {/* SIDEBAR */}
-        <aside className="hidden lg:block">
-          <div className="sticky top-28 bg-[#3e2723] text-[#F5E6C8] rounded-3xl p-6">
-            <p className="font-bold mb-4">Table of Contents</p>
-            <ul className="space-y-3 text-sm">
-              {sections.map((item, index) => (
-                <li key={item.id}>
-                  <a
-                    href={`#${item.id}`}
-                    data-id={item.id}
-                    className="toc-link block hover:text-[#C9A24D]"
-                  >
-                    {index + 1}. {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </aside>
+  <aside className="hidden lg:block lg:w-60">
+    <div className="lg:sticky lg:top-24
+                    p-6 rounded-3xl
+                    bg-[#3e2723] text-[#F5E6C8] shadow-lg">
+
+      <p className="font-bold mb-4">Table of Contents</p>
+      <ul className="space-y-3 text-sm">
+        {sections.map((item, index) => (
+          <li key={item.id}>
+            <a
+              href={`#${item.id}`}
+              data-id={item.id}
+              className="toc-link block hover:text-[#C9A24D]"
+            >
+              {index + 1}. {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </aside>
+
+
 
         {/* MAIN */}
-        <main className="rounded-3xl p-5 sm:p-6 md:p-12 space-y-12 text-[#2B2B2B]">
+        <main className="lg:col-span-3 space-y-14 px-4 sm:px-6 md:px-8">
+
+   
+
 
           <section id="what-are-cookies" className="scroll-mt-32">
             <h2 className="text-2xl sm:text-3xl font-bold font-serif mb-4">
@@ -125,8 +136,11 @@ export default function CookiePolicy() {
               <MdOutlineTableView /> Manage Cookie Preferences
             </h2>
 
-            <div className="overflow-x-auto rounded-xl">
-              <table className="min-w-[600px] w-full text-left text-sm">
+            {/* <div className="overflow-x-auto rounded-xl"> */}
+            <div className="overflow-x-auto w-full max-w-full">
+            <table className="w-full min-w-[520px] text-left text-sm">
+
+              {/* <table className="min-w-[600px] w-full text-left text-sm"> */}
                 <thead className="bg-[#fcf9f8] ">
                   <tr>
                     <th className="px-4 py-3 font-bold font-serif">Partner</th>
@@ -155,10 +169,12 @@ export default function CookiePolicy() {
             </div>
           </section>
 
+       
           <section
-            id="contact"
-            className="bg-[#3e2723] text-white rounded-2xl p-6 sm:p-8 md:p-12 text-center scroll-mt-32"
-          >
+  id="contact"
+  className="bg-[#3e2723] text-white rounded-2xl px-4 sm:px-6 md:px-8 py-6 sm:py-8 md:py-12 text-center scroll-mt-32 overflow-hidden"
+>
+
             <IoIosMail className="h-14 w-14 mx-auto text-[#C9A24D] mb-4" />
             <h2 className="text-2xl sm:text-3xl font-serif mb-4">
               Questions about your data?
@@ -167,21 +183,34 @@ export default function CookiePolicy() {
             Graphura value your trust above all else. If you have any questions regarding this policy or how we handle your data, please reach out to our privacy officer.
 
             </p>
+{/* 
+            <div className="flex flex-col sm:flex-row gap-4 justify-center"> */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="mailto:official@graphura.in"
-                className="px-6 py-3 rounded-lg bg-[#C9A24D] text-[#F5E6C8] font-medium  hover:text-[#222120]"
-              >
-                official@graphura.in
-              </a>
+            <a
+  href="mailto:official@graphura.in"
+  className="inline-flex w-auto items-center justify-center
+             px-4 py-2 sm:px-6 sm:py-3
+             text-sm sm:text-base
+             rounded-lg bg-[#C9A24D]
+             text-[#F5E6C8] font-medium
+             hover:text-[#222120]"
+>
+  official@graphura.in
+</a>
 
-              <Link
-                to="/privacy"
-                className="px-6 py-3 rounded-lg bg-[#C9A24D] text-[#F5E6C8] font-medium  hover:text-[#222120]"
-              >
-                View Privacy Policy
-              </Link>
+<Link
+  to="/privacy"
+  className="inline-flex w-auto items-center justify-center
+             px-4 py-2 sm:px-6 sm:py-3
+             text-sm sm:text-base
+             rounded-lg bg-[#C9A24D]
+             text-[#F5E6C8] font-medium
+             hover:text-[#222120]"
+>
+  View Privacy Policy
+</Link>
+
             </div>
           </section>
 
@@ -190,3 +219,13 @@ export default function CookiePolicy() {
     </div>
   );
 }
+
+// import React from 'react'
+
+// const Cookies = () => {
+//   return (
+//     <div>Cookies</div>
+//   )
+// }
+
+// export default Cookies

@@ -69,31 +69,36 @@ export default function ReturnPolicy() {
       {/* LAYOUT */}
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-12 grid grid-cols-1 lg:grid-cols-4 gap-10">
 
-        {/* SIDEBAR */}
-        <aside className="w-full lg:w-60">
-          <div className="lg:sticky lg:top-24 p-6 rounded-3xl bg-[#3e2723] text-[#F5E6C8] shadow-lg">
-            <p className="font-bold mb-4">Table of Contents</p>
-            <ul className="space-y-4 text-sm list-decimal pl-4">
-              {sections.map((item) => (
-                <li key={item.id}>
-                  <a
-                    href={`#${item.id}`}
-                    className={`transition block ${
-                      active === item.id
-                        ? "text-[#C9A24D] font-semibold"
-                        : "hover:text-[#C9A24D]"
-                    }`}
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </aside>
+       {/* SIDEBAR */}
+<aside className="hidden lg:block lg:w-60">
+  <div className="lg:sticky lg:top-24 p-6 rounded-3xl bg-[#3e2723] text-[#F5E6C8] shadow-lg">
+    <p className="font-bold mb-4">Table of Contents</p>
+
+    <ul className="space-y-4 text-sm list-decimal pl-4">
+      {sections.map((item) => (
+        <li key={item.id}>
+          <a
+            href={`#${item.id}`}
+            className={`transition block ${
+              active === item.id
+                ? "text-[#C9A24D] font-semibold"
+                : "hover:text-[#C9A24D]"
+            }`}
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</aside>
+
 
         {/* CONTENT */}
-        <main className="lg:col-span-3 space-y-20 p-4 md:p-8 text-[#2B2B2B]">
+        {/* <main className="lg:col-span-3 space-y-20 p-4 md:p-8 text-[#2B2B2B]"> */}
+        {/* CONTENT */}
+<main className="lg:col-span-3 space-y-16 px-3 sm:px-4 md:px-8">
+
 
           <section id="overview" className="scroll-mt-28">
             <h2 className="text-3xl font-bold font-serif mb-4">
@@ -147,18 +152,23 @@ export default function ReturnPolicy() {
            Three simple steps to process your return.
            </p>
             {[1, 2, 3].map((step) => (
-              <div key={step} className="flex gap-4 bg-[#FAF7F2] rounded-2xl p-4 mb-4">
-                <div className="text-4xl font-bold bg-amber-100 px-4 py-2 rounded-xl">
-                  {step}
-                </div>
-                <div>
-                  <p>
-                    {step === 1 && "Visit our online Returns Portal or contact our Concierge team at official@graphura.in. Provide your order number and reason for return to receive your Return Merchandise Authorization (RMA)."}
-                    {step === 2 && "Securely pack your items in the original packaging. Affix the prepaid shipping label provided by our team. For large furniture items, our logistics partner will contact you to schedule a pickup time."}
-                    {step === 3 && "Once received at our warehouse, our team will inspect the item within 3-5 business days. Upon approval, your refund will be processed to the original payment method immediately."}
-                  </p>
-                </div>
-              </div>
+         
+              <div className="flex gap-4 bg-[#FAF7F2] rounded-2xl p-4 mb-4 items-start sm:items-center">
+  <div className="flex-shrink-0 w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center text-2xl sm:text-4xl font-bold bg-amber-100 rounded-full">
+    {step}
+  </div>
+  <div className="flex-1">
+    <p>
+      {step === 1 &&
+        "Visit our online Returns Portal or contact our Concierge team at official@graphura.in. Provide your order number and reason for return to receive your Return Merchandise Authorization (RMA)."}
+      {step === 2 &&
+        "Securely pack your items in the original packaging. Affix the prepaid shipping label provided by our team. For large furniture items, our logistics partner will contact you to schedule a pickup time."}
+      {step === 3 &&
+        "Once received at our warehouse, our team will inspect the item within 3-5 business days. Upon approval, your refund will be processed to the original payment method immediately."}
+    </p>
+  </div>
+</div>
+
             ))}
           </section>
 
@@ -167,7 +177,9 @@ export default function ReturnPolicy() {
               <MdOutlineSchedule className="text-4xl" /> Refunds & Timelines
             </h2>
 
-            <div className="overflow-x-auto">
+            {/* <div className="overflow-x-auto"> */}
+            <div className="overflow-x-auto -mx-3 sm:mx-0">
+
               <table className="w-full text-sm ">
                 <thead className="bg-[#F3ECE6]">
                   <tr>
@@ -221,3 +233,14 @@ export default function ReturnPolicy() {
     </div>
   );
 }
+
+
+// import React from 'react'
+
+// const Newreturn = () => {
+//   return (
+//     <div>Newreturn</div>
+//   )
+// }
+
+// export default Newreturn

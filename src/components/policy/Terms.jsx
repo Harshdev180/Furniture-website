@@ -46,7 +46,7 @@ export default function TermsOfService() {
             className="absolute inset-0 w-full h-full object-cover opacity-50"
             alt="Hero"
           />
-          <div className="absolute inset-0 bg-[#3E2723]/70" />
+          <div className="absolute inset-0 bg-black/60" />
 
           <div className="relative z-10 h-full flex flex-col justify-center px-4">
             <h1 className="mt-2 text-3xl md:text-5xl font-serif font-bold text-white">
@@ -73,7 +73,7 @@ export default function TermsOfService() {
       <div className="max-w-7xl mx-auto px-4 lg:px-8 flex flex-col lg:flex-row gap-8 pb-4">
 
         {/* MOBILE TOC */}
-        <div className="lg:hidden bg-[#3e2723] text-[#F5E6C8] rounded-2xl p-4">
+        <div className="hidden bg-[#3e2723] text-[#F5E6C8] rounded-2xl p-4">
           <p className="font-bold mb-3">Table of Contents</p>
           <ul className="grid grid-cols-2 gap-2 text-sm">
             {sections.map((item) => (
@@ -114,9 +114,8 @@ export default function TermsOfService() {
 
         {/* CONTENT */}
         <main className="flex-1 min-w-0">
-          <div className="rounded-xl pt-5 pl-4 md:pl-12">
+        <div className="max-w-4xl mx-auto rounded-xl pt-6 px-4 md:px-8 lg:px-10">
 
-            {/* ======= ALL ORIGINAL CONTENT BELOW (UNCHANGED) ======= */}
 
             {/* Overview */}
             <section id="overview" className="scroll-mt-28 mb-12">
@@ -214,28 +213,55 @@ export default function TermsOfService() {
         </main>
       </div>
 
-      {/* CTA */}
-      <section className="bg-[#f3eae7] py-16 mt-12">
-        <div className="max-w-[960px] mx-auto p-6 text-center rounded-2xl bg-[#3e2723]">
-          <MdOutlineSupportAgent className="h-16 w-16 mx-auto mb-6 text-[#C9A24D]" />
-          <h2 className="text-3xl font-bold font-serif mb-4 text-[#F5E6C8]">
-            Still have questions?
-          </h2>
-           <p className="text-text-main/70 text-[#F5E6C8] mb-8 max-w-md mx-auto">
-                 If you have any questions about these Terms, please contact us. We are available Monday through Friday, 9am - 5pm EST.
-             </p>
+{/* CTA */}
+<section className="bg-[#f3eae7] py-16 mt-12">
+  <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
+    <div className="max-w-[960px] mx-auto p-6 md:p-10 text-center rounded-2xl bg-[#3e2723]">
 
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <a className="inline-flex items-center gap-2 bg-[#C9A24D] px-6 py-3 rounded-lg text-white font-bold hover:text-[#3e2723]">
-              <MdEmail /> official@graphura.in
-            </a>
-            <a className="inline-flex items-center gap-2 bg-[#C9A24D] px-6 py-3 rounded-lg text-white font-bold hover:text-[#3e2723]">
-              <IoCall /> +91 73780 21327
-            </a>
-          </div>
-        </div>
-      </section>
+      <MdOutlineSupportAgent className="h-16 w-16 mx-auto mb-6 text-[#C9A24D]" />
+
+      <h2 className="text-3xl font-bold font-serif mb-4 text-[#F5E6C8]">
+        Still have questions?
+      </h2>
+
+      <p className="text-[#F5E6C8] mb-8 max-w-md mx-auto">
+        If you have any questions about these Terms, please contact us. We are available
+        Monday through Friday, 9am - 5pm EST.
+      </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+      {/* <div className="flex flex-col sm:flex-row justify-center gap-4"> */}
+      <a
+  href="mailto:official@graphura.in"
+  className="inline-flex items-center gap-2 bg-[#C9A24D] px-6 py-3 rounded-lg text-white font-bold hover:text-[#3e2723]"
+>
+  <MdEmail /> official@graphura.in
+</a>
+
+<a
+  href="tel:+917378021327"
+  className="inline-flex items-center gap-2 bg-[#C9A24D] px-6 py-3 rounded-lg text-white font-bold hover:text-[#3e2723]"
+>
+  <IoCall /> +91 73780 21327
+</a>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
     </div>
   );
 }
 
+// import React from 'react'
+
+// const Terms = () => {
+//   return (
+//     <div>Terms</div>
+//   )
+// }
+
+// export default Terms
