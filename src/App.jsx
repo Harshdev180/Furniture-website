@@ -23,7 +23,10 @@ import Profile from "./pages/Profile";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { WishlistProvider } from "./components/context/WishlistContext";
 import { CartProvider } from "./components/context/AddtocartContext";
-
+import Terms from "./components/policy/Terms";
+import Cookies from "./components/policy/Cookies";
+import Newprivacy from "./components/policy/Newprivacy";
+import Newreturn from "./components/policy/Newreturn";
 function App() {
 
   const location = useLocation();
@@ -50,6 +53,20 @@ function App() {
 
             {/* About */}
             <Route path="/aboutus" element={<AboutHero />} />
+
+            {/* Policy */}
+            <Route path="/terms" element={<Terms />} />
+
+            {/* Cookies */}
+            <Route path="/cookies" element={<Cookies />} />
+
+
+            {/* Privacy */}
+            <Route path="/privacy" element={<Newprivacy />} />
+
+            {/*Return */}
+            <Route path="/return" element={<Newreturn />} />
+
 
             {/* Contact */}
             <Route path="/contact" element={<Contact />} />
