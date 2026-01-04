@@ -1,7 +1,7 @@
 import React from "react";
 import { FaFacebookF } from "react-icons/fa6";
 import { FaTwitter } from "react-icons/fa6";
-import { BsInstagram  } from "react-icons/bs";
+import { BsInstagram } from "react-icons/bs";
 import { FaLinkedinIn } from "react-icons/fa6";
 import logo from "../../assests/images/logo White.png";
 import { Link } from "react-router-dom";

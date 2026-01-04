@@ -218,6 +218,21 @@ export default function Checkout() {
 
                     // Save order to Google Sheets (optional - can be done after payment too)
                     try {
+                      // Submit delivery details
+                      await submitDeliveryForm({
+                        orderId: orderData.orderId,
+                        name: orderData.customerName,
+                        email: orderData.customerEmail,
+                        phone: orderData.customerPhone,
+                        address: formData.address,
+                        city: formData.city,
+                        zipCode: formData.zipCode,
+                        country: formData.country,
+                        deliveryMethod: orderData.deliveryMethod,
+                        deliveryDate: orderData.deliveryDate,
+                        timeSlot: orderData.timeSlot
+                      });
+
                       await submitOrder(orderData);
                     } catch (sheetError) {
                       console.warn("Failed to save to Google Sheets:", sheetError);
@@ -275,7 +290,7 @@ export default function Checkout() {
               <div className="grid grid-cols-3 gap-3 mt-6 pt-6 border-t border-[#E6D5C3]">
                 <div className="text-center">
                   <Truck className="w-5 h-5 mx-auto mb-1 text-[#C9A24D]" />
-                  <p className="text-xs font-medium text-gray-600">Free Delivery</p>
+                  <p className="text-xs font-medium text-gray-600">Fast Delivery</p>
                 </div>
                 <div className="text-center">
                   <RefreshCcw className="w-5 h-5 mx-auto mb-1 text-[#C9A24D]" />

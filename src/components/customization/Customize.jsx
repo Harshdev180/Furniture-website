@@ -137,7 +137,7 @@ export default function FurnitureCustomizer() {
         // Create a product object for the cart
         const productName = getDisplayName(type);
         const selectedOptions = [];
-        
+
         // Build description from selections
         Object.keys(selections).forEach((key) => {
             const optionIndex = selections[key];
@@ -460,7 +460,7 @@ export default function FurnitureCustomizer() {
                         <div className="grid grid-cols-3 gap-3 sm:gap-4 text-center">
                             <div className="bg-white rounded-lg p-3 sm:p-4 shadow-sm">
                                 <p className="text-xl sm:text-2xl mb-1">🚚</p>
-                                <p className="text-xs font-medium text-gray-700">Free Delivery</p>
+                                <p className="text-xs font-medium text-gray-700">Fast Delivery</p>
                             </div>
                             <div className="bg-white rounded-lg p-3 sm:p-4 shadow-sm">
                                 <p className="text-xl sm:text-2xl mb-1">🔄</p>

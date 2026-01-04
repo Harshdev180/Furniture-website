@@ -85,7 +85,7 @@ export const openRazorpay = async ({ total, orderData, onSuccess, onError }) => 
       currency: "INR",
       name: "Graphura Furniture",
       description: `Order Payment - ${orderId}`,
-      image: "https://your-logo-url.com/logo.png", // Optional: Add your logo
+      image: "./images/logo White.png", // Optional: Add your logo
       order_id: null, // Remove order_id for client-side integration
       handler: function (response) {
         console.log("Payment Success:", response);

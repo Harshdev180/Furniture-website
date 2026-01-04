@@ -88,18 +88,28 @@ const TrendingNow = () => {
                 )}
 
                 {/* ACTION ICONS */}
-                <div className="absolute bottom-7 left-0 right-0 flex justify-center gap-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all translate-y-4 group-hover:translate-y-0">
+                <div className="absolute bottom-7 left-0 right-0 flex justify-center gap-3
+                opacity-100 md:opacity-0 md:group-hover:opacity-100
+                transition-all translate-y-4 group-hover:translate-y-0">
+
                   {productActions.map(({ id, icon: Icon }) => {
                     if (id === "wishlist") {
                       return (
                         <div
                           key={id}
-                          className="bg-white p-4 rounded-full shadow-lg hover:bg-[#C9A24D] transition"
+                          className="w-12 h-12 flex items-center justify-center
+                     bg-white rounded-full shadow-lg
+                     hover:bg-[#C9A24D] transition-all"
                         >
-                          <WishlistButton product={product} size={20} className="text-[#3E2723]" />
+                          <WishlistButton
+                            product={product}
+                            size={22}
+                            className="text-[#3E2723] hover:text-white transition"
+                          />
                         </div>
                       );
                     }
+
                     return (
                       <button
                         key={id}
@@ -107,13 +117,18 @@ const TrendingNow = () => {
                           if (id === "cart") addToCart(product);
                           if (id === "view") setSelectedProduct(product);
                         }}
-                        className="bg-white text-[#3E2723] p-4 rounded-full shadow-lg hover:bg-[#C9A24D] hover:text-white"
+                        className="w-12 h-12 flex items-center justify-center
+                   bg-white text-[#3E2723]
+                   rounded-full shadow-lg
+                   hover:bg-[#C9A24D] hover:text-white
+                   transition-all"
                       >
-                        <Icon />
+                        <Icon size={22} />
                       </button>
                     );
                   })}
                 </div>
+
               </div>
 
               {/* DETAILS */}

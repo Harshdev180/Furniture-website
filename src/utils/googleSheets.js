@@ -56,8 +56,10 @@ export const submitContactForm = async (data) => {
 
 // submit newsletter form
 export const submitNewsletterForm = async (data) => {
+  const emailVal = data.email || data;
+  const email = typeof emailVal === 'string' ? emailVal.trim() : emailVal;
   return submitToGoogleSheets('newsletter', {
-    email: data.email || data,
+    email: email,
   });
 };
 
@@ -146,6 +148,9 @@ export const submitOrder = async (orderData) => {
     customerPhone: orderData.customerPhone || '',
     address: orderData.address || '',
     paymentStatus: orderData.paymentStatus || 'pending',
+    deliveryMethod: orderData.deliveryMethod || 'delivery',
+    deliveryDate: orderData.deliveryDate || '',
+    timeSlot: orderData.timeSlot || '',
   });
 };
 

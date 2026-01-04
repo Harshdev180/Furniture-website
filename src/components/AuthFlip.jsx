@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { submitSignIn, submitSignUp } from "../utils/googleSheets";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 
 export default function AuthFlip() {
   const [active, setActive] = useState(false);
   const [showForgot, setShowForgot] = useState(false);
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
   const navigate = useNavigate();
+  const location = useLocation();
+  const redirectPath = location.state?.from || "/";
+
 
   // Form states
   const [signInData, setSignInData] = useState({ email: "", password: "" });
@@ -70,8 +73,8 @@ export default function AuthFlip() {
         if (storedName) localStorage.setItem("userName", storedName);
         if (storedPhone) localStorage.setItem("userPhone", storedPhone);
         setTimeout(() => {
-          navigate("/");
-        }, 1000);
+          navigate(redirectPath, { replace: true });
+        }, 800);
       } else {
         setSubmitStatus({ type: "error", message: result.message || "Invalid email or password" });
       }
@@ -239,7 +242,7 @@ export default function AuthFlip() {
             flex flex-col justify-center items-center px-8 md:px-12 transition-all duration-700
             ${active ? "hidden md:flex opacity-0 pointer-events-none" : "flex opacity-100"}`}
           >
-            <h2 className="text-2xl sm:text-3xl font-serif mb-4 sm:mb-6 text-[#3E2723]">Welcome Back</h2>
+            <h2 className="text-3xl font-serif py-4 text-[#3E2723] ">Welcome Back</h2>
 
             {submitStatus && (
               <div

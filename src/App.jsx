@@ -55,7 +55,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
 
             {/*add to cart */}
-            <Route path="/cart" element={<AddToCart />} />
+            <Route path="/cart" element={<ProtectedRoute><AddToCart /></ProtectedRoute>} />
 
             <Route path="/quoteRequest" element={<QuoteRequest />} />
 

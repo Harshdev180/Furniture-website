@@ -25,6 +25,56 @@ import { useCart } from "../components/context/AddtocartContext";
 import { useWishlist } from "../components/context/WishlistContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { fetchUserData, updateUserProfile, fetchUserOrders } from "../utils/googleSheets";
+import { furnitureData } from "../assests/furnitureData";
+
+
+const orderHistoryShowcase = [
+    {
+        orderId: "ORD-78421",
+        category: "Bedroom",
+        productName: "Wooden King Size Bed",
+        image:
+            "https://i.pinimg.com/1200x/d9/02/79/d902799fce03ef8f54426b45103a21e1.jpg",
+        price: 1200,
+        qty: 1,
+        status: "Delivered",
+        orderDate: "15 Dec 2025",
+    },
+    {
+        orderId: "ORD-78305",
+        category: "Living",
+        productName: "3-Seater Fabric Sofa",
+        image:
+            "https://i.pinimg.com/1200x/af/bd/cf/afbdcf71db5b292e7f58d84ba6bc407d.jpg",
+        price: 1200,
+        qty: 1,
+        status: "Shipped",
+        orderDate: "10 Dec 2025",
+    },
+    {
+        orderId: "ORD-78192",
+        category: "Study",
+        productName: "Ergonomic Mesh Chair",
+        image:
+            "https://i.pinimg.com/736x/54/bd/35/54bd35417ae8d3b9f11113daf38695af.jpg",
+        price: 220,
+        qty: 2,
+        status: "Delivered",
+        orderDate: "02 Dec 2025",
+    },
+    {
+        orderId: "ORD-78044",
+        category: "Bathroom",
+        productName: "Floating Vanity",
+        image:
+            "https://i.pinimg.com/1200x/8b/49/25/8b49255acfa55b3177ceb58a7d728e62.jpg",
+        price: 520,
+        qty: 1,
+        status: "Cancelled",
+        orderDate: "28 Nov 2025",
+    },
+];
+
 
 export default function Profile() {
     const navigate = useNavigate();
@@ -250,6 +300,7 @@ export default function Profile() {
             </div>
         );
     }
+
 
     return (
         <div className="min-h-screen bg-[#FAF7F2] py-8 sm:py-12">
@@ -694,6 +745,61 @@ export default function Profile() {
                     </>
                 )}
             </AnimatePresence>
+            {/* ================= ORDER HISTORY (SHOWCASE) ================= */}
+            <div className="bg-[#FAF7F2] rounded-2xl p-6">
+                <h2 className="text-2xl font-semibold mb-6">Order History</h2>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    {orderHistoryShowcase.map((order, index) => (
+                        <div
+                            key={index}
+                            className="border rounded-2xl p-4 hover:shadow-lg transition bg-[#FAF7F2]"
+                        >
+                            {/* Product Image */}
+                            <img
+                                src={order.image}
+                                alt={order.productName}
+                                className="w-full h-44 rounded-xl object-cover mb-4"
+                            />
+
+                            {/* Product Info */}
+                            <h3 className="text-lg font-semibold text-[#3E2723]">
+                                {order.productName}
+                            </h3>
+
+                            <p className="text-sm text-[#3E2723]/60">
+                                Category: {order.category}
+                            </p>
+
+                            <p className="text-sm text-[#3E2723]/60">
+                                Order ID: {order.orderId}
+                            </p>
+
+                            <p className="text-sm text-[#3E2723]/60">
+                                Qty: {order.qty} • ₹{order.price.toLocaleString()}
+                            </p>
+
+                            <p className="text-xs text-[#3E2723]/40 mt-1">
+                                Ordered on {order.orderDate}
+                            </p>
+
+                            {/* Status */}
+                            <div className="mt-4 flex items-center justify-between">
+                                <span
+                                    className={`px-3 py-1 rounded-full text-xs font-semibold ${order.status === "Delivered"
+                                        ? "bg-green-100 text-green-600"
+                                        : order.status === "Cancelled"
+                                            ? "bg-red-100 text-red-600"
+                                            : "bg-yellow-100 text-yellow-600"
+                                        }`}
+                                >
+                                    {order.status}
+                                </span>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
         </div>
     );
 }

@@ -71,12 +71,17 @@ export default function ThankYou() {
               Order Summary
             </h2>
 
-            <div className="space-y-4">
-              {orderData.items?.map((item, index) => (
-                <div
-                  key={index}
-                  className="flex flex-col sm:flex-row justify-between gap-2 py-3 border-b last:border-0"
-                >
+            {orderData.items?.map((item, index) => (
+              <div
+                key={index}
+                className="flex flex-col sm:flex-row justify-between gap-4 py-3 border-b last:border-0"
+              >
+                <div className="flex gap-4">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-24 h-24 object-cover rounded-lg"
+                  />
                   <div>
                     <p className="font-semibold text-[#3E2723]">
                       {item.name}
@@ -85,23 +90,26 @@ export default function ThankYou() {
                       Qty: {item.quantity}
                     </p>
                   </div>
-                  <p className="font-bold text-[#C9A24D]">
-                    ₹{Number(item.price).toLocaleString()}
-                  </p>
                 </div>
-              ))}
 
-              <div className="pt-4 border-t-2 border-[#C9A24D] flex justify-between items-center">
-                <span className="text-lg font-semibold text-[#3E2723]">
-                  Total
-                </span>
-                <span className="text-2xl font-serif font-bold text-[#C9A24D]">
-                  ₹{Number(orderData.total).toLocaleString()}
-                </span>
+                <p className="font-bold text-[#C9A24D]">
+                  ₹{Number(item.price).toLocaleString()}
+                </p>
               </div>
+            ))}
+
+            <div className="pt-4 border-t-2 border-[#C9A24D] flex justify-between items-center">
+              <span className="text-lg font-semibold text-[#3E2723]">
+                Total
+              </span>
+              <span className="text-2xl font-serif font-bold text-[#C9A24D]">
+                ₹{Number(orderData.total).toLocaleString()}
+              </span>
             </div>
+
           </motion.div>
-        )}
+        )
+        }
 
         {/* NEXT STEPS */}
         <motion.div
@@ -174,7 +182,7 @@ export default function ThankYou() {
           className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 text-center"
         >
           {[
-            { emoji: "🚚", label: "Free Delivery" },
+            { emoji: "🚚", label: "Fast Delivery" },
             { emoji: "🔄", label: "Easy Returns" },
             { emoji: "🛡️", label: "Secure Payment" },
           ].map((item, i) => (
@@ -189,7 +197,7 @@ export default function ThankYou() {
             </div>
           ))}
         </motion.div>
-      </div>
-    </div>
+      </div >
+    </div >
   );
 }
