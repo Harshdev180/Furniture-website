@@ -74,7 +74,7 @@ const Navbar = () => {
               {/* WISHLIST */}
               <Link to="/wishlist" className="relative group">
                 {wishlistCount > 0 ? (
-                  <FaHeart className="text-xl cursor-pointer text-red-500 hover:text-red-600 transition-colors" />
+                  <FaHeart className="text-xl cursor-pointer hover:text-[#C9A24D] transition-colors" />
                 ) : (
                   <FaRegHeart className="text-xl cursor-pointer hover:text-[#C9A24D] transition-colors" />
                 )}

@@ -1,5 +1,5 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { furnitureData } from "../assests/furnitureData";
 import { useMemo, useState } from "react";
 import { useCart } from "./context/AddtocartContext";
@@ -137,20 +137,20 @@ const CategoryProducts = () => {
             <section className="max-w-7xl mx-auto px-4 py-16">
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
                     {/* DESKTOP FILTER */}
-                    <aside className="hidden lg:block sticky top-24 h-fit rounded-2xl p-6 bg-[#E6D5C3] shadow-lg">
-                        <h3 className="text-xl font-semibold mb-6 text-[#3E2723]">
+                    <aside className="hidden lg:block sticky top-24 h-fit rounded-2xl p-6 bg-[#E6D5C3] shadow-md">
+                        <h3 className="text-lg font-semibold mb-6 text-[#3E2723] font-serif">
                             Filters
                         </h3>
                         <FilterContent />
                     </aside>
 
-                    {/* PRODUCTS */}
-                    <div className="lg:col-span-3">
+                    {/* MAIN */}
+                    <div className="lg:col-span-3 space-y-20">
                         {/* MOBILE FILTER BUTTON */}
-                        <div className="lg:hidden mb-6 flex justify-end">
+                        <div className="lg:hidden flex justify-start mb-10 mt-2">
                             <button
                                 onClick={() => setShowFilter(true)}
-                                className="px-4 py-2 rounded-full bg-[#3E2723] text-white font-medium hover:bg-[#C9A24D] transition"
+                                className="px-4 py-2 rounded-full bg-[#3E2723] text-[#FAF7F2]"
                             >
                                 ☰ Filters
                             </button>
@@ -187,8 +187,10 @@ const CategoryProducts = () => {
                                     <motion.div
                                         key={item.id}
                                         whileHover={{ y: -8 }}
-                                        className="bg-[#E6D5C3] rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-shadow"
+                                        className="bg-[#E6D5C3] rounded-2xl shadow-md hover:shadow-xl transition-shadow
+             h-full flex flex-col overflow-hidden"
                                     >
+                                        {/* Image */}
                                         <div className="relative">
                                             <Link
                                                 to={`/product/${item.id}`}
@@ -208,51 +210,71 @@ const CategoryProducts = () => {
                                                     className="h-56 w-full object-cover"
                                                 />
                                             </Link>
-                                            <div className="absolute top-3 right-3">
+
+                                            <div className="absolute top-3 right-3 z-10">
                                                 <WishlistButton product={item} size={20} />
                                             </div>
                                         </div>
-                                        <div className="p-5 space-y-3">
+
+                                        {/* Content */}
+                                        <div className="p-5 flex flex-col flex-grow">
                                             <h3 className="text-lg font-semibold text-[#3E2723]">
                                                 {item.name}
                                             </h3>
-                                            <p className="text-sm text-gray-600">{item.description}</p>
-                                            <p className="font-bold text-[#3E2723]">₹{item.price}</p>
-                                            <div className="flex flex-col gap-2 pt-3">
+
+                                            <p className="text-sm text-gray-600 line-clamp-2 mt-1">
+                                                {item.description}
+                                            </p>
+
+                                            <p className="font-bold text-[#3E2723] mt-2">
+                                                ₹{item.price}
+                                            </p>
+
+                                            {/* Buttons pushed to bottom */}
+                                            <div className="flex flex-col gap-2 pt-4 mt-auto">
                                                 <div className="flex gap-2">
                                                     <button
                                                         onClick={() => {
                                                             addToCart(item);
                                                             navigate("/cart");
                                                         }}
-                                                        className="flex-1 py-2 rounded-lg border border-[#3E2723] text-[#3E2723] hover:bg-[#C9A24D] hover:text-white transition text-sm"
+                                                        className="flex-1 py-2 rounded-lg border border-[#3E2723]
+                     text-[#3E2723] hover:bg-[#C9A24D] hover:text-white
+                     transition text-sm"
                                                     >
                                                         Add to Cart
                                                     </button>
+
                                                     <button
                                                         onClick={() => {
                                                             addToCart(item);
                                                             navigate("/checkoutPage");
                                                         }}
-                                                        className="flex-1 py-2 rounded-lg bg-[#3E2723] text-white hover:bg-[#C9A24D] transition text-sm"
+                                                        className="flex-1 py-2 rounded-lg bg-[#3E2723]
+                     text-white hover:bg-[#C9A24D]
+                     transition text-sm"
                                                     >
                                                         Buy Now
                                                     </button>
                                                 </div>
+
                                                 <button
-                                                    onClick={() => navigate("/customize", {
-                                                        state: {
-                                                            product: item,
-                                                            typeKey: typeKey,
-                                                        }
-                                                    })}
-                                                    className="w-full py-2 rounded-lg bg-[#C9A24D] text-white hover:bg-[#B8923D] transition font-medium text-sm"
+                                                    onClick={() =>
+                                                        navigate("/customize", {
+                                                            state: {
+                                                                product: item,
+                                                                typeKey: typeKey,
+                                                            },
+                                                        })
+                                                    }
+                                                    className="w-full py-2 rounded-lg bg-[#C9A24D] text-white hover:bg-[#B8923D]transition font-medium text-sm"
                                                 >
                                                     Customize
                                                 </button>
                                             </div>
                                         </div>
                                     </motion.div>
+
 
                                 ))
                             )}
@@ -261,20 +283,37 @@ const CategoryProducts = () => {
                 </div>
             </section>
 
-            {/* MOBILE FILTER MODAL */}
-            {showFilter && (
-                <div className="fixed inset-0 bg-black/40 z-50 flex justify-end">
-                    <div className="w-80 bg-[#FAF7F2] p-6 shadow-xl overflow-y-auto">
-                        <FilterContent />
-                        <button
+            {/* MOBILE FILTER DRAWER */}
+            <AnimatePresence>
+                {showFilter && (
+                    <>
+                        <motion.div
+                            className="fixed inset-0 bg-black z-40"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 0.5 }}
+                            exit={{ opacity: 0 }}
                             onClick={() => setShowFilter(false)}
-                            className="mt-4 w-full py-2 bg-[#3E2723] text-white rounded-lg hover:bg-[#C9A24D] transition"
+                        />
+
+                        <motion.div
+                            className="fixed top-0 right-0 h-full w-[85%] max-w-sm bg-[#E6D5C3] z-50 p-6 overflow-y-auto"
+                            initial={{ x: "100%" }}
+                            animate={{ x: 0 }}
+                            exit={{ x: "100%" }}
+                            transition={{ type: "spring", stiffness: 280, damping: 30 }}
                         >
-                            Close
-                        </button>
-                    </div>
-                </div>
-            )}
+                            <div className="flex justify-between items-center mb-6">
+                                <h3 className="text-lg font-semibold text-[#3E2723]">
+                                    Filters
+                                </h3>
+                                <button onClick={() => setShowFilter(false)}>✕</button>
+                            </div>
+
+                            <FilterContent />
+                        </motion.div>
+                    </>
+                )}
+            </AnimatePresence>
         </div>
     );
 };

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import { CheckCircle, Package, Home, ShoppingBag } from "lucide-react";
+import { CheckCircle, Package, Home, ShoppingBag, Truck, RefreshCcw, Shield } from "lucide-react";
 
 export default function ThankYou() {
   const location = useLocation();
@@ -182,21 +182,24 @@ export default function ThankYou() {
           className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 text-center"
         >
           {[
-            { emoji: "🚚", label: "Fast Delivery" },
-            { emoji: "🔄", label: "Easy Returns" },
-            { emoji: "🛡️", label: "Secure Payment" },
+            { icon: <Truck className="w-6 h-6 text-[#3E2723]" />, label: "Fast Delivery" },
+            { icon: <RefreshCcw className="w-6 h-6 text-[#3E2723]" />, label: "Easy Returns" },
+            { icon: <Shield className="w-6 h-6 text-[#3E2723]" />, label: "Secure Payment" },
           ].map((item, i) => (
             <div
               key={i}
-              className="bg-white rounded-lg p-4 shadow-sm"
+              className="bg-white rounded-lg p-4 shadow-sm flex flex-col items-center"
             >
-              <p className="text-2xl mb-2">{item.emoji}</p>
-              <p className="text-xs font-medium text-gray-700">
+              <div className="mb-2 flex items-center justify-center">
+                {item.icon}
+              </div>
+              <p className="text-xs font-medium text-gray-700 text-center">
                 {item.label}
               </p>
             </div>
           ))}
         </motion.div>
+
       </div >
     </div >
   );

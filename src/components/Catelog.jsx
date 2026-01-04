@@ -177,11 +177,10 @@ const CatalogPage = () => {
               onClick={() =>
                 isMobile ? setTempMaterial(m) : setMaterial(m)
               }
-              className={`border px-3 py-1 rounded-full text-xs transition ${
-                (isMobile ? tempMaterial : material) === m
+              className={`border px-3 py-1 rounded-full text-xs transition ${(isMobile ? tempMaterial : material) === m
                   ? "bg-[#3e2723] text-white"
                   : "hover:bg-[#3e2723] hover:text-white"
-              }`}
+                }`}
             >
               {m}
             </button>
@@ -291,8 +290,8 @@ const CatalogPage = () => {
                     <img src={p.img} className="h-56 w-full object-cover" alt={p.name} />
                     {/* Wishlist Button */}
                     <div className="absolute top-3 right-3 z-10">
-                      <WishlistButton 
-                        product={p} 
+                      <WishlistButton
+                        product={p}
                         className="bg-white/90 hover:bg-white rounded-full p-2 shadow-md"
                       />
                     </div>
@@ -305,7 +304,7 @@ const CatalogPage = () => {
                   </Link>
                   <div className="flex justify-between items-center mt-3">
                     <span className="font-semibold">₹{p.price.toLocaleString()}</span>
-                    <button 
+                    <button
                       onClick={(e) => {
                         e.preventDefault();
                         e.stopPropagation();
