@@ -39,30 +39,31 @@ export default function TermsOfService() {
     <div className="bg-[#FAF7F2] text-[#2B2B2B]">
 
       {/* HEADER */}
-      <div className="max-w-7xl mx-auto px-4 py-12 text-center">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 pt-16 pb-10 text-center">
         <div className="relative overflow-hidden rounded-3xl mb-8 h-[260px] md:h-[420px]">
+
           <img
-            src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85"
+            src="https://i.pinimg.com/1200x/df/f7/96/dff7964b13a41e36a12e38777a5adc64.jpg"
             className="absolute inset-0 w-full h-full object-cover opacity-50"
             alt="Hero"
           />
-          <div className="absolute inset-0 bg-black/60" />
+          <div className="absolute inset-0 bg-black/60"></div>
 
           <div className="relative z-10 h-full flex flex-col justify-center px-4">
-            <h1 className="mt-2 text-3xl md:text-5xl font-serif font-bold text-white">
+            <h1 className="text-3xl md:text-5xl font-serif font-bold text-[#F5E6C8]">
               Terms of Service
             </h1>
 
-            <p className="text-white mt-4 max-w-2xl mx-auto">
-              Please read these terms carefully before using Graphura services. They
-              outline the rules and regulations for the use of Luxury Living&apos;s
-              Website and Services.
+            <p className="max-w-2xl mx-auto mt-4 text-[#F5E6C8] text-sm md:text-base">
+              Please read these terms carefully before using Graphura Interiors services.
+              They outline the rules and regulations for using Graphura&apos;s website
+              and services.
             </p>
 
-            <nav className="mt-6 text-[#F5E6C8] font-bold w-fit mx-auto shadow px-6 py-3 rounded-full">
-              <span className="flex items-center gap-2">
+            <nav className="mt-5 mx-auto">
+              <span className="inline-flex items-center gap-2 rounded-full bg-black/30 px-4 py-2 text-xs sm:text-sm text-[#F5E6C8] font-bold">
                 <FaCalendarCheck />
-                <span>Last updated: December 2025</span>
+                Last updated: December 2025
               </span>
             </nav>
           </div>
@@ -73,9 +74,9 @@ export default function TermsOfService() {
       <div className="max-w-7xl mx-auto px-4 lg:px-8 flex flex-col lg:flex-row gap-8 pb-4">
 
         {/* MOBILE TOC */}
-        <div className="hidden bg-[#3e2723] text-[#F5E6C8] rounded-2xl p-4">
+        <div className="hidden md:block lg:hidden bg-[#3e2723] text-[#F5E6C8] rounded-2xl p-4">
           <p className="font-bold mb-3">Table of Contents</p>
-          <ul className="grid grid-cols-2 gap-2 text-sm">
+          <ul className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-sm">
             {sections.map((item) => (
               <li key={item.id}>
                 <a
@@ -98,11 +99,10 @@ export default function TermsOfService() {
                 <li key={item.id}>
                   <a
                     href={`#${item.id}`}
-                    className={`transition ${
-                      active === item.id
-                        ? "text-[#C9A24D] font-semibold"
-                        : "hover:text-[#C9A24D]"
-                    }`}
+                    className={`transition ${active === item.id
+                      ? "text-[#C9A24D] font-semibold"
+                      : "hover:text-[#C9A24D]"
+                      }`}
                   >
                     {item.label}
                   </a>
@@ -114,7 +114,7 @@ export default function TermsOfService() {
 
         {/* CONTENT */}
         <main className="flex-1 min-w-0">
-        <div className="max-w-4xl mx-auto rounded-xl pt-6 px-4 md:px-8 lg:px-10">
+          <div className="max-w-4xl mx-auto rounded-xl pt-6 px-4 md:px-8 lg:px-10">
 
 
             {/* Overview */}
@@ -150,7 +150,7 @@ export default function TermsOfService() {
                 <span>3.</span> Pricing & Payment
               </h2>
               <p className="pb-2">Prices for our products are subject to change without notice. We reserve the right at any time to modify or discontinue the Service (or any part or content thereof) without notice at any time. We shall not be liable to you or to any third-party for any modification, price change, suspension or discontinuance of the Service.</p>
-              <p className ="text-sm italic font-medium p-4 bg-red-300 rounded-xl">Note: All prices are listed in USD unless otherwise noted. Taxes and shipping costs are calculated at checkout.</p>
+              <p className="text-sm italic font-medium p-4 bg-red-300 rounded-xl">Note: All prices are listed in USD unless otherwise noted. Taxes and shipping costs are calculated at checkout.</p>
 
             </section>
 
@@ -165,21 +165,21 @@ export default function TermsOfService() {
                   <div className="flex items-center gap-2 font-bold font-serif">
                     <MdOutlineLocalShipping className="h-8 w-8 md:h-10 md:w-10" />
                     <span>Standard Shipping</span>
-                    </div>
-                    <p className="">Small items and accessories are shipped via standard ground carriers and typically arrive within 5-7 business days.</p>
-
                   </div>
-                
+                  <p className="">Small items and accessories are shipped via standard ground carriers and typically arrive within 5-7 business days.</p>
+
+                </div>
+
                 <div className="p-4 bg-amber-100 rounded-lg">
                   <div className="flex items-center gap-2 font-bold font-serif">
                     <MdOutlineChair className="h-8 w-8 md:h-10 md:w-10" />
                     <span>White Glove</span>
-                    </div>
-                    <p className="">Large furniture items are delivered via our premium partners. Scheduling will be arranged directly with you.</p>
-
                   </div>
+                  <p className="">Large furniture items are delivered via our premium partners. Scheduling will be arranged directly with you.</p>
+
                 </div>
-              
+              </div>
+
             </section>
 
             {/* Returns */}
@@ -196,7 +196,7 @@ export default function TermsOfService() {
               <h2 className="text-2xl md:text-3xl font-serif font-bold mb-6 flex gap-3">
                 <span>6.</span> Intellectual Property
               </h2>
-             <p>The site and its original content, features, and functionality are owned by Luxury Living and are protected by international copyright, trademark, patent, trade secret, and other intellectual property or proprietary rights laws. </p>
+              <p>The site and its original content, features, and functionality are owned by Luxury Living and are protected by international copyright, trademark, patent, trade secret, and other intellectual property or proprietary rights laws. </p>
 
             </section>
 
@@ -213,43 +213,43 @@ export default function TermsOfService() {
         </main>
       </div>
 
-{/* CTA */}
-<section className="bg-[#f3eae7] py-16 mt-12">
-  <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-    <div className="max-w-[960px] mx-auto p-6 md:p-10 text-center rounded-2xl bg-[#3e2723]">
+      {/* CTA */}
+      <section className="bg-[#f3eae7] py-16 mt-12">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
+          <div className="max-w-[960px] mx-auto p-6 md:p-10 text-center rounded-2xl bg-[#3e2723]">
 
-      <MdOutlineSupportAgent className="h-16 w-16 mx-auto mb-6 text-[#C9A24D]" />
+            <MdOutlineSupportAgent className="h-16 w-16 mx-auto mb-6 text-[#C9A24D]" />
 
-      <h2 className="text-3xl font-bold font-serif mb-4 text-[#F5E6C8]">
-        Still have questions?
-      </h2>
+            <h2 className="text-3xl font-bold font-serif mb-4 text-[#F5E6C8]">
+              Still have questions?
+            </h2>
 
-      <p className="text-[#F5E6C8] mb-8 max-w-md mx-auto">
-        If you have any questions about these Terms, please contact us. We are available
-        Monday through Friday, 9am - 5pm EST.
-      </p>
+            <p className="text-[#F5E6C8] mb-8 max-w-md mx-auto">
+              If you have any questions about these Terms, please contact us. We are available
+              Monday through Friday, 9am - 5pm EST.
+            </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-      {/* <div className="flex flex-col sm:flex-row justify-center gap-4"> */}
-      <a
-  href="mailto:official@graphura.in"
-  className="inline-flex items-center gap-2 bg-[#C9A24D] px-6 py-3 rounded-lg text-white font-bold hover:text-[#3e2723]"
->
-  <MdEmail /> official@graphura.in
-</a>
+              {/* <div className="flex flex-col sm:flex-row justify-center gap-4"> */}
+              <a
+                href="mailto:official@graphura.in"
+                className="inline-flex items-center gap-2 bg-[#C9A24D] px-6 py-3 rounded-lg text-white font-bold hover:text-[#3e2723]"
+              >
+                <MdEmail /> official@graphura.in
+              </a>
 
-<a
-  href="tel:+917378021327"
-  className="inline-flex items-center gap-2 bg-[#C9A24D] px-6 py-3 rounded-lg text-white font-bold hover:text-[#3e2723]"
->
-  <IoCall /> +91 73780 21327
-</a>
+              <a
+                href="tel:+917378021327"
+                className="inline-flex items-center gap-2 bg-[#C9A24D] px-6 py-3 rounded-lg text-white font-bold hover:text-[#3e2723]"
+              >
+                <IoCall /> +91 73780 21327
+              </a>
 
-      </div>
+            </div>
 
-    </div>
-  </div>
-</section>
+          </div>
+        </div>
+      </section>
 
 
     </div>

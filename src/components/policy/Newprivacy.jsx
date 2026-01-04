@@ -22,7 +22,7 @@ export default function PrivacyPolicy() {
 
       sections.forEach((item) => {
         const section = document.getElementById(item.id);
-          if (section && section.getBoundingClientRect().top <= 180) {
+        if (section && section.getBoundingClientRect().top <= 180) {
 
           currentId = item.id;
         }
@@ -106,16 +106,16 @@ export default function PrivacyPolicy() {
         <main className="rounded-3xl p-5 sm:p-8 md:p-12 space-y-14">
           {/* <section id="introduction" className="scroll-mt-28"> */}
           <section className="relative">
-  {/* anchor spacer */}
-  <span
-    id="introduction"
-    className="absolute -top-[200px] sm:-top-[220px] md:-top-[240px]"
-  />
+            {/* anchor spacer */}
+            <span
+              id="introduction"
+              className="absolute -top-[200px] sm:-top-[220px] md:-top-[240px]"
+            />
 
 
-<h2 className="text-3xl font-bold font-serif mb-6">
-  1. Introduction
-</h2>
+            <h2 className="text-3xl font-bold font-serif mb-6">
+              1. Introduction
+            </h2>
 
             <p className="leading-relaxed pl-2 sm:pl-5">
               At Graphura Interiors, we are committed to maintaining the trust and confidence of our visitors to our website...
@@ -131,24 +131,24 @@ export default function PrivacyPolicy() {
               2. Information We Collect
             </h2>
 
-            
- <div className="rounded-xl bg-[#FAF7F2] p-5 sm:p-6">
-  <div className="divide-y divide-[#fde0d6]">
 
- <div className="grid grid-cols-1 md:grid-cols-[30%_1fr] gap-4 p-6">
- <div className="font-semibold text-[#2B2B2B] font-serif">Personal Information</div>
- <div className="text-[#2B2B2B] leading-relaxed">Name, email address, phone number, and shipping address provided during checkout or account creation.</div>
- </div>
- <div className="grid grid-cols-1 md:grid-cols-[30%_1fr] gap-4 p-6">
- <div className="font-semibold text-[#2B2B2B] font-serif">Usage Data</div>
- <div className="text-[#2B2B2B] leading-relaxed">Information on how the Service is accessed and used (e.g., page views, time spent on pages, device information).</div>
- </div>
- <div className="grid grid-cols-1 md:grid-cols-[30%_1fr] gap-4 p-6">
-<div className="font-semibold text-[#2B2B2B] font-serif">Payment Information</div>
-<div className="text-[#2B2B2B] leading-relaxed">We do not store full credit card information. Payments are processed via secure third-party payment processors.</div>
- </div>
- </div>
- </div>
+            <div className="rounded-xl bg-[#FAF7F2] p-5 sm:p-6">
+              <div className="divide-y divide-[#fde0d6]">
+
+                <div className="grid grid-cols-1 md:grid-cols-[30%_1fr] gap-4 p-6">
+                  <div className="font-semibold text-[#2B2B2B] font-serif">Personal Information</div>
+                  <div className="text-[#2B2B2B] leading-relaxed">Name, email address, phone number, and shipping address provided during checkout or account creation.</div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-[30%_1fr] gap-4 p-6">
+                  <div className="font-semibold text-[#2B2B2B] font-serif">Usage Data</div>
+                  <div className="text-[#2B2B2B] leading-relaxed">Information on how the Service is accessed and used (e.g., page views, time spent on pages, device information).</div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-[30%_1fr] gap-4 p-6">
+                  <div className="font-semibold text-[#2B2B2B] font-serif">Payment Information</div>
+                  <div className="text-[#2B2B2B] leading-relaxed">We do not store full credit card information. Payments are processed via secure third-party payment processors.</div>
+                </div>
+              </div>
+            </div>
           </section>
 
           <section id="how-we-use" className="scroll-mt-[140px] sm:scroll-mt-[160px] md:scroll-mt-[180px]"
@@ -157,36 +157,36 @@ export default function PrivacyPolicy() {
               3. How We Use Your Information
             </h2>
             <p className="text-[#2B2B2B] leading-relaxed p-3">
-             We use the collected data for various purposes, primarily to provide and maintain our Service. Specifically, we use your data to:
-             </p>
-             {/* <ul className="p-4 text-[#2B2B2B] "> */}
-             <ul className="space-y-3 px-2 sm:px-4">
-             <li className="flex items-start gap-3">
-  <FaCheckCircle className="text-[#2B2B2B] w-5 h-5 mt-1 flex-shrink-0" />
-  <span>
-    Process and fulfill your orders, including sending emails to confirm your order status and shipment.
-  </span>
-</li>
-<li className="flex items-start gap-3">
-  <FaCheckCircle className="text-[#2B2B2B] w-5 h-5 mt-1 flex-shrink-0" />
-  <span>
-  Provide customer support and respond to your inquiries.
-  </span>
-</li>
-<li className="flex items-start gap-3">
-  <FaCheckCircle className="text-[#2B2B2B] w-5 h-5 mt-1 flex-shrink-0" />
-  <span>
-  Gather analysis or valuable information so that we can improve our Service.
-  </span>
-</li>
-<li className="flex items-start gap-3">
-  <FaCheckCircle className="text-[#2B2B2B] w-5 h-5 mt-1 flex-shrink-0" />
-  <span>
-  Monitor the usage of our Service to detect, prevent, and address technical issues.
-  </span>
-</li>
+              We use the collected data for various purposes, primarily to provide and maintain our Service. Specifically, we use your data to:
+            </p>
+            {/* <ul className="p-4 text-[#2B2B2B] "> */}
+            <ul className="space-y-3 px-2 sm:px-4">
+              <li className="flex items-start gap-3">
+                <FaCheckCircle className="text-[#2B2B2B] w-5 h-5 mt-1 flex-shrink-0" />
+                <span>
+                  Process and fulfill your orders, including sending emails to confirm your order status and shipment.
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <FaCheckCircle className="text-[#2B2B2B] w-5 h-5 mt-1 flex-shrink-0" />
+                <span>
+                  Provide customer support and respond to your inquiries.
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <FaCheckCircle className="text-[#2B2B2B] w-5 h-5 mt-1 flex-shrink-0" />
+                <span>
+                  Gather analysis or valuable information so that we can improve our Service.
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <FaCheckCircle className="text-[#2B2B2B] w-5 h-5 mt-1 flex-shrink-0" />
+                <span>
+                  Monitor the usage of our Service to detect, prevent, and address technical issues.
+                </span>
+              </li>
 
-             </ul>
+            </ul>
           </section>
 
           <section id="cookies-tracking" className="scroll-mt-[140px] sm:scroll-mt-[160px] md:scroll-mt-[180px]"
@@ -196,15 +196,15 @@ export default function PrivacyPolicy() {
             </h2>
             <div className="bg-[#FAF7F2] p-4 rounded-xl ">
               <p>
-              We use cookies and similar tracking technologies to track the activity on our Service and hold certain information. Cookies are files with small amount of data which may include an anonymous unique identifier.
+                We use cookies and similar tracking technologies to track the activity on our Service and hold certain information. Cookies are files with small amount of data which may include an anonymous unique identifier.
 
               </p>
               <br />
-              <p>You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Service.   
+              <p>You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Service.
               </p>
 
             </div>
-            
+
           </section>
 
           <section id="sharing" className="scroll-mt-[140px] sm:scroll-mt-[160px] md:scroll-mt-[180px]"
@@ -213,95 +213,84 @@ export default function PrivacyPolicy() {
               5. Third-Party Sharing
             </h2>
             <p className=" text-[#2B2B2B]-700 leading-relaxed p-3">
-            We may employ third party companies and individuals to facilitate our Service ("Service Providers"), to provide the Service on our behalf, to perform Service-related services, or to assist us in analyzing how our Service is used. These third parties have access to your Personal Data only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose.
-             </p>
-         
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-6">
-           <div className="p-4 rounded-lg bg-[#f5ead6] font-serif flex items-center gap-3">
-           <span className="flex items-center gap-2">
-           <MdOutlineLocalShipping className="w-8 h-8 sm:w-10 sm:h-10"/>&nbsp;&nbsp;
-            <span>Logistics Partners</span>
-          </span>
-         </div>
-         <div className="p-4 rounded-lg bg-[#f5ead6] font-serif flex items-center gap-3">
-         <span className="flex items-center gap-2">
-         <MdPayments className="w-8 h-8 sm:w-10 sm:h-10" />&nbsp;&nbsp;
-            <span>Payment Processors</span>
-          </span>
-         </div>
-         <div className="p-4 rounded-lg bg-[#f5ead6] flex items-center font-serif gap-3">
-         <span className="flex items-center gap-2">
-         <SiGoogleanalytics className="w-8 h-8 sm:w-10 sm:h-10" />&nbsp;&nbsp;
-            <span>Analytics Providers </span>
-          </span>
-         </div>
-         <div class="p-4 rounded-lg bg-[#f5ead6] font-serif flex items-center gap-3">
-         <span className="flex items-center gap-2">
-         <MdMarkEmailRead className="w-8 h-8 sm:w-10 sm:h-10"/>&nbsp;&nbsp;
-            <span>Email Services</span>
-          </span>
-        </div>
+              We may employ third party companies and individuals to facilitate our Service ("Service Providers"), to provide the Service on our behalf, to perform Service-related services, or to assist us in analyzing how our Service is used. These third parties have access to your Personal Data only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose.
+            </p>
 
-</div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-6">
+              <div className="p-4 rounded-lg bg-[#f5ead6] font-serif flex items-center gap-3">
+                <span className="flex items-center gap-2">
+                  <MdOutlineLocalShipping className="w-8 h-8 sm:w-10 sm:h-10" />&nbsp;&nbsp;
+                  <span>Logistics Partners</span>
+                </span>
+              </div>
+              <div className="p-4 rounded-lg bg-[#f5ead6] font-serif flex items-center gap-3">
+                <span className="flex items-center gap-2">
+                  <MdPayments className="w-8 h-8 sm:w-10 sm:h-10" />&nbsp;&nbsp;
+                  <span>Payment Processors</span>
+                </span>
+              </div>
+              <div className="p-4 rounded-lg bg-[#f5ead6] flex items-center font-serif gap-3">
+                <span className="flex items-center gap-2">
+                  <SiGoogleanalytics className="w-8 h-8 sm:w-10 sm:h-10" />&nbsp;&nbsp;
+                  <span>Analytics Providers </span>
+                </span>
+              </div>
+              <div className="p-4 rounded-lg bg-[#f5ead6] font-serif flex items-center gap-3">
+                <span className="flex items-center gap-2">
+                  <MdMarkEmailRead className="w-8 h-8 sm:w-10 sm:h-10" />&nbsp;&nbsp;
+                  <span>Email Services</span>
+                </span>
+              </div>
+
+            </div>
           </section>
 
           <section id="security" className="scroll-mt-[140px] sm:scroll-mt-[160px] md:scroll-mt-[180px]"
->
+          >
             <h2 className="text-3xl font-bold font-serif mb-4">
               6. Your Data Protection Rights
             </h2>
             <p className=" text-[#2B2B2B] leading-relaxed p-3 ">
-            Graphura Interiors aims to take reasonable steps to allow you to correct, amend, delete, or limit the use of your Personal Data. Whenever made possible, you can update your Personal Data directly within your account settings section. If you are unable to change your Personal Data, please contact us to make the required changes.
+              Graphura Interiors aims to take reasonable steps to allow you to correct, amend, delete, or limit the use of your Personal Data. Whenever made possible, you can update your Personal Data directly within your account settings section. If you are unable to change your Personal Data, please contact us to make the required changes.
               <br /><br />
-            If you wish to be informed what Personal Data we hold about you and if you want it to be removed from our systems, please contact us.
+              If you wish to be informed what Personal Data we hold about you and if you want it to be removed from our systems, please contact us.
             </p>
           </section>
 
           <section id="contact" className="scroll-mt-[140px] sm:scroll-mt-[160px] md:scroll-mt-[180px]"
->
-          {/* <div className="relative z-10 flex flex-col md:flex-row bg-[#3e2723] p-10 rounded-xl items-start md:items-center gap-6 md:gap-10"> */}
+          >
+            {/* <div className="relative z-10 flex flex-col md:flex-row bg-[#3e2723] p-10 rounded-xl items-start md:items-center gap-6 md:gap-10"> */}
 
 
 
-    {/* <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6"> */}
-    <div className="relative z-10 flex flex-col md:flex-row bg-[#3e2723] p-8 sm:p-10 rounded-xl items-center md:items-center gap-6 md:gap-10 text-center md:text-left">
+            {/* <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6"> */}
+            <div className="relative z-10 flex flex-col md:flex-row bg-[#3e2723] p-8 sm:p-10 rounded-xl items-center md:items-center gap-6 md:gap-10 text-center md:text-left">
 
-       <div>
-         <h2 className="text-3xl font-bold font-serif text-[#F5E6C8] mb-2">
-          Have questions about your data?
-         </h2>
-      
-         <p className=" text-[#F5E6C8] max-w-md">
-           Our dedicated  privacy team of graphura is always available to assist you with any inquiries regarding this policy.
-         </p>
-       </div>
+              <div>
+                <h2 className="text-3xl font-bold font-serif text-[#F5E6C8] mb-2">
+                  Have questions about your data?
+                </h2>
 
-       <div className="w-full md:w-auto">
-         <a
-           href="mailto:official@graphura.in"
-          className="inline-flex items-center justify-center rounded-lg  px-6 py-3 bg-[#C9A24D] text-sm font-bold text-white transition hover:text-[#2B2B2B]"
-        >
-          Graphura Privacy Team
-        </a>
-      </div>
+                <p className=" text-[#F5E6C8] max-w-md">
+                  Our dedicated  privacy team of graphura is always available to assist you with any inquiries regarding this policy.
+                </p>
+              </div>
 
-     {/* </div> */}
-  </div>
+              <div className="w-full md:w-auto">
+                <a
+                  href="mailto:official@graphura.in"
+                  className="inline-flex items-center justify-center rounded-lg  px-6 py-3 bg-[#C9A24D] text-sm font-bold text-white transition hover:text-[#2B2B2B]"
+                >
+                  Graphura Privacy Team
+                </a>
+              </div>
+
+              {/* </div> */}
+            </div>
           </section>
 
         </main>
       </div>
     </div>
-    
   );
 }
-
-// import React from 'react'
-
-// const Newprivacy = () => {
-//   return (
-//     <div>Newprivacy</div>
-//   )
-// }
-
-// export default Newprivacy

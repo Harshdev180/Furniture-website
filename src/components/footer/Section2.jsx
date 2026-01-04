@@ -93,20 +93,26 @@ const Section2 = () => {
           <ul className="text-gray-300">
             <li className="hover:text-white hover:font-semibold cursor-pointer hover:pl-[9px] transition duration-150 ease-in-out flex place-items-center mb-1">
               <GoChevronRight className="h-5" />
-              <Link to="" className="">
+              <Link to="/terms" className="">
                 Term of Services
               </Link>
             </li>
             <li className="hover:text-white hover:font-semibold cursor-pointer hover:pl-[9px] transition duration-150 ease-in-out flex place-items-center mb-1">
               <GoChevronRight className="h-5" />
-              <Link to="" className="">
+              <Link to="/privacy" className="">
                 Privacy policy
               </Link>
             </li>
             <li className="hover:text-white cursor-pointer hover:pl-[9px] transition duration-150 ease-in-out flex place-items-center mb-1">
               <GoChevronRight className="h-5" />
-              <Link to="" className="">
+              <Link to="/cookies" className="">
                 Cookie Policy
+              </Link>
+            </li>
+            <li className="hover:text-white cursor-pointer hover:pl-[9px] transition duration-150 ease-in-out flex place-items-center mb-1">
+              <GoChevronRight className="h-5" />
+              <Link to="/return" className="">
+                Return Policy
               </Link>
             </li>
           </ul>

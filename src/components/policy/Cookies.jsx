@@ -59,10 +59,12 @@ export default function CookiePolicy() {
               with a seamless, personalized shopping experience.
             </p>
 
-            <div className="mt-6 inline-flex items-center gap-2 text-[#F5E6C8] font-bold px-6 py-3 rounded-full shadow bg-black/20">
-              <FaCalendarCheck />
-              <span className="text-sm">Last updated: December 2025</span>
-            </div>
+            <nav className="mt-5 mx-auto">
+              <span className="inline-flex items-center gap-2 rounded-full bg-black/30 px-4 py-2 text-xs sm:text-sm text-[#F5E6C8] font-bold">
+                <FaCalendarCheck />
+                Last updated: December 2025
+              </span>
+            </nav>
           </div>
         </div>
       </div>
@@ -72,34 +74,34 @@ export default function CookiePolicy() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12
                 grid grid-cols-1 lg:grid-cols-4 gap-10">
 
-  <aside className="hidden lg:block lg:w-60">
-    <div className="lg:sticky lg:top-24
+        <aside className="hidden lg:block lg:w-60">
+          <div className="lg:sticky lg:top-24
                     p-6 rounded-3xl
                     bg-[#3e2723] text-[#F5E6C8] shadow-lg">
 
-      <p className="font-bold mb-4">Table of Contents</p>
-      <ul className="space-y-3 text-sm">
-        {sections.map((item, index) => (
-          <li key={item.id}>
-            <a
-              href={`#${item.id}`}
-              data-id={item.id}
-              className="toc-link block hover:text-[#C9A24D]"
-            >
-              {index + 1}. {item.label}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </aside>
+            <p className="font-bold mb-4">Table of Contents</p>
+            <ul className="space-y-3 text-sm">
+              {sections.map((item, index) => (
+                <li key={item.id}>
+                  <a
+                    href={`#${item.id}`}
+                    data-id={item.id}
+                    className="toc-link block hover:text-[#C9A24D]"
+                  >
+                    {index + 1}. {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </aside>
 
 
 
         {/* MAIN */}
         <main className="lg:col-span-3 space-y-14 px-4 sm:px-6 md:px-8">
 
-   
+
 
 
           <section id="what-are-cookies" className="scroll-mt-32">
@@ -107,9 +109,9 @@ export default function CookiePolicy() {
               1. What Are Cookies
             </h2>
             <p className="leading-relaxed">
-            Cookies are small text files that are stored on your device when you visit our website. They act as a memory for the website, allowing it to recognize you and your preferences on future visits.
+              Cookies are small text files that are stored on your device when you visit our website. They act as a memory for the website, allowing it to recognize you and your preferences on future visits.
 
-            We use cookies to ensure our website functions correctly, to understand how visitors interact with our content, and to deliver personalized marketing that aligns with your refined tastes.
+              We use cookies to ensure our website functions correctly, to understand how visitors interact with our content, and to deliver personalized marketing that aligns with your refined tastes.
             </p>
           </section>
 
@@ -138,9 +140,9 @@ export default function CookiePolicy() {
 
             {/* <div className="overflow-x-auto rounded-xl"> */}
             <div className="overflow-x-auto w-full max-w-full">
-            <table className="w-full min-w-[520px] text-left text-sm">
+              <table className="w-full min-w-[520px] text-left text-sm">
 
-              {/* <table className="min-w-[600px] w-full text-left text-sm"> */}
+                {/* <table className="min-w-[600px] w-full text-left text-sm"> */}
                 <thead className="bg-[#fcf9f8] ">
                   <tr>
                     <th className="px-4 py-3 font-bold font-serif">Partner</th>
@@ -169,47 +171,47 @@ export default function CookiePolicy() {
             </div>
           </section>
 
-       
+
           <section
-  id="contact"
-  className="bg-[#3e2723] text-white rounded-2xl px-4 sm:px-6 md:px-8 py-6 sm:py-8 md:py-12 text-center scroll-mt-32 overflow-hidden"
->
+            id="contact"
+            className="bg-[#3e2723] text-white rounded-2xl px-4 sm:px-6 md:px-8 py-6 sm:py-8 md:py-12 text-center scroll-mt-32 overflow-hidden"
+          >
 
             <IoIosMail className="h-14 w-14 mx-auto text-[#C9A24D] mb-4" />
             <h2 className="text-2xl sm:text-3xl font-serif mb-4">
               Questions about your data?
             </h2>
             <p className="text-[#F5E6C8] max-w-lg mx-auto mb-6 text-sm sm:text-base">
-            Graphura value your trust above all else. If you have any questions regarding this policy or how we handle your data, please reach out to our privacy officer.
+              Graphura value your trust above all else. If you have any questions regarding this policy or how we handle your data, please reach out to our privacy officer.
 
             </p>
-{/* 
+            {/* 
             <div className="flex flex-col sm:flex-row gap-4 justify-center"> */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
 
-            <a
-  href="mailto:official@graphura.in"
-  className="inline-flex w-auto items-center justify-center
+              <a
+                href="mailto:official@graphura.in"
+                className="inline-flex w-auto items-center justify-center
              px-4 py-2 sm:px-6 sm:py-3
              text-sm sm:text-base
              rounded-lg bg-[#C9A24D]
              text-[#F5E6C8] font-medium
              hover:text-[#222120]"
->
-  official@graphura.in
-</a>
+              >
+                official@graphura.in
+              </a>
 
-<Link
-  to="/privacy"
-  className="inline-flex w-auto items-center justify-center
+              <Link
+                to="/privacy"
+                className="inline-flex w-auto items-center justify-center
              px-4 py-2 sm:px-6 sm:py-3
              text-sm sm:text-base
              rounded-lg bg-[#C9A24D]
              text-[#F5E6C8] font-medium
              hover:text-[#222120]"
->
-  View Privacy Policy
-</Link>
+              >
+                View Privacy Policy
+              </Link>
 
             </div>
           </section>
@@ -219,13 +221,3 @@ export default function CookiePolicy() {
     </div>
   );
 }
-
-// import React from 'react'
-
-// const Cookies = () => {
-//   return (
-//     <div>Cookies</div>
-//   )
-// }
-
-// export default Cookies

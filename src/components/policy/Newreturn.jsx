@@ -58,10 +58,12 @@ export default function ReturnPolicy() {
               and a smooth experience for every customer.
             </p>
 
-            <div className="mt-6 inline-flex items-center gap-2 mx-auto text-[#F5E6C8] font-bold">
-              <FaCalendarCheck />
-              <span>Last updated: December 2025</span>
-            </div>
+            <nav className="mt-5 mx-auto">
+              <span className="inline-flex items-center gap-2 rounded-full bg-black/30 px-4 py-2 text-xs sm:text-sm text-[#F5E6C8] font-bold">
+                <FaCalendarCheck />
+                Last updated: December 2025
+              </span>
+            </nav>
           </div>
         </div>
       </div>
@@ -69,35 +71,34 @@ export default function ReturnPolicy() {
       {/* LAYOUT */}
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-12 grid grid-cols-1 lg:grid-cols-4 gap-10">
 
-       {/* SIDEBAR */}
-<aside className="hidden lg:block lg:w-60">
-  <div className="lg:sticky lg:top-24 p-6 rounded-3xl bg-[#3e2723] text-[#F5E6C8] shadow-lg">
-    <p className="font-bold mb-4">Table of Contents</p>
+        {/* SIDEBAR */}
+        <aside className="hidden lg:block lg:w-60">
+          <div className="lg:sticky lg:top-24 p-6 rounded-3xl bg-[#3e2723] text-[#F5E6C8] shadow-lg">
+            <p className="font-bold mb-4">Table of Contents</p>
 
-    <ul className="space-y-4 text-sm list-decimal pl-4">
-      {sections.map((item) => (
-        <li key={item.id}>
-          <a
-            href={`#${item.id}`}
-            className={`transition block ${
-              active === item.id
-                ? "text-[#C9A24D] font-semibold"
-                : "hover:text-[#C9A24D]"
-            }`}
-          >
-            {item.label}
-          </a>
-        </li>
-      ))}
-    </ul>
-  </div>
-</aside>
+            <ul className="space-y-4 text-sm list-decimal pl-4">
+              {sections.map((item) => (
+                <li key={item.id}>
+                  <a
+                    href={`#${item.id}`}
+                    className={`transition block ${active === item.id
+                      ? "text-[#C9A24D] font-semibold"
+                      : "hover:text-[#C9A24D]"
+                      }`}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </aside>
 
 
         {/* CONTENT */}
         {/* <main className="lg:col-span-3 space-y-20 p-4 md:p-8 text-[#2B2B2B]"> */}
         {/* CONTENT */}
-<main className="lg:col-span-3 space-y-16 px-3 sm:px-4 md:px-8">
+        <main className="lg:col-span-3 space-y-16 px-3 sm:px-4 md:px-8">
 
 
           <section id="overview" className="scroll-mt-28">
@@ -105,7 +106,7 @@ export default function ReturnPolicy() {
               1. Return & Refund Policy
             </h2>
             <p>
-            At Graphura Interiors, we curate our collection with the utmost attention to detail, quality, and aesthetics. We want you to be completely delighted with your new furniture. If for any reason you are not satisfied, we offer a transparent and seamless return process to ensure your experience remains exceptional from start to finish.
+              At Graphura Interiors, we curate our collection with the utmost attention to detail, quality, and aesthetics. We want you to be completely delighted with your new furniture. If for any reason you are not satisfied, we offer a transparent and seamless return process to ensure your experience remains exceptional from start to finish.
 
             </p>
           </section>
@@ -127,7 +128,7 @@ export default function ReturnPolicy() {
                   <MdInventory className="text-3xl" /> Standard Collection
                 </h3>
                 <p>
-                Stocked items such as dining chairs, lighting, and decor accessories can be returned for a full refund (less shipping costs) within the 30-day window.
+                  Stocked items such as dining chairs, lighting, and decor accessories can be returned for a full refund (less shipping costs) within the 30-day window.
 
                 </p>
               </div>
@@ -137,7 +138,7 @@ export default function ReturnPolicy() {
                   <MdDesignServices className="text-3xl" /> Made-to-Order
                 </h3>
                 <p>
-                Custom upholstery and bespoke furniture pieces are crafted specifically for you. As such, these items are final sale and cannot be returned unless manufacturing defects are present.
+                  Custom upholstery and bespoke furniture pieces are crafted specifically for you. As such, these items are final sale and cannot be returned unless manufacturing defects are present.
 
                 </p>
               </div>
@@ -149,25 +150,25 @@ export default function ReturnPolicy() {
               3. Return Process
             </h2>
             <p className="text-[#2B2B2B] font-bold font-serif">
-           Three simple steps to process your return.
-           </p>
+              Three simple steps to process your return.
+            </p>
             {[1, 2, 3].map((step) => (
-         
+
               <div className="flex gap-4 bg-[#FAF7F2] rounded-2xl p-4 mb-4 items-start sm:items-center">
-  <div className="flex-shrink-0 w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center text-2xl sm:text-4xl font-bold bg-amber-100 rounded-full">
-    {step}
-  </div>
-  <div className="flex-1">
-    <p>
-      {step === 1 &&
-        "Visit our online Returns Portal or contact our Concierge team at official@graphura.in. Provide your order number and reason for return to receive your Return Merchandise Authorization (RMA)."}
-      {step === 2 &&
-        "Securely pack your items in the original packaging. Affix the prepaid shipping label provided by our team. For large furniture items, our logistics partner will contact you to schedule a pickup time."}
-      {step === 3 &&
-        "Once received at our warehouse, our team will inspect the item within 3-5 business days. Upon approval, your refund will be processed to the original payment method immediately."}
-    </p>
-  </div>
-</div>
+                <div className="flex-shrink-0 w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center text-2xl sm:text-4xl font-bold bg-amber-100 rounded-full">
+                  {step}
+                </div>
+                <div className="flex-1">
+                  <p>
+                    {step === 1 &&
+                      "Visit our online Returns Portal or contact our Concierge team at official@graphura.in. Provide your order number and reason for return to receive your Return Merchandise Authorization (RMA)."}
+                    {step === 2 &&
+                      "Securely pack your items in the original packaging. Affix the prepaid shipping label provided by our team. For large furniture items, our logistics partner will contact you to schedule a pickup time."}
+                    {step === 3 &&
+                      "Once received at our warehouse, our team will inspect the item within 3-5 business days. Upon approval, your refund will be processed to the original payment method immediately."}
+                  </p>
+                </div>
+              </div>
 
             ))}
           </section>
@@ -196,7 +197,7 @@ export default function ReturnPolicy() {
                   </tr>
                   <tr>
                     <td className="p-3 font-bold"> Large Item Freight Pickup</td>
-                    <td className="p-3"> $149 flat rate</td>
+                    <td className="p-3"> ₹150 flat rate</td>
                     <td className="p-3 text-center">10-14 Business Days</td>
                   </tr>
                   <tr>
@@ -216,7 +217,7 @@ export default function ReturnPolicy() {
                 Questions about your data?
               </h2>
               <p className="mb-6 text-[#F5E6C8]  max-w-lg mx-auto">
-              At Graphura, your trust matters to us. If you have any questions about this policy or your purchase, our team is always happy to assist you.
+                At Graphura, your trust matters to us. If you have any questions about this policy or your purchase, our team is always happy to assist you.
 
               </p>
               <a
