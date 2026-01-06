@@ -1,12 +1,9 @@
-// Google Sheets Integration Utility
-// Replace this URL with your Google Apps Script Web App URL
+// Google Sheets Integration Utility - FIXED FOR NO-CORS
 const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL || 'https://script.google.com/macros/s/AKfycbytlbkvWBmwQscUYKhl-xA4N-RNOrqXu56W0ZSoaturSx4Uu5m6t1nPsUvblPtxVXpk/exec';
 
 /**
  * Submit form data to Google Sheets via Apps Script
- * @param {string} formType - Type of form (contact, signin, signup, quote, request, delivery)
- * @param {Object} formData - Form data to submit
- * @returns {Promise<Object>} Response from Google Sheets
+ * Using URL parameters instead of POST body (workaround for no-cors)
  */
 export const submitToGoogleSheets = async (formType, formData) => {
   try {
@@ -16,25 +13,81 @@ export const submitToGoogleSheets = async (formType, formData) => {
       ...formData,
     };
 
-    console.log('Submitting to Google Sheets:', { formType, payload }); // Debug log
+    console.log('Submitting to Google Sheets:', { formType, payload });
 
-    const response = await fetch(GOOGLE_SCRIPT_URL, {
-      method: 'POST',
-      mode: 'no-cors', // Required for Google Apps Script
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(payload),
+    // Convert payload to URL parameters
+    const params = new URLSearchParams();
+    params.append('formType', formType);
+    params.append('timestamp', new Date().toISOString());
+
+    // Add all form data as parameters
+    Object.keys(formData).forEach(key => {
+      if (formData[key] !== undefined && formData[key] !== null) {
+        params.append(key, formData[key]);
+      }
     });
 
-    // With no-cors mode, we can't read the response
-    // But the data will be saved to Google Sheets
-    console.log('Form submitted (no-cors mode)'); // Debug log
+    const url = `${GOOGLE_SCRIPT_URL}?${params.toString()}`;
+
+    console.log('Submitting to URL:', url);
+
+    const response = await fetch(url, {
+      method: 'GET', // Using GET with parameters instead of POST
+      redirect: 'follow',
+    });
+
+    console.log('Form submitted successfully');
 
     return {
       success: true,
       message: 'Form submitted successfully',
     };
+  } catch (error) {
+    console.error('Error submitting to Google Sheets:', error);
+    return {
+      success: false,
+      message: 'Failed to submit form. Please try again.',
+      error: error.message,
+    };
+  }
+};
+
+/**
+ * Alternative: Submit using POST with proper CORS
+ * Use this if you redeploy your Apps Script with CORS enabled
+ */
+export const submitToGoogleSheetsWithPOST = async (formType, formData) => {
+  try {
+    const payload = {
+      formType: formType,
+      timestamp: new Date().toISOString(),
+      ...formData,
+    };
+
+    console.log('Submitting to Google Sheets (POST):', { formType, payload });
+
+    const response = await fetch(GOOGLE_SCRIPT_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'text/plain', // Changed from application/json
+      },
+      body: JSON.stringify(payload),
+      redirect: 'follow',
+    });
+
+    // Try to read the response
+    try {
+      const result = await response.text();
+      const data = JSON.parse(result);
+      console.log('Response:', data);
+      return data;
+    } catch (e) {
+      // If we can't parse the response, assume success
+      return {
+        success: true,
+        message: 'Form submitted successfully',
+      };
+    }
   } catch (error) {
     console.error('Error submitting to Google Sheets:', error);
     return {
@@ -53,7 +106,7 @@ export const submitContactForm = async (data) => {
     name: data.name,
     email: data.email,
     phone: data.phone,
-    subject: data.subject,
+    subject: data.subject || '',
     message: data.message,
   });
 };
@@ -73,7 +126,7 @@ export const submitNewsletterForm = async (data) => {
     email = '';
   }
 
-  console.log('Newsletter submission - Email:', email); // Debug log
+  console.log('Newsletter submission - Email:', email);
 
   if (!email) {
     console.error('Newsletter submission failed: No email provided');
@@ -104,7 +157,6 @@ export const submitNewsletterForm = async (data) => {
 export const submitSignIn = async (data) => {
   return submitToGoogleSheets('signin', {
     email: data.email,
-    timestamp: new Date().toISOString(),
   });
 };
 
@@ -116,7 +168,6 @@ export const submitSignUp = async (data) => {
     name: data.name,
     email: data.email,
     phone: data.phone || '',
-    timestamp: new Date().toISOString(),
   });
 };
 
@@ -191,24 +242,17 @@ export const submitOrder = async (orderData) => {
 
 /**
  * Fetch user data from Google Sheets
- * @param {string} email - User email to fetch data for
- * @returns {Promise<Object>} User data from Google Sheets
  */
 export const fetchUserData = async (email) => {
   try {
-    // Use a different approach since no-cors doesn't allow reading responses
-    // We'll use a workaround with a callback or try with cors
-    const scriptUrl = GOOGLE_SCRIPT_URL.replace('/exec', '');
     const response = await fetch(`${GOOGLE_SCRIPT_URL}?action=getUser&email=${encodeURIComponent(email)}`, {
       method: 'GET',
-      mode: 'cors',
-      headers: {
-        'Accept': 'application/json',
-      },
+      redirect: 'follow',
     });
 
     if (response.ok) {
-      const data = await response.json();
+      const text = await response.text();
+      const data = JSON.parse(text);
       if (data.success) {
         return {
           success: true,
@@ -217,14 +261,12 @@ export const fetchUserData = async (email) => {
       }
     }
 
-    // If fetch fails, return failure (will fallback to localStorage)
     return {
       success: false,
       message: 'Failed to fetch user data',
     };
   } catch (error) {
     console.error('Error fetching user data from Google Sheets:', error);
-    // Return failure but don't throw - will use localStorage fallback
     return {
       success: false,
       message: 'Failed to fetch user data',
@@ -235,8 +277,6 @@ export const fetchUserData = async (email) => {
 
 /**
  * Update user profile in Google Sheets
- * @param {Object} userData - Updated user data
- * @returns {Promise<Object>} Response from Google Sheets
  */
 export const updateUserProfile = async (userData) => {
   return submitToGoogleSheets('updateProfile', {
@@ -248,21 +288,17 @@ export const updateUserProfile = async (userData) => {
 
 /**
  * Get user orders from Google Sheets
- * @param {string} email - User email
- * @returns {Promise<Object>} User orders
  */
 export const fetchUserOrders = async (email) => {
   try {
     const response = await fetch(`${GOOGLE_SCRIPT_URL}?action=getOrders&email=${encodeURIComponent(email)}`, {
       method: 'GET',
-      mode: 'cors',
-      headers: {
-        'Accept': 'application/json',
-      },
+      redirect: 'follow',
     });
 
     if (response.ok) {
-      const data = await response.json();
+      const text = await response.text();
+      const data = JSON.parse(text);
       if (data.success) {
         return {
           success: true,

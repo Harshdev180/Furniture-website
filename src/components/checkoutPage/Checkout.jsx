@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import InputGrid from "./InputGrid";
 import DeliveryForm from "./DeliveryForm";
-import Section from "./section";
+import Section from "./Section";
 import Row from "./Row";
 import { FaArrowLeft } from "react-icons/fa6";
 import { Link } from "react-router-dom";
@@ -25,7 +25,7 @@ export default function Checkout() {
     address: "",
     city: "",
     zipCode: "",
-    country: "IN",
+    country: "",
     deliveryMethod: "delivery",
     deliveryDate: "",
     timeSlot: "",
@@ -47,15 +47,6 @@ export default function Checkout() {
   const discount = subtotal * 0.1;
   const shipping = 70;
   const total = subtotal - discount + shipping;
-
-  const isValidIndianMobile = (phone) => {
-    const digits = String(phone || "").replace(/\D/g, "");
-    if (digits.length === 12 && digits.startsWith("91")) {
-      const local = digits.slice(2);
-      return /^[6-9]\d{9}$/.test(local);
-    }
-    return /^[6-9]\d{9}$/.test(digits);
-  };
 
   return (
     <div className="min-h-screen bg-[#FAF7F2] py-10 ">
@@ -189,11 +180,6 @@ export default function Checkout() {
                   // Validate form data
                   if (!formData.firstName || !formData.lastName || !formData.email || !formData.phone) {
                     alert("Please fill in all required contact information (Name, Email, Phone)");
-                    return;
-                  }
-
-                  if (!isValidIndianMobile(formData.phone)) {
-                    alert("Please enter a valid mobile number (10 digits starting 6-9). You can include +91.");
                     return;
                   }
 
