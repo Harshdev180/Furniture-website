@@ -76,7 +76,7 @@ function App() {
 
             <Route path="/quoteRequest" element={<QuoteRequest />} />
 
-            {/* Checkout - Protected Route */}
+            {/* Checkout */}
             <Route path="/checkoutPage" element={<Checkout />} />
 
             {/* Thank You & Tracking */}
