@@ -16,6 +16,8 @@ export const submitToGoogleSheets = async (formType, formData) => {
       ...formData,
     };
 
+    console.log('Submitting to Google Sheets:', { formType, payload }); // Debug log
+
     const response = await fetch(GOOGLE_SCRIPT_URL, {
       method: 'POST',
       mode: 'no-cors', // Required for Google Apps Script
@@ -27,6 +29,8 @@ export const submitToGoogleSheets = async (formType, formData) => {
 
     // With no-cors mode, we can't read the response
     // But the data will be saved to Google Sheets
+    console.log('Form submitted (no-cors mode)'); // Debug log
+
     return {
       success: true,
       message: 'Form submitted successfully',
@@ -54,10 +58,41 @@ export const submitContactForm = async (data) => {
   });
 };
 
-// submit newsletter form
+/**
+ * Submit newsletter form - FIXED VERSION
+ */
 export const submitNewsletterForm = async (data) => {
-  const emailVal = data.email || data;
-  const email = typeof emailVal === 'string' ? emailVal.trim() : emailVal;
+  // Handle both string and object inputs
+  let email;
+
+  if (typeof data === 'string') {
+    email = data.trim();
+  } else if (data && typeof data === 'object') {
+    email = (data.email || '').trim();
+  } else {
+    email = '';
+  }
+
+  console.log('Newsletter submission - Email:', email); // Debug log
+
+  if (!email) {
+    console.error('Newsletter submission failed: No email provided');
+    return {
+      success: false,
+      message: 'Email is required'
+    };
+  }
+
+  // Validate email format
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    console.error('Newsletter submission failed: Invalid email format');
+    return {
+      success: false,
+      message: 'Please enter a valid email address'
+    };
+  }
+
   return submitToGoogleSheets('newsletter', {
     email: email,
   });
@@ -250,4 +285,3 @@ export const fetchUserOrders = async (email) => {
     };
   }
 };
-

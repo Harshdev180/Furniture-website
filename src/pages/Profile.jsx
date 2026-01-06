@@ -745,61 +745,6 @@ export default function Profile() {
                     </>
                 )}
             </AnimatePresence>
-            {/* ================= ORDER HISTORY (SHOWCASE) ================= */}
-            <div className="bg-[#FAF7F2] rounded-2xl p-6">
-                <h2 className="text-2xl font-semibold mb-6">Order History</h2>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {orderHistoryShowcase.map((order, index) => (
-                        <div
-                            key={index}
-                            className="border rounded-2xl p-4 hover:shadow-lg transition bg-[#FAF7F2]"
-                        >
-                            {/* Product Image */}
-                            <img
-                                src={order.image}
-                                alt={order.productName}
-                                className="w-full h-44 rounded-xl object-cover mb-4"
-                            />
-
-                            {/* Product Info */}
-                            <h3 className="text-lg font-semibold text-[#3E2723]">
-                                {order.productName}
-                            </h3>
-
-                            <p className="text-sm text-[#3E2723]/60">
-                                Category: {order.category}
-                            </p>
-
-                            <p className="text-sm text-[#3E2723]/60">
-                                Order ID: {order.orderId}
-                            </p>
-
-                            <p className="text-sm text-[#3E2723]/60">
-                                Qty: {order.qty} • ₹{order.price.toLocaleString()}
-                            </p>
-
-                            <p className="text-xs text-[#3E2723]/40 mt-1">
-                                Ordered on {order.orderDate}
-                            </p>
-
-                            {/* Status */}
-                            <div className="mt-4 flex items-center justify-between">
-                                <span
-                                    className={`px-3 py-1 rounded-full text-xs font-semibold ${order.status === "Delivered"
-                                        ? "bg-green-100 text-green-600"
-                                        : order.status === "Cancelled"
-                                            ? "bg-red-100 text-red-600"
-                                            : "bg-yellow-100 text-yellow-600"
-                                        }`}
-                                >
-                                    {order.status}
-                                </span>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
         </div>
     );
 }

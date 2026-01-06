@@ -84,6 +84,12 @@ const Section2 = () => {
                 Chair
               </Link>
             </li>
+            <li className="hover:text-white cursor-pointer hover:pl-[9px] transition duration-150 ease-in-out flex place-items-center mb-1">
+              <GoChevronRight className="h-5" />
+              <Link to="/customize" className="">
+                Customize
+              </Link>
+            </li>
           </ul>
         </div>
 

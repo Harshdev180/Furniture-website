@@ -48,6 +48,9 @@ const InputGrid = ({ formData, onChange }) => {
             className="w-full h-12 sm:h-14 px-4 rounded-xl border-2 border-[#E6D5C3] bg-white focus:border-[#C9A24D] focus:ring-2 focus:ring-[#C9A24D]/20 outline-none transition-all placeholder:text-gray-400 text-[#3E2723] font-medium"
             placeholder="+91 12345 67890"
             type="tel"
+            inputMode="numeric"
+            pattern="^(\+?91[\s-]?)?[6-9]\d{9}$"
+            title="Enter a valid Indian mobile number. Example: 9876543210 or +91 9876543210"
             value={formData?.phone || ""}
             onChange={(e) => handleChange("phone", e.target.value)}
             required
