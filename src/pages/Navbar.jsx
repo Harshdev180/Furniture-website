@@ -93,7 +93,7 @@ const Navbar = () => {
                 title={isAuthenticated ? userEmail : "Sign In"}
               >
                 <FaRegUser
-                  className={`text-xl cursor-pointer hover:text-[#C9A24D] transition-colors ${isAuthenticated ? "text-[#C9A24D]" : ""
+                  className={`text-xl cursor-pointer hover:text-[#C9A24D] transition-colors ${isAuthenticated ? "text-[#E6D5C3]" : ""
                     }`}
                 />
                 {isAuthenticated && (
@@ -223,9 +223,9 @@ const Navbar = () => {
               className="relative flex flex-col items-center gap-1 text-[#E6D5C3] hover:text-[#C9A24D] transition-colors"
             >
               {wishlistCount > 0 ? (
-                <FaHeart className="text-xl text-red-500" />
+                <FaHeart className="text-xl cursor-pointer hover:text-[#C9A24D] transition-colors" />
               ) : (
-                <FaRegHeart className="text-xl" />
+                <FaRegHeart className="text-xl cursor-pointer hover:text-[#C9A24D] transition-colors" />
               )}
               <span className="text-xs">Wishlist</span>
               {wishlistCount > 0 && (
@@ -239,8 +239,11 @@ const Navbar = () => {
               onClick={() => setOpen(false)}
               className="relative flex flex-col items-center gap-1 text-[#E6D5C3] hover:text-[#C9A24D] transition-colors"
             >
-              <FaRegUser className={`text-xl ${isAuthenticated ? "text-[#C9A24D]" : ""}`} />
+              <FaRegUser className={`text-xl ${isAuthenticated ? "text-[#E6D5C3]" : ""}`} />
               <span className="text-xs">{isAuthenticated ? "Profile" : "Sign In"}</span>
+              {isAuthenticated && (
+                <span className="absolute -top-1 -right-1 w-2 h-2 bg-green-500 rounded-full border-2 border-[#3E2723]" />
+              )}
             </Link>
             <Link
               to="/cart"

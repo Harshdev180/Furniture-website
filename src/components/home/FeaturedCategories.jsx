@@ -64,7 +64,7 @@ const FeaturedCategories = () => {
         <div className="lg:col-span-7 flex flex-col gap-6">
 
           {/* SOFA */}
-          <div className="bg-[#E6D5C3]/40 rounded-3xl p-6 sm:p-8 border border-[#C9A24D]/40 hover:shadow-xl transition flex flex-col md:flex-row items-center overflow-hidden group">
+          <div className="bg-[#E6D5C3]/40 rounded-3xl p-6 sm:p-8 border border-[#C9A24D]/40 hover:shadow-xl transition flex flex-col md:flex-row items-left overflow-hidden group">
             <div className="md:w-1/2 z-10">
               <span className="inline-block bg-[#C9A24D] text-xs font-bold px-3 py-1 rounded mb-3">
                 750+ Items
@@ -95,7 +95,7 @@ const FeaturedCategories = () => {
           </div>
 
           {/* BED */}
-          <div className="bg-[#E6D5C3]/40 rounded-3xl p-6 sm:p-8 border border-[#C9A24D]/40 hover:shadow-xl transition flex flex-col md:flex-row items-center overflow-hidden group">
+          <div className="bg-[#E6D5C3]/40 rounded-3xl p-6 sm:p-8 border border-[#C9A24D]/40 hover:shadow-xl transition flex flex-col md:flex-row items-left overflow-hidden group">
             <div className="md:w-1/2 z-10">
               <span className="inline-block bg-[#C9A24D] text-xs font-bold px-3 py-1 rounded mb-3">
                 450+ Items

@@ -4,6 +4,7 @@ import { furnitureOptions } from "../../assests/customizeData";
 import { furnitureData } from "../../assests/furnitureData";
 import { motion } from "framer-motion";
 import { useCart } from "../context/AddtocartContext";
+import { RefreshCcw, Shield, Truck } from "lucide-react";
 
 // Furniture type mapping for display
 const furnitureTypeMap = {
@@ -458,19 +459,31 @@ export default function FurnitureCustomizer() {
 
                         {/* Trust Badges */}
                         <div className="grid grid-cols-3 gap-3 sm:gap-4 text-center">
-                            <div className="bg-white rounded-lg p-3 sm:p-4 shadow-sm">
-                                <p className="text-xl sm:text-2xl mb-1">🚚</p>
-                                <p className="text-xs font-medium text-gray-700">Fast Delivery</p>
+                            {/* Fast Delivery */}
+                            <div className="bg-white rounded-lg p-3 sm:p-4 shadow-sm flex flex-col items-center gap-2">
+                                <Truck className="w-6 h-6 text-[#3E2723]" />
+                                <p className="text-xs font-medium text-gray-700">
+                                    Fast Delivery
+                                </p>
                             </div>
-                            <div className="bg-white rounded-lg p-3 sm:p-4 shadow-sm">
-                                <p className="text-xl sm:text-2xl mb-1">🔄</p>
-                                <p className="text-xs font-medium text-gray-700">Easy Returns</p>
+
+                            {/* Easy Returns */}
+                            <div className="bg-white rounded-lg p-3 sm:p-4 shadow-sm flex flex-col items-center gap-2">
+                                <RefreshCcw className="w-6 h-6 text-[#3E2723]" />
+                                <p className="text-xs font-medium text-gray-700">
+                                    Easy Returns
+                                </p>
                             </div>
-                            <div className="bg-white rounded-lg p-3 sm:p-4 shadow-sm">
-                                <p className="text-xl sm:text-2xl mb-1">🛡️</p>
-                                <p className="text-xs font-medium text-gray-700">5 Yr Warranty</p>
+
+                            {/* Warranty */}
+                            <div className="bg-white rounded-lg p-3 sm:p-4 shadow-sm flex flex-col items-center gap-2">
+                                <Shield className="w-6 h-6 text-[#3E2723]" />
+                                <p className="text-xs font-medium text-gray-700">
+                                    5 Yr Warranty
+                                </p>
                             </div>
                         </div>
+
                     </motion.div>
                 </div>
             </div>
