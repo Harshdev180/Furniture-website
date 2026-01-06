@@ -72,12 +72,12 @@ function App() {
             <Route path="/contact" element={<Contact />} />
 
             {/*add to cart */}
-            <Route path="/cart" element={<ProtectedRoute><AddToCart /></ProtectedRoute>} />
+            <Route path="/cart" element={<AddToCart />} />
 
             <Route path="/quoteRequest" element={<QuoteRequest />} />
 
             {/* Checkout */}
-            <Route path="/checkoutPage" element={<Checkout />} />
+            <Route path="/checkoutPage" element={<ProtectedRoute><Checkout /></ProtectedRoute>} />
 
             {/* Thank You & Tracking */}
             <Route path="/thankyou" element={<ThankYou />} />
