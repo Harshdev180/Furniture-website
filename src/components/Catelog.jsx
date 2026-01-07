@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion as Motion, AnimatePresence } from "framer-motion";
 import { useCart } from "./context/AddtocartContext";
 import WishlistButton from "./WishlistButton";
@@ -31,6 +31,7 @@ function FilterContent({
   const value = isMobile ? tempMaxPrice : maxPrice;
   const percent = ((value - MIN) / (MAX - MIN)) * 100;
   const setValue = (val) => (isMobile ? setTempMaxPrice(val) : setMaxPrice(val));
+
 
   return (
     <div className="space-y-6">
@@ -154,6 +155,7 @@ function FilterContent({
 
 const CatalogPage = () => {
   const { addToCart } = useCart();
+  const navigate = useNavigate()
 
   /* ---------------- PRODUCT DATA ---------------- */
   const products = [
@@ -362,6 +364,7 @@ const CatalogPage = () => {
                         e.preventDefault();
                         e.stopPropagation();
                         addToCart(p);
+                        navigate("/cart");
                       }}
                       className="px-4 py-1.5 text-sm rounded-full bg-[#3e2723] text-white hover:bg-[#C9A24D] transition"
                     >

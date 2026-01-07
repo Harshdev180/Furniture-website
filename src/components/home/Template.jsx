@@ -172,8 +172,8 @@ export default function Template() {
                 </span>
                 {/* Wishlist Button */}
                 <div className="absolute top-3 right-3 z-10">
-                  <WishlistButton 
-                    product={item} 
+                  <WishlistButton
+                    product={item}
                     className="bg-white/90 hover:bg-white rounded-full p-2 shadow-md"
                   />
                 </div>
@@ -197,6 +197,7 @@ export default function Template() {
                       e.preventDefault();
                       e.stopPropagation();
                       addToCart(item);
+                      navigate("/cart");
                     }}
                     className="flex-1 py-2 text-sm rounded-full bg-[#3E2723] text-white hover:bg-[#C9A24D] transition font-medium"
                   >

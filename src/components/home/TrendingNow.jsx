@@ -169,7 +169,7 @@ const TrendingNow = () => {
             {/* CLOSE ICON */}
             <button
               onClick={closeModal}
-              className="absolute top-3 right-3 text-[#3E2723] hover:text-red-600 z-10"
+              className="absolute top-3 right-3 text-[#3E2723] hover:text-red-600 z-10 bg-white/90 hover:bg-white rounded-full p-2 shadow-md"
             >
               <FaTimes size={22} />
             </button>

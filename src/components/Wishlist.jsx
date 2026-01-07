@@ -1,11 +1,12 @@
 import { Trash2, ShoppingBag, Heart } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useWishlist } from "./context/WishlistContext";
 import { useCart } from "./context/AddtocartContext";
 
 const Wishlist = () => {
     const { wishlist, removeFromWishlist } = useWishlist();
     const { addToCart } = useCart();
+    const navigate = useNavigate();
 
     if (wishlist.length === 0) {
         return (
@@ -81,7 +82,10 @@ const Wishlist = () => {
                             {/* BUTTONS */}
                             <div className="mt-5 flex gap-3">
                                 <button
-                                    onClick={() => addToCart(item)}
+                                    onClick={() => {
+                                        addToCart(item);
+                                        navigate("/cart");
+                                    }}
                                     className="flex-1 flex items-center justify-center gap-2 bg-[#3E2723] text-white py-2 rounded-full hover:bg-[#C9A24D] transition"
                                 >
                                     <ShoppingBag size={16} />
@@ -99,7 +103,7 @@ const Wishlist = () => {
                     </div>
                 ))}
             </div>
-        </section>
+        </section >
     );
 };
 

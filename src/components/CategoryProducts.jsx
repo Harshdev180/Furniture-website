@@ -212,7 +212,7 @@ const CategoryProducts = () => {
                                             </Link>
 
                                             <div className="absolute top-3 right-3 z-10">
-                                                <WishlistButton product={item} size={20} />
+                                                <WishlistButton product={item} size={20} className="bg-white/90 hover:bg-white rounded-full p-2 shadow-md" />
                                             </div>
                                         </div>
 
