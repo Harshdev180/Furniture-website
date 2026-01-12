@@ -1,15 +1,23 @@
 import React, { useState } from "react";
-import { MdMarkEmailUnread, MdOutlineCall, MdOutlineMail, MdLocationPin } from "react-icons/md";
-import { Link } from 'react-router-dom';
-import { submitContactForm, submitNewsletterForm } from '../../utils/googleSheets';
-import { motion } from 'framer-motion';
+import {
+  MdMarkEmailUnread,
+  MdOutlineCall,
+  MdOutlineMail,
+  MdLocationPin,
+} from "react-icons/md";
+import { Link } from "react-router-dom";
+import {
+  submitContactForm,
+  submitNewsletterForm,
+} from "../../utils/googleSheets";
+import { motion } from "framer-motion";
 
 const Form = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [message, setMessage] = useState('');
-  const [news, setNewsletter] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState("");
+  const [news, setNewsletter] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
   const [isNewsSubmitting, setIsNewsSubmitting] = useState(false);
@@ -29,17 +37,27 @@ const Form = () => {
       });
 
       if (result.success) {
-        setSubmitStatus({ type: 'success', message: 'Message sent successfully! We\'ll get back to you soon.' });
+        setSubmitStatus({
+          type: "success",
+          message: "Message sent successfully! We'll get back to you soon.",
+        });
         setName("");
         setEmail("");
         setPhone("");
         setMessage("");
       } else {
-        setSubmitStatus({ type: 'error', message: result.message || 'Failed to send message. Please try again.' });
+        setSubmitStatus({
+          type: "error",
+          message:
+            result.message || "Failed to send message. Please try again.",
+        });
       }
     } catch (err) {
       console.error(err);
-      setSubmitStatus({ type: 'error', message: 'Submission failed. Please try again.' });
+      setSubmitStatus({
+        type: "error",
+        message: "Submission failed. Please try again.",
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -57,34 +75,31 @@ const Form = () => {
 
       if (newResult.success) {
         setNewsStatus({
-          type: 'success',
-          message: 'Subscribed successfully!',
+          type: "success",
+          message: "Subscribed successfully!",
         });
         setNewsletter("");
       } else {
         setNewsStatus({
-          type: 'error',
-          message: newResult.message || 'Subscription failed.',
+          type: "error",
+          message: newResult.message || "Subscription failed.",
         });
       }
     } catch (err) {
       console.error(err);
       setNewsStatus({
-        type: 'error',
-        message: 'Submission failed. Please try again.',
+        type: "error",
+        message: "Submission failed. Please try again.",
       });
     } finally {
       setIsNewsSubmitting(false);
     }
   };
 
-
-
-
   return (
     <div className="mx-auto mb-20">
       {/* Main card container */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 -mt-[50px] relative z-10 mb-20">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-16 relative z-10 mb-20">
         {/* Left side - contact form */}
         <div className="lg:col-span-8 p-6 sm:p-8 border border-[#3E2723]/30 rounded-3xl bg-white shadow-xl shadow-[#3E2723]/50">
           <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#3E2723] mb-6">
@@ -152,10 +167,11 @@ const Form = () => {
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className={`p-4 rounded-lg ${submitStatus.type === 'success'
-                  ? 'bg-green-50 border-2 border-green-200 text-green-800'
-                  : 'bg-red-50 border-2 border-red-200 text-red-800'
-                  }`}
+                className={`p-4 rounded-lg ${
+                  submitStatus.type === "success"
+                    ? "bg-green-50 border-2 border-green-200 text-green-800"
+                    : "bg-red-50 border-2 border-red-200 text-red-800"
+                }`}
               >
                 {submitStatus.message}
               </motion.div>
@@ -194,7 +210,10 @@ const Form = () => {
                 design trends and exclusive offers.
               </p>
 
-              <form className="w-full flex flex-col gap-3" onSubmit={onSubmitNews}>
+              <form
+                className="w-full flex flex-col gap-3"
+                onSubmit={onSubmitNews}
+              >
                 <input
                   className="w-full border-2 border-[#E6D5C3] rounded-lg bg-white text-center h-12 px-4 text-sm"
                   placeholder="Enter your Email"
@@ -208,10 +227,11 @@ const Form = () => {
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className={`p-4 rounded-lg ${newsStatus.type === 'success'
-                      ? 'bg-green-50 border-2 border-green-200 text-green-800'
-                      : 'bg-red-50 border-2 border-red-200 text-red-800'
-                      }`}
+                    className={`p-4 rounded-lg ${
+                      newsStatus.type === "success"
+                        ? "bg-green-50 border-2 border-green-200 text-green-800"
+                        : "bg-red-50 border-2 border-red-200 text-red-800"
+                    }`}
                   >
                     {newsStatus.message}
                   </motion.div>
@@ -232,7 +252,10 @@ const Form = () => {
 
       {/* Contact Information */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-        <Link to="tel:+917378021327" className="bg-white p-4 sm:p-6 rounded-2xl border border-[#3E2723]/30 flex items-center gap-4 sm:gap-5 hover:border-[#C9A24D]/50 hover:shadow-md transition-all group shadow-md shadow-[#3E2723]/50">
+        <Link
+          to="tel:+917378021327"
+          className="bg-white p-4 sm:p-6 rounded-2xl border border-[#3E2723]/30 flex items-center gap-4 sm:gap-5 hover:border-[#C9A24D]/50 hover:shadow-md transition-all group shadow-md shadow-[#3E2723]/50"
+        >
           <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#E6D5C3]/20 flex items-center justify-center text-[#3E2723] group-hover:bg-[#3E2723] group-hover:text-white transition-colors duration-300 shrink-0">
             <MdOutlineCall className="text-xl sm:text-2xl" />
           </div>
@@ -245,7 +268,10 @@ const Form = () => {
             </p>
           </div>
         </Link>
-        <Link to="mailto:official@graphura.in" className="bg-white p-4 sm:p-6 rounded-2xl border border-[#3E2723]/30 flex items-center gap-4 sm:gap-5 hover:border-[#C9A24D]/50 hover:shadow-md transition-all group shadow-md shadow-[#3E2723]/50">
+        <Link
+          to="mailto:official@graphura.in"
+          className="bg-white p-4 sm:p-6 rounded-2xl border border-[#3E2723]/30 flex items-center gap-4 sm:gap-5 hover:border-[#C9A24D]/50 hover:shadow-md transition-all group shadow-md shadow-[#3E2723]/50"
+        >
           <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#E6D5C3]/20 flex items-center justify-center text-[#3E2723] group-hover:bg-[#3E2723] group-hover:text-white transition-colors duration-300 shrink-0">
             <MdOutlineMail className="text-xl sm:text-2xl" />
           </div>
@@ -258,7 +284,11 @@ const Form = () => {
             </p>
           </div>
         </Link>
-        <Link to="https://maps.app.goo.gl/E9kYa6hi8wj5eA8z6" target="_blank" className="bg-white p-4 sm:p-6 rounded-2xl border border-[#3E2723]/30 flex items-center gap-4 sm:gap-5 hover:border-[#C9A24D]/50 hover:shadow-md transition-all group shadow-md shadow-[#3E2723]/50">
+        <Link
+          to="https://maps.app.goo.gl/E9kYa6hi8wj5eA8z6"
+          target="_blank"
+          className="bg-white p-4 sm:p-6 rounded-2xl border border-[#3E2723]/30 flex items-center gap-4 sm:gap-5 hover:border-[#C9A24D]/50 hover:shadow-md transition-all group shadow-md shadow-[#3E2723]/50"
+        >
           <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#E6D5C3]/20 flex items-center justify-center text-[#3E2723] group-hover:bg-[#3E2723] group-hover:text-white transition-colors duration-300 shrink-0">
             <MdLocationPin className="text-xl sm:text-2xl" />
           </div>

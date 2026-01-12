@@ -30,8 +30,8 @@ function FilterContent({
   const MAX = 12000;
   const value = isMobile ? tempMaxPrice : maxPrice;
   const percent = ((value - MIN) / (MAX - MIN)) * 100;
-  const setValue = (val) => (isMobile ? setTempMaxPrice(val) : setMaxPrice(val));
-
+  const setValue = (val) =>
+    isMobile ? setTempMaxPrice(val) : setMaxPrice(val);
 
   return (
     <div className="space-y-6">
@@ -70,7 +70,9 @@ function FilterContent({
       </div>
 
       <div>
-        <h3 className="text-xs font-semibold mb-4 tracking-wide">PRICE RANGE</h3>
+        <h3 className="text-xs font-semibold mb-4 tracking-wide">
+          PRICE RANGE
+        </h3>
         <>
           <div className="relative h-10">
             <div className="absolute top-1/2 -translate-y-1/2 w-full h-1.5 rounded-full bg-[#c9a24d]/30" />
@@ -107,13 +109,12 @@ function FilterContent({
           {["Velvet", "Leather", "Walnut", "Marble", "Brass"].map((m) => (
             <button
               key={m}
-              onClick={() =>
-                isMobile ? setTempMaterial(m) : setMaterial(m)
-              }
-              className={`border px-3 py-1 rounded-full text-xs transition ${(isMobile ? tempMaterial : material) === m
-                ? "bg-[#3e2723] text-white"
-                : "hover:bg-[#3e2723] hover:text-white"
-                }`}
+              onClick={() => (isMobile ? setTempMaterial(m) : setMaterial(m))}
+              className={`border px-3 py-1 rounded-full text-xs transition ${
+                (isMobile ? tempMaterial : material) === m
+                  ? "bg-[#3e2723] text-white"
+                  : "hover:bg-[#3e2723] hover:text-white"
+              }`}
             >
               {m}
             </button>
@@ -155,7 +156,7 @@ function FilterContent({
 
 const CatalogPage = () => {
   const { addToCart } = useCart();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   /* ---------------- PRODUCT DATA ---------------- */
   const products = [
@@ -243,9 +244,7 @@ const CatalogPage = () => {
 
   /* ---------------- FILTER LOGIC ---------------- */
   const filteredProducts = products
-    .filter((p) =>
-      p.name.toLowerCase().includes(search.toLowerCase())
-    )
+    .filter((p) => p.name.toLowerCase().includes(search.toLowerCase()))
     .filter((p) => (category ? p.category === category : true))
     .filter((p) => (material ? p.material === material : true))
     .filter((p) => p.price <= maxPrice)
@@ -266,7 +265,8 @@ const CatalogPage = () => {
           alt="Catalog Banner"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-[#000]/55" />
+        {/* <div className="absolute inset-0 bg-[#000]/55" /> */}
+        <div className="absolute inset-0 bg-[#3E2723]/70"></div>
 
         <Motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -281,7 +281,8 @@ const CatalogPage = () => {
             Elevate Your Living Experience
           </h1>
           <p className="text-gray-300 max-w-xl mt-4">
-            Curated furniture designed for comfort, quality, and timeless appeal.
+            Curated furniture designed for comfort, quality, and timeless
+            appeal.
           </p>
         </Motion.div>
       </section>
@@ -339,10 +340,17 @@ const CatalogPage = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredProducts.map((p) => (
-              <div key={p.id} className="rounded-xl overflow-hidden bg-[#E6D5C3] relative group">
+              <div
+                key={p.id}
+                className="rounded-xl overflow-hidden bg-[#E6D5C3] relative group"
+              >
                 <Link to={`/product/${p.id}`}>
                   <div className="relative">
-                    <img src={p.img} className="h-56 w-full object-cover" alt={p.name} />
+                    <img
+                      src={p.img}
+                      className="h-56 w-full object-cover"
+                      alt={p.name}
+                    />
                     {/* Wishlist Button */}
                     <div className="absolute top-3 right-3 z-10">
                       <WishlistButton
@@ -354,11 +362,15 @@ const CatalogPage = () => {
                 </Link>
                 <div className="p-4">
                   <Link to={`/product/${p.id}`}>
-                    <h3 className="font-medium hover:text-[#C9A24D] transition">{p.name}</h3>
+                    <h3 className="font-medium hover:text-[#C9A24D] transition">
+                      {p.name}
+                    </h3>
                     <p className="text-xs text-gray-600">{p.desc}</p>
                   </Link>
                   <div className="flex justify-between items-center mt-3">
-                    <span className="font-semibold">₹{p.price.toLocaleString()}</span>
+                    <span className="font-semibold">
+                      ₹{p.price.toLocaleString()}
+                    </span>
                     <button
                       onClick={(e) => {
                         e.preventDefault();

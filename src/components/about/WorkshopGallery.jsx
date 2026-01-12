@@ -21,7 +21,6 @@ export default function WorkshopGallery() {
   return (
     <section className="py-6 bg-[#FAF7F2]">
       <div className="max-w-7xl mx-auto px-4">
-
         {/* SECTION TITLE */}
         <div className="text-center mb-14">
           <div className="flex items-center justify-center gap-4 mb-4">
@@ -42,8 +41,7 @@ export default function WorkshopGallery() {
           {images.map((img, index) => (
             <div
               key={index}
-              className={`relative overflow-hidden rounded-2xl shadow-lg group border border-[#E6D5C3]
-                ${index === 1 || index === 2 ? "md:row-span-2" : ""}`}
+              className="relative overflow-hidden rounded-2xl shadow-lg group border border-[#E6D5C3]"
             >
               <img
                 src={img.src}
@@ -60,7 +58,6 @@ export default function WorkshopGallery() {
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

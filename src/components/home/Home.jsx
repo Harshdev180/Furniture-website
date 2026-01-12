@@ -17,9 +17,7 @@ const Home = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prev) =>
-        prev === card.length - 1 ? 0 : prev + 1
-      );
+      setCurrentIndex((prev) => (prev === card.length - 1 ? 0 : prev + 1));
     }, 3000);
 
     return () => clearInterval(interval);
@@ -32,7 +30,6 @@ const Home = () => {
       {/* HERO SECTION */}
       <section className="bg-[#FAF7F2] hero-pattern">
         <div className="grid lg:grid-cols-2 gap-10 px-4 sm:px-10 lg:px-20 pt-24 pb-12">
-
           {/* LEFT */}
           <div>
             <div className="inline-flex items-center gap-2 border border-[#C9A24D] bg-white px-4 py-2 rounded-2xl">
@@ -111,10 +108,26 @@ const Home = () => {
         <div className="bg-[#E6D5C3] border-y border-[#C9A24D]/30 px-4 sm:px-10 lg:px-20 py-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: <FiTruck />, title: "Free Shipping", text: "Orders above ₹180" },
-              { icon: <LuWallet />, title: "Flexible Payment", text: "Secure options" },
-              { icon: <RiCustomerService2Fill />, title: "24x7 Support", text: "Always available" },
-              { icon: <MdOutlineVerifiedUser />, title: "Secure Payment", text: "100% protection" },
+              {
+                icon: <FiTruck />,
+                title: "Free Shipping",
+                text: "Orders above ₹180",
+              },
+              {
+                icon: <LuWallet />,
+                title: "Flexible Payment",
+                text: "Secure options",
+              },
+              {
+                icon: <RiCustomerService2Fill />,
+                title: "24x7 Support",
+                text: "Always available",
+              },
+              {
+                icon: <MdOutlineVerifiedUser />,
+                title: "Secure Payment",
+                text: "100% protection",
+              },
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-3">
                 <div className="p-4 bg-white border rounded-full border-[#C9A24D]">
@@ -135,7 +148,7 @@ const Home = () => {
         <FeaturedCategories />
       </section>
 
-      <section className="px-4 sm:px-20 py-16">
+      <section className="px-4 sm:px-20 py-16 bg-[#FAF7F2]">
         <TrendingNow />
       </section>
 
@@ -143,7 +156,7 @@ const Home = () => {
         <Form />
       </section>
 
-      <section className="px-4 sm:px-20 py-16">
+      <section className="px-4 sm:px-20 py-16 bg-[#FAF7F2]">
         <Inspiration />
       </section>
 

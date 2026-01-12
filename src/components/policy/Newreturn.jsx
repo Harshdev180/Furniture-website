@@ -1,8 +1,11 @@
-
-
 import { useEffect, useState } from "react";
 import { FaCalendarCheck } from "react-icons/fa";
-import { MdOutlineSupportAgent, MdOutlineSchedule, MdInventory, MdDesignServices } from "react-icons/md";
+import {
+  MdOutlineSupportAgent,
+  MdOutlineSchedule,
+  MdInventory,
+  MdDesignServices,
+} from "react-icons/md";
 
 const sections = [
   { id: "overview", label: "Overview" },
@@ -35,11 +38,9 @@ export default function ReturnPolicy() {
 
   return (
     <div className="min-h-screen w-full bg-[#FAF7F2] text-[#2B2B2B]">
-
       {/* HEADER */}
       <div className="max-w-7xl mx-auto px-4 md:px-6 pt-16 pb-10 text-center">
         <div className="relative overflow-hidden rounded-3xl mb-8 h-[260px] md:h-[420px]">
-
           <img
             src="https://images.unsplash.com/photo-1487017159836-4e23ece2e4cf"
             className="absolute inset-0 w-full h-full object-cover opacity-50"
@@ -53,9 +54,9 @@ export default function ReturnPolicy() {
             </h1>
 
             <p className="max-w-2xl mx-auto mt-4 text-[#F5E6C8] text-sm md:text-base">
-              Your satisfaction matters — our return process is simple and honest.
-              This policy outlines our return process, ensuring clarity, fairness,
-              and a smooth experience for every customer.
+              Your satisfaction matters — our return process is simple and
+              honest. This policy outlines our return process, ensuring clarity,
+              fairness, and a smooth experience for every customer.
             </p>
 
             <nav className="mt-5 mx-auto">
@@ -70,7 +71,6 @@ export default function ReturnPolicy() {
 
       {/* LAYOUT */}
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-12 grid grid-cols-1 lg:grid-cols-4 gap-10">
-
         {/* SIDEBAR */}
         <aside className="hidden lg:block lg:w-60">
           <div className="lg:sticky lg:top-24 p-6 rounded-3xl bg-[#3e2723] text-[#F5E6C8] shadow-lg">
@@ -81,10 +81,11 @@ export default function ReturnPolicy() {
                 <li key={item.id}>
                   <a
                     href={`#${item.id}`}
-                    className={`transition block ${active === item.id
-                      ? "text-[#C9A24D] font-semibold"
-                      : "hover:text-[#C9A24D]"
-                      }`}
+                    className={`transition block ${
+                      active === item.id
+                        ? "text-[#C9A24D] font-semibold"
+                        : "hover:text-[#C9A24D]"
+                    }`}
                   >
                     {item.label}
                   </a>
@@ -94,20 +95,21 @@ export default function ReturnPolicy() {
           </div>
         </aside>
 
-
         {/* CONTENT */}
         {/* <main className="lg:col-span-3 space-y-20 p-4 md:p-8 text-[#2B2B2B]"> */}
         {/* CONTENT */}
         <main className="lg:col-span-3 space-y-16 px-3 sm:px-4 md:px-8">
-
-
           <section id="overview" className="scroll-mt-28">
             <h2 className="text-3xl font-bold font-serif mb-4">
               1. Return & Refund Policy
             </h2>
             <p>
-              At Graphura Interiors, we curate our collection with the utmost attention to detail, quality, and aesthetics. We want you to be completely delighted with your new furniture. If for any reason you are not satisfied, we offer a transparent and seamless return process to ensure your experience remains exceptional from start to finish.
-
+              At Graphura Interiors, we curate our collection with the utmost
+              attention to detail, quality, and aesthetics. We want you to be
+              completely delighted with your new furniture. If for any reason
+              you are not satisfied, we offer a transparent and seamless return
+              process to ensure your experience remains exceptional from start
+              to finish.
             </p>
           </section>
 
@@ -119,7 +121,10 @@ export default function ReturnPolicy() {
             <ul className="list-disc pl-6 space-y-2 mb-8">
               <li>Returns are accepted within 30 days of delivery.</li>
               <li>Items must be free from scratches, stains, or damages.</li>
-              <li>Original packaging is required for a full refund; a repacking fee may apply otherwise.</li>
+              <li>
+                Original packaging is required for a full refund; a repacking
+                fee may apply otherwise.
+              </li>
             </ul>
 
             <div className="flex flex-col md:flex-row gap-6">
@@ -128,8 +133,9 @@ export default function ReturnPolicy() {
                   <MdInventory className="text-3xl" /> Standard Collection
                 </h3>
                 <p>
-                  Stocked items such as dining chairs, lighting, and decor accessories can be returned for a full refund (less shipping costs) within the 30-day window.
-
+                  Stocked items such as dining chairs, lighting, and decor
+                  accessories can be returned for a full refund (less shipping
+                  costs) within the 30-day window.
                 </p>
               </div>
 
@@ -138,8 +144,9 @@ export default function ReturnPolicy() {
                   <MdDesignServices className="text-3xl" /> Made-to-Order
                 </h3>
                 <p>
-                  Custom upholstery and bespoke furniture pieces are crafted specifically for you. As such, these items are final sale and cannot be returned unless manufacturing defects are present.
-
+                  Custom upholstery and bespoke furniture pieces are crafted
+                  specifically for you. As such, these items are final sale and
+                  cannot be returned unless manufacturing defects are present.
                 </p>
               </div>
             </div>
@@ -153,7 +160,6 @@ export default function ReturnPolicy() {
               Three simple steps to process your return.
             </p>
             {[1, 2, 3].map((step) => (
-
               <div className="flex gap-4 bg-[#FAF7F2] rounded-2xl p-4 mb-4 items-start sm:items-center">
                 <div className="flex-shrink-0 w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center text-2xl sm:text-4xl font-bold bg-amber-100 rounded-full">
                   {step}
@@ -169,7 +175,6 @@ export default function ReturnPolicy() {
                   </p>
                 </div>
               </div>
-
             ))}
           </section>
 
@@ -180,7 +185,6 @@ export default function ReturnPolicy() {
 
             {/* <div className="overflow-x-auto"> */}
             <div className="overflow-x-auto -mx-3 sm:mx-0">
-
               <table className="w-full text-sm ">
                 <thead className="bg-[#F3ECE6]">
                   <tr>
@@ -196,7 +200,10 @@ export default function ReturnPolicy() {
                     <td className="p-3 text-center "> 5-7 Business Days</td>
                   </tr>
                   <tr>
-                    <td className="p-3 font-bold"> Large Item Freight Pickup</td>
+                    <td className="p-3 font-bold">
+                      {" "}
+                      Large Item Freight Pickup
+                    </td>
                     <td className="p-3"> ₹150 flat rate</td>
                     <td className="p-3 text-center">10-14 Business Days</td>
                   </tr>
@@ -217,8 +224,9 @@ export default function ReturnPolicy() {
                 Questions about your data?
               </h2>
               <p className="mb-6 text-[#F5E6C8]  max-w-lg mx-auto">
-                At Graphura, your trust matters to us. If you have any questions about this policy or your purchase, our team is always happy to assist you.
-
+                At Graphura, your trust matters to us. If you have any questions
+                about this policy or your purchase, our team is always happy to
+                assist you.
               </p>
               <a
                 href="mailto:official@graphura.in"
@@ -228,13 +236,11 @@ export default function ReturnPolicy() {
               </a>
             </div>
           </section>
-
         </main>
       </div>
     </div>
   );
 }
-
 
 // import React from 'react'
 

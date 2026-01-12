@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import QuoteRequest from "../QuoteRequest";
 import { useCart } from "../context/AddtocartContext";
 import WishlistButton from "../WishlistButton";
-
+import { motion } from "framer-motion";
 const tembanner = "/templateimg/templatebanner.jpg";
 
 const categories = [
@@ -97,39 +97,32 @@ export default function Template() {
   return (
     <div className="bg-[#FAF7F2] min-h-screen">
       {/* HERO */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-8">
-        <div className="relative rounded-2xl overflow-hidden h-[360px] sm:h-[420px] md:h-[480px]">
-          <img
-            src={tembanner}
-            alt="Luxury Furniture"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-black/65" />
+      <section className="md:m-8 relative h-[420px] rounded-3xl overflow-hidden m-6">
+        <img
+          src={tembanner}
+          alt="Catalog Banner"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        {/* <div className="absolute inset-0 bg-[#000]/55" /> */}
+        <div className="absolute inset-0 bg-[#3E2723]/70"></div>
 
-          <div className="relative z-10 h-full flex flex-col justify-center px-6 sm:px-10 text-white">
-            <p className="text-xs tracking-widest text-[#C9A24D] mb-3">
-              READY FOR PRODUCTION
-            </p>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold">
-              Curated Luxury <br /> Templates
-            </h1>
-            <p className="text-sm text-[#E6D5C3] max-w-md mt-4">
-              Explore pre-designed furniture templates crafted for elegance and precision.
-            </p>
-
-            <div className="flex flex-wrap gap-4 mt-6">
-              <button
-                onClick={() => {
-                  setActiveCategory("All Templates");
-                  document.querySelector('section[class*="py-10"]')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="bg-[#C9A24D] px-6 py-3 rounded-full text-sm font-medium text-black hover:bg-[#B8923D] transition"
-              >
-                Browse All
-              </button>
-            </div>
-          </div>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="relative z-10 h-full flex flex-col justify-center items-center text-center px-4"
+        >
+          <p className="tracking-widest text-[#C9A24D] text-sm">
+            READY FOR PRODUCTION
+          </p>
+          <h1 className="text-white text-4xl md:text-5xl font-serif font-bold mt-2">
+            Curated Luxury Templates
+          </h1>
+          <p className="text-gray-300 max-w-xl mt-4">
+            Explore pre-designed furniture templates crafted for elegance and
+            precision.
+          </p>
+        </motion.div>
       </section>
 
       {/* FILTERS */}
@@ -140,9 +133,10 @@ export default function Template() {
               key={cat}
               onClick={() => setActiveCategory(cat)}
               className={`px-4 py-2 whitespace-nowrap rounded-full text-sm transition
-                ${activeCategory === cat
-                  ? "bg-[#3E2723] text-white"
-                  : "bg-white border border-[#3E2723] hover:bg-[#3E2723] hover:text-white"
+                ${
+                  activeCategory === cat
+                    ? "bg-[#3E2723] text-white"
+                    : "bg-white border border-[#3E2723] hover:bg-[#3E2723] hover:text-white"
                 }`}
             >
               {cat}
@@ -183,9 +177,7 @@ export default function Template() {
                 <h3 className="font-semibold text-lg text-[#2B2B2B]">
                   {item.name}
                 </h3>
-                <p className="text-sm text-gray-600 mt-1 flex-1">
-                  {item.desc}
-                </p>
+                <p className="text-sm text-gray-600 mt-1 flex-1">{item.desc}</p>
 
                 <p className="text-[#C9A24D] font-medium mt-3">
                   ₹{item.price.toLocaleString()}
@@ -220,9 +212,7 @@ export default function Template() {
         </div>
 
         {filteredProducts.length === 0 && (
-          <p className="text-center text-gray-500 mt-10">
-            No products found.
-          </p>
+          <p className="text-center text-gray-500 mt-10">No products found.</p>
         )}
       </section>
 

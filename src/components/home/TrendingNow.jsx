@@ -88,10 +88,11 @@ const TrendingNow = () => {
                 )}
 
                 {/* ACTION ICONS */}
-                <div className="absolute bottom-7 left-0 right-0 flex justify-center gap-3
+                <div
+                  className="absolute bottom-7 left-0 right-0 flex justify-center gap-3
                 opacity-100 md:opacity-0 md:group-hover:opacity-100
-                transition-all translate-y-4 group-hover:translate-y-0">
-
+                transition-all translate-y-4 group-hover:translate-y-0"
+                >
                   {productActions.map(({ id, icon: Icon }) => {
                     if (id === "wishlist") {
                       return (
@@ -128,7 +129,6 @@ const TrendingNow = () => {
                     );
                   })}
                 </div>
-
               </div>
 
               {/* DETAILS */}
@@ -154,7 +154,7 @@ const TrendingNow = () => {
             </div>
           ))}
         </div>
-      </div >
+      </div>
 
       {selectedProduct && (
         <div
@@ -235,8 +235,7 @@ const TrendingNow = () => {
           </div>
         </div>
       )}
-
-    </section >
+    </section>
   );
 };
 

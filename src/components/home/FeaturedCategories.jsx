@@ -20,7 +20,6 @@ const FeaturedCategories = () => {
 
       {/* GRID */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-
         {/* LEFT LARGE CARD */}
         <div className="lg:col-span-5 bg-[#E6D5C3]/40 rounded-3xl p-6 sm:p-8 relative overflow-hidden group border border-[#C9A24D]/40 hover:shadow-xl transition">
           <div className="relative z-10 max-w-sm">
@@ -44,7 +43,7 @@ const FeaturedCategories = () => {
               <li>
                 <Link
                   to="/category/studychair"
-                  className="font-bold text-[#C9A24D] flex items-center gap-1 group"
+                  className="font-bold text-[#C9A24D] flex items-center gap-1 group pb-4"
                 >
                   Explore More
                   <FaArrowRight className="transition-transform group-hover:translate-x-2" />
@@ -56,13 +55,12 @@ const FeaturedCategories = () => {
           <img
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyFGNMOsU2-2Ud42KCjtAMMOq44h_zhjgqEKWBriTTiauESLzAzxa1JNk-aIPielA0nTsuAd3Wo8uJYxR5lNrn-W0VV_BhnUvq6kLLFLF8BPb7lxbBUCU5luWUf_FJXuTJ9TLTv3SlqadntKxZZRQsoWdEDAigpvqauzlWGCDO0vCsuVo4NnaX4E4-zj-bhbwHjHf0bkoD6naFqOUH_zgiKimBDzS6QWmpO4S0l3tz5pjM_1mFFCv_kkrGExXw4_oHdOZIv0KQDmTR"
             alt="Chair"
-            className="mt-6 lg:absolute lg:bottom-0 lg:right-0 lg:w-[70%] h-[260px] lg:h-[80%] object-contain transition-transform group-hover:scale-105"
+            className="md:mt-0 md:w-1/2 h-[240px] object-cover rounded-xl transition-transform group-hover:scale-105 lg:absolute lg:bottom-0 lg:right-0 lg:w-[350px] lg:h-[350px] lg:object-contain"
           />
         </div>
 
         {/* RIGHT SIDE */}
         <div className="lg:col-span-7 flex flex-col gap-6">
-
           {/* SOFA */}
           <div className="bg-[#E6D5C3]/40 rounded-3xl p-6 sm:p-8 border border-[#C9A24D]/40 hover:shadow-xl transition flex flex-col md:flex-row items-left overflow-hidden group">
             <div className="md:w-1/2 z-10">

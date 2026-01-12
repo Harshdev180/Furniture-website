@@ -2,14 +2,10 @@ import React from "react";
 
 const TestimonialCard = ({ name, role, img }) => {
   return (
-    <div className="text-sm w-70 mx-auto border border-gray-200 pb-6 rounded-lg bg-white shadow-xl shadow-black/30">
+    <div className="text-sm w-70 mx-auto border border-gray-200 pb-6 rounded-lg bg-[#FAF7F2] shadow-xl shadow-black/30">
       {/* Profile */}
       <div className="flex flex-col items-center px-5 py-4 relative">
-        <img
-          className="h-24 w-24 rounded-full shrink-0"
-          src={img}
-          alt={name}
-        />
+        <img className="h-24 w-24 rounded-full shrink-0" src={img} alt={name} />
 
         <div className="pt-8 text-center">
           <h1 className="text-lg font-medium text-[#3E2723] font-serif">

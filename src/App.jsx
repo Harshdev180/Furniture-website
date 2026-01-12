@@ -13,7 +13,7 @@ import "./App.css";
 import Template from "./components/home/Template";
 import AuthFlip from "./components/AuthFlip";
 import Customize from "./components/customization/Customize";
-import AddToCart from "./components/Cart/AddToCart"
+import AddToCart from "./components/Cart/AddToCart";
 import Checkout from "./components/checkoutPage/Checkout";
 import ThankYou from "./pages/ThankYou";
 import Tracking from "./pages/Tracking";
@@ -28,8 +28,9 @@ import Cookies from "./components/policy/Cookies";
 import Newprivacy from "./components/policy/Newprivacy";
 import Newreturn from "./components/policy/Newreturn";
 function App() {
-
   const location = useLocation();
+  const hideFooterRoutes = ["/cart", "/wishlist", "/checkoutPage"];
+  const shouldHideFooter = hideFooterRoutes.includes(location.pathname);
   return (
     <>
       <WishlistProvider>
@@ -44,7 +45,11 @@ function App() {
             {/* Catalog & Categories */}
             <Route path="/catalogue" element={<CatalogPage />} />
             <Route path="/categories" element={<Categories />} />
-            <Route path="/category/:typeKey" element={<CategoryProducts />} key={location.pathname} />
+            <Route
+              path="/category/:typeKey"
+              element={<CategoryProducts />}
+              key={location.pathname}
+            />
             <Route path="/customize" element={<Customize />} />
 
             {/* Product Detail (WITH PARAM) */}
@@ -60,24 +65,29 @@ function App() {
             {/* Cookies */}
             <Route path="/cookies" element={<Cookies />} />
 
-
             {/* Privacy */}
             <Route path="/privacy" element={<Newprivacy />} />
 
             {/*Return */}
             <Route path="/return" element={<Newreturn />} />
 
-
             {/* Contact */}
             <Route path="/contact" element={<Contact />} />
 
             {/*add to cart */}
-            <Route path="/cart" element={<AddToCart />} />
+            <Route
+              path="/cart"
+              element={
+                <ProtectedRoute>
+                  <AddToCart />
+                </ProtectedRoute>
+              }
+            />
 
             <Route path="/quoteRequest" element={<QuoteRequest />} />
 
             {/* Checkout */}
-            <Route path="/checkoutPage" element={<ProtectedRoute><Checkout /></ProtectedRoute>} />
+            <Route path="/checkoutPage" element={<Checkout />} />
 
             {/* Thank You & Tracking */}
             <Route path="/thankyou" element={<ThankYou />} />
@@ -101,14 +111,11 @@ function App() {
                 </div>
               }
             />
-
           </Routes>
-          <Footer />
+          {!shouldHideFooter && <Footer />}
         </CartProvider>
       </WishlistProvider>
     </>
-  )
+  );
 }
-export default App
-
-
+export default App;

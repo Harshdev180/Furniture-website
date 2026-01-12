@@ -9,7 +9,9 @@ import { Link } from "react-router-dom";
 const Section1 = () => {
   return (
     <div className="sm:flex justify-between">
-      <img src={logo} alt="" className="w-50 mb-5" />
+      <Link to="/">
+        <img src={logo} alt="" className="w-50 mb-5" />
+      </Link>
 
       {/* Social icons */}
       <div className="flex space-x-4 sm:ml-4 mb-5">
