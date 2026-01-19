@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+ import { useMemo, useState } from "react";
 import InputGrid from "./InputGrid";
 import DeliveryForm from "./DeliveryForm";
 import Section from "./Section";
@@ -7,16 +7,33 @@ import { FaArrowLeft } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { openRazorpay } from "../../assests/razorpay";
 import { groupCartItems } from "../../assests/cartUtils";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 import { Truck, ShieldCheck, RefreshCcw, CreditCard } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { submitDeliveryForm, submitOrder } from "../../utils/googleSheets";
 import { useCart } from "../context/AddtocartContext";
+import Picture from "../../utils/Picture";
 
 export default function Checkout() {
   const navigate = useNavigate();
   const { cart } = useCart();
-  const [items, setItems] = useState([]);
+  const items = useMemo(() => {
+    return cart.length > 0 ? groupCartItems(cart) : [];
+  }, [cart]);
+  const toRealINR = (price) => {
+    if (typeof price === "number") {
+      const v = price < 5000 ? price * 83 : price;
+      return Math.round(v);
+    }
+    if (typeof price === "string") {
+      const cleaned = price.replace(/[₹,\s]/g, "");
+      const num = parseFloat(cleaned);
+      if (isNaN(num)) return 0;
+      const v = num < 5000 ? num * 83 : num;
+      return Math.round(v);
+    }
+    return 0;
+  };
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -31,21 +48,12 @@ export default function Checkout() {
     timeSlot: "",
   });
 
-  useEffect(() => {
-    if (cart.length > 0) {
-      const groupedItems = groupCartItems(cart);
-      setItems(groupedItems);
-    } else {
-      setItems([]);
-    }
-  }, [cart]);
-
   const subtotal = items.reduce(
-    (acc, item) => acc + item.price * item.quantity,
+    (acc, item) => acc + toRealINR(item.price) * item.quantity,
     0
   );
   const discount = subtotal * 0.1;
-  const shipping = 70;
+  const shipping = formData.deliveryMethod === "pickup" ? 0 : 70;
   const total = subtotal - discount + shipping;
 
   return (
@@ -71,7 +79,7 @@ export default function Checkout() {
         <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
           {/* LEFT SECTION */}
           <div className="lg:col-span-2 space-y-6">
-            <motion.div
+            <Motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
@@ -79,9 +87,9 @@ export default function Checkout() {
               <Section title="Contact Information" value="1">
                 <InputGrid formData={formData} onChange={setFormData} />
               </Section>
-            </motion.div>
+            </Motion.div>
 
-            <motion.div
+            <Motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
@@ -89,11 +97,11 @@ export default function Checkout() {
               <Section title="Delivery Method" value="2">
                 <DeliveryForm formData={formData} onChange={setFormData} />
               </Section>
-            </motion.div>
+            </Motion.div>
           </div>
 
           {/* ORDER SUMMARY */}
-          <motion.div
+          <Motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
@@ -115,14 +123,14 @@ export default function Checkout() {
                   </div>
                 ) : (
                   items.map((item, index) => (
-                    <motion.div
+                    <Motion.div
                       key={item.id}
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.1 }}
                       className="flex gap-3 p-3 rounded-lg hover:bg-[#FAF7F2] transition-colors"
                     >
-                      <img
+                      <Picture
                         src={item.image}
                         alt={item.name}
                         className="w-16 h-16 sm:w-20 sm:h-20 rounded-lg object-cover shrink-0 border border-[#E6D5C3]"
@@ -142,15 +150,15 @@ export default function Checkout() {
                       </div>
                       <div className="flex flex-col items-end">
                         <p className="text-sm sm:text-base font-bold text-[#3E2723]">
-                          ₹{(item.price * item.quantity).toLocaleString()}
+                          ₹{(toRealINR(item.price) * item.quantity).toLocaleString()}
                         </p>
                         {item.quantity > 1 && (
                           <p className="text-xs text-gray-500 mt-1">
-                            ₹{item.price.toLocaleString()} each
+                            ₹{toRealINR(item.price).toLocaleString()} each
                           </p>
                         )}
                       </div>
-                    </motion.div>
+                    </Motion.div>
                   ))
                 )}
               </div>
@@ -163,7 +171,10 @@ export default function Checkout() {
                   value={`-₹${discount.toLocaleString()}`}
                   isDiscount={true}
                 />
-                <Row label="Shipping" value={`₹${shipping.toLocaleString()}`} />
+                <Row
+                  label={formData.deliveryMethod === "pickup" ? "Pickup" : "Shipping"}
+                  value={`₹${shipping.toLocaleString()}`}
+                />
               </div>
 
               <div className="border-t-2 border-[#C9A24D] pt-4 pb-6 flex justify-between items-center">
@@ -200,7 +211,7 @@ export default function Checkout() {
                       items: items.map(item => ({
                         name: item.name,
                         quantity: item.quantity,
-                        price: item.price * item.quantity,
+                        price: toRealINR(item.price) * item.quantity,
                       })),
                       subtotal,
                       discount,
@@ -302,7 +313,7 @@ export default function Checkout() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </Motion.div>
         </div>
       </div>
     </div>

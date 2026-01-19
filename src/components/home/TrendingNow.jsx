@@ -2,16 +2,29 @@ import { useRef, useState } from "react";
 import { FaArrowLeft, FaArrowRight, FaTimes } from "react-icons/fa";
 import { products, productActions } from "../../assests/assests";
 import { Link, useNavigate } from "react-router-dom";
-import { useWishlist } from "../context/WishlistContext";
 import WishlistButton from "../WishlistButton";
 import { useCart } from "../context/AddtocartContext";
+import Picture from "../../utils/Picture";
 
 const TrendingNow = () => {
-  const { addToWishlist } = useWishlist();
   const { addToCart } = useCart();
   const navigate = useNavigate();
   const sliderRef = useRef(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const toRealINR = (price) => {
+    if (typeof price === "number") {
+      const v = price < 5000 ? price * 83 : price;
+      return Math.round(v);
+    }
+    if (typeof price === "string") {
+      const cleaned = price.replace(/[₹,\s]/g, "");
+      const num = parseFloat(cleaned);
+      if (isNaN(num)) return 0;
+      const v = num < 5000 ? num * 83 : num;
+      return Math.round(v);
+    }
+    return 0;
+  };
 
   const scrollLeft = () => {
     sliderRef.current.scrollBy({
@@ -72,7 +85,7 @@ const TrendingNow = () => {
             >
               {/* IMAGE */}
               <div className="aspect-4/5 relative overflow-hidden">
-                <img
+                <Picture
                   src={product.image}
                   alt={product.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
@@ -93,7 +106,8 @@ const TrendingNow = () => {
                 opacity-100 md:opacity-0 md:group-hover:opacity-100
                 transition-all translate-y-4 group-hover:translate-y-0"
                 >
-                  {productActions.map(({ id, icon: Icon }) => {
+                  {productActions.map((action) => {
+                    const { id } = action;
                     if (id === "wishlist") {
                       return (
                         <div
@@ -124,7 +138,7 @@ const TrendingNow = () => {
                    hover:bg-[#C9A24D] hover:text-white
                    transition-all"
                       >
-                        <Icon size={22} />
+                        <action.icon size={22} />
                       </button>
                     );
                   })}
@@ -142,7 +156,7 @@ const TrendingNow = () => {
 
                 <div className="flex justify-center gap-2">
                   <span className="font-bold text-[#C9A24D]">
-                    ₹{product.price}
+                    ₹{toRealINR(product.price).toLocaleString()}
                   </span>
                   {product.oldPrice && (
                     <span className="line-through text-sm text-[#2B2B2B]/40">
@@ -176,7 +190,7 @@ const TrendingNow = () => {
 
             {/* IMAGE */}
             <div className="w-full h-[250px] sm:h-[300px] md:h-full">
-              <img
+              <Picture
                 src={selectedProduct.image}
                 alt={selectedProduct.title}
                 className="w-full h-full object-cover"
@@ -200,7 +214,7 @@ const TrendingNow = () => {
               {/* PRICE */}
               <div className="flex justify-center md:justify-start gap-3 mt-3">
                 <span className="text-lg sm:text-xl font-bold text-[#C9A24D]">
-                  ₹{selectedProduct.price}
+                  ₹{toRealINR(selectedProduct.price).toLocaleString()}
                 </span>
                 {selectedProduct.oldPrice && (
                   <span className="line-through text-[#2B2B2B]/50 text-sm sm:text-base">

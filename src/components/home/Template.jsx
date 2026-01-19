@@ -3,8 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import QuoteRequest from "../QuoteRequest";
 import { useCart } from "../context/AddtocartContext";
 import WishlistButton from "../WishlistButton";
-import { motion } from "framer-motion";
-const tembanner = "/templateimg/templatebanner.jpg";
+import { motion as Motion } from "framer-motion";
+const tembanner = "/templateimg/templatebanner.webp";
 
 const categories = [
   "All Templates",
@@ -78,6 +78,20 @@ export default function Template() {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const navigate = useNavigate();
   const { addToCart } = useCart();
+  const toRealINR = (price) => {
+    if (typeof price === "number") {
+      const v = price < 5000 ? price * 83 : price;
+      return Math.round(v);
+    }
+    if (typeof price === "string") {
+      const cleaned = price.replace(/[₹,\s]/g, "");
+      const num = parseFloat(cleaned);
+      if (isNaN(num)) return 0;
+      const v = num < 5000 ? num * 83 : num;
+      return Math.round(v);
+    }
+    return 0;
+  };
 
   const filteredProducts =
     activeCategory === "All Templates"
@@ -106,7 +120,7 @@ export default function Template() {
         {/* <div className="absolute inset-0 bg-[#000]/55" /> */}
         <div className="absolute inset-0 bg-[#3E2723]/70"></div>
 
-        <motion.div
+        <Motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -122,7 +136,7 @@ export default function Template() {
             Explore pre-designed furniture templates crafted for elegance and
             precision.
           </p>
-        </motion.div>
+        </Motion.div>
       </section>
 
       {/* FILTERS */}
@@ -180,7 +194,7 @@ export default function Template() {
                 <p className="text-sm text-gray-600 mt-1 flex-1">{item.desc}</p>
 
                 <p className="text-[#C9A24D] font-medium mt-3">
-                  ₹{item.price.toLocaleString()}
+                  ₹{toRealINR(item.price).toLocaleString()}
                 </p>
 
                 <div className="flex gap-3 mt-4">

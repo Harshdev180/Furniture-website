@@ -32,12 +32,17 @@ export default function CartPage() {
 
   // Normalize price to number (handle string prices)
   const normalizePrice = (price) => {
-    if (typeof price === 'number') return price;
+    if (typeof price === 'number') {
+      const v = price < 5000 ? price * 83 : price;
+      return Math.round(v);
+    }
     if (typeof price === 'string') {
       // Remove currency symbols, commas, and whitespace
       const cleaned = price.replace(/[₹,\s]/g, '');
       const num = parseFloat(cleaned);
-      return isNaN(num) ? 0 : num;
+      if (isNaN(num)) return 0;
+      const v = num < 5000 ? num * 83 : num;
+      return Math.round(v);
     }
     return 0;
   };

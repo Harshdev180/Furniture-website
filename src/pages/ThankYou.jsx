@@ -1,22 +1,21 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 import { CheckCircle, Package, Home, ShoppingBag, Truck, RefreshCcw, Shield } from "lucide-react";
+import Picture from "../utils/Picture";
 
 export default function ThankYou() {
   const location = useLocation();
   const orderData = location.state?.orderData || {};
 
-  const [orderId] = useState(
-    () => orderData.orderId || `ORD-${Date.now()}`
-  );
+  const [orderId] = useState(() => orderData.orderId || "ORD-PENDING");
 
   return (
     <div className="min-h-screen bg-[#FAF7F2] pt-20 sm:pt-24 pb-16">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-10">
 
         {/* SUCCESS ICON */}
-        <motion.div
+        <Motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ type: "spring", stiffness: 120 }}
@@ -26,19 +25,19 @@ export default function ThankYou() {
             <div className="w-24 h-24 sm:w-32 sm:h-32 bg-gradient-to-br from-[#C9A24D] to-[#B8923D] rounded-full flex items-center justify-center shadow-xl">
               <CheckCircle className="w-14 h-14 sm:w-20 sm:h-20 text-white" />
             </div>
-            <motion.div
+            <Motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 0.3, type: "spring" }}
               className="absolute -top-2 -right-2 w-8 h-8 bg-[#3E2723] rounded-full flex items-center justify-center"
             >
               <CheckCircle className="w-5 h-5 text-[#C9A24D]" />
-            </motion.div>
+            </Motion.div>
           </div>
-        </motion.div>
+        </Motion.div>
 
         {/* HEADER */}
-        <motion.div
+        <Motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
@@ -57,11 +56,11 @@ export default function ThankYou() {
               {orderId}
             </p>
           </div>
-        </motion.div>
+        </Motion.div>
 
         {/* ORDER SUMMARY */}
         {orderData?.total && (
-          <motion.div
+          <Motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
@@ -77,7 +76,7 @@ export default function ThankYou() {
                 className="flex flex-col sm:flex-row justify-between gap-4 py-3 border-b last:border-0"
               >
                 <div className="flex gap-4">
-                  <img
+                  <Picture
                     src={item.image}
                     alt={item.name}
                     className="w-24 h-24 object-cover rounded-lg"
@@ -107,12 +106,12 @@ export default function ThankYou() {
               </span>
             </div>
 
-          </motion.div>
+          </Motion.div>
         )
         }
 
         {/* NEXT STEPS */}
-        <motion.div
+        <Motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
@@ -148,10 +147,10 @@ export default function ThankYou() {
               </div>
             ))}
           </div>
-        </motion.div>
+        </Motion.div>
 
         {/* ACTION BUTTONS */}
-        <motion.div
+        <Motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8 }}
@@ -172,10 +171,10 @@ export default function ThankYou() {
             <Home className="w-5 h-5" />
             Back to Home
           </Link>
-        </motion.div>
+        </Motion.div>
 
         {/* TRUST */}
-        <motion.div
+        <Motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}
@@ -198,7 +197,7 @@ export default function ThankYou() {
               </p>
             </div>
           ))}
-        </motion.div>
+        </Motion.div>
 
       </div >
     </div >

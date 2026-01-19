@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { furnitureOptions } from "../../assests/customizeData";
 import { furnitureData } from "../../assests/furnitureData";
-import { motion } from "framer-motion";
 import { useCart } from "../context/AddtocartContext";
+import { motion as Motion } from "framer-motion";
 import { RefreshCcw, Shield, Truck } from "lucide-react";
 
 // Furniture type mapping for display
@@ -33,6 +33,57 @@ const popularTypes = [
     { key: "sofa", label: "Sofa", icon: "🛋️" },
     { key: "shelf", label: "Shelves", icon: "📦" },
 ];
+
+function OptionSection({ title, options, selectionKey, type = "button", selectedIndex, onSelect }) {
+    if (!options || options.length === 0) return null;
+    return (
+        <div className="space-y-3">
+            <p className="font-semibold text-[#3E2723] text-base sm:text-lg">{title}</p>
+            <div className="flex flex-wrap gap-2 sm:gap-3">
+                {options.map((option, i) => {
+                    const isSelected = selectedIndex === i;
+                    const priceText =
+                        option.price > 0
+                            ? `+₹${option.price.toLocaleString()}`
+                            : option.price < 0
+                                ? `₹${option.price.toLocaleString()}`
+                                : "";
+                    if (type === "color") {
+                        return (
+                            <button
+                                key={i}
+                                onClick={() => onSelect(selectionKey, i)}
+                                className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 transition-all ${isSelected
+                                    ? "border-[#C9A24D] ring-2 ring-[#C9A24D] ring-offset-2 scale-110"
+                                    : "border-gray-300 hover:border-[#C9A24D] hover:scale-105"
+                                    }`}
+                                style={{ backgroundColor: option.code }}
+                                title={option.name}
+                            />
+                        );
+                    }
+                    return (
+                        <button
+                            key={i}
+                            onClick={() => onSelect(selectionKey, i)}
+                            className={`px-3 py-2 sm:px-5 sm:py-2.5 rounded-lg border-2 transition-all font-medium text-sm sm:text-base ${isSelected
+                                ? "bg-[#3E2723] text-white border-[#3E2723] shadow-md"
+                                : "bg-white text-[#3E2723] border-[#D1C4B2] hover:border-[#C9A24D] hover:bg-[#FAF7F2]"
+                                }`}
+                        >
+                            <span className="whitespace-nowrap">{option.name}</span>
+                            {priceText && (
+                                <span className={`ml-1 sm:ml-2 text-xs ${isSelected ? "text-gray-300" : "text-[#C9A24D]"}`}>
+                                    {priceText}
+                                </span>
+                            )}
+                        </button>
+                    );
+                })}
+            </div>
+        </div>
+    );
+}
 
 export default function FurnitureCustomizer() {
     const location = useLocation();
@@ -149,7 +200,7 @@ export default function FurnitureCustomizer() {
         });
 
         const customizedProduct = {
-            id: `custom-${type}-${Date.now()}`,
+            id: `custom-${type}`,
             name: `Custom ${productName}`,
             price: totalPrice,
             image: furniture.image,
@@ -181,58 +232,7 @@ export default function FurnitureCustomizer() {
         return furnitureTypeMap[key] || key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, " $1");
     };
 
-    const OptionSection = ({ title, options, selectionKey, type = "button" }) => {
-        if (!options || options.length === 0) return null;
-
-        return (
-            <div className="space-y-3">
-                <p className="font-semibold text-[#3E2723] text-base sm:text-lg">{title}</p>
-                <div className="flex flex-wrap gap-2 sm:gap-3">
-                    {options.map((option, i) => {
-                        const isSelected = selections[selectionKey] === i;
-                        const priceText = option.price > 0
-                            ? `+₹${option.price.toLocaleString()}`
-                            : option.price < 0
-                                ? `₹${option.price.toLocaleString()}`
-                                : "";
-
-                        if (type === "color") {
-                            return (
-                                <button
-                                    key={i}
-                                    onClick={() => handleSelection(selectionKey, i)}
-                                    className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 transition-all ${isSelected
-                                        ? "border-[#C9A24D] ring-2 ring-[#C9A24D] ring-offset-2 scale-110"
-                                        : "border-gray-300 hover:border-[#C9A24D] hover:scale-105"
-                                        }`}
-                                    style={{ backgroundColor: option.code }}
-                                    title={option.name}
-                                />
-                            );
-                        }
-
-                        return (
-                            <button
-                                key={i}
-                                onClick={() => handleSelection(selectionKey, i)}
-                                className={`px-3 py-2 sm:px-5 sm:py-2.5 rounded-lg border-2 transition-all font-medium text-sm sm:text-base ${isSelected
-                                    ? "bg-[#3E2723] text-white border-[#3E2723] shadow-md"
-                                    : "bg-white text-[#3E2723] border-[#D1C4B2] hover:border-[#C9A24D] hover:bg-[#FAF7F2]"
-                                    }`}
-                            >
-                                <span className="whitespace-nowrap">{option.name}</span>
-                                {priceText && (
-                                    <span className={`ml-1 sm:ml-2 text-xs ${isSelected ? "text-gray-300" : "text-[#C9A24D]"}`}>
-                                        {priceText}
-                                    </span>
-                                )}
-                            </button>
-                        );
-                    })}
-                </div>
-            </div>
-        );
-    };
+    // OptionSection moved to module scope to satisfy lint rule on static components
 
     // Get all available furniture types
     const allTypes = Object.keys(furnitureOptions).map((key) => ({
@@ -297,7 +297,7 @@ export default function FurnitureCustomizer() {
 
                 <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
                     {/* Preview Section */}
-                    <motion.div
+                    <Motion.div
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         className="lg:sticky lg:top-24 h-fit order-2 lg:order-1"
@@ -357,10 +357,10 @@ export default function FurnitureCustomizer() {
                                 </div>
                             </div>
                         </div>
-                    </motion.div>
+                    </Motion.div>
 
                     {/* Customization Panel */}
-                    <motion.div
+                    <Motion.div
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
                         className="space-y-6 sm:space-y-8 order-1 lg:order-2"
@@ -372,6 +372,8 @@ export default function FurnitureCustomizer() {
                                     title="Material"
                                     options={furniture.materials}
                                     selectionKey="material"
+                                    selectedIndex={selections.material}
+                                    onSelect={handleSelection}
                                 />
                             )}
 
@@ -380,6 +382,8 @@ export default function FurnitureCustomizer() {
                                     title="Size"
                                     options={furniture.sizes}
                                     selectionKey="size"
+                                    selectedIndex={selections.size}
+                                    onSelect={handleSelection}
                                 />
                             )}
 
@@ -388,6 +392,8 @@ export default function FurnitureCustomizer() {
                                     title="Seating Capacity"
                                     options={furniture.seating}
                                     selectionKey="seating"
+                                    selectedIndex={selections.seating}
+                                    onSelect={handleSelection}
                                 />
                             )}
 
@@ -397,6 +403,8 @@ export default function FurnitureCustomizer() {
                                     options={furniture.colors}
                                     selectionKey="color"
                                     type="color"
+                                    selectedIndex={selections.color}
+                                    onSelect={handleSelection}
                                 />
                             )}
 
@@ -405,6 +413,8 @@ export default function FurnitureCustomizer() {
                                     title="Storage"
                                     options={furniture.storage}
                                     selectionKey="storage"
+                                    selectedIndex={selections.storage}
+                                    onSelect={handleSelection}
                                 />
                             )}
 
@@ -413,6 +423,8 @@ export default function FurnitureCustomizer() {
                                     title="Headboard Style"
                                     options={furniture.headboard}
                                     selectionKey="headboard"
+                                    selectedIndex={selections.headboard}
+                                    onSelect={handleSelection}
                                 />
                             )}
 
@@ -421,6 +433,8 @@ export default function FurnitureCustomizer() {
                                     title="Door Style"
                                     options={furniture.doors}
                                     selectionKey="doors"
+                                    selectedIndex={selections.doors}
+                                    onSelect={handleSelection}
                                 />
                             )}
 
@@ -429,6 +443,8 @@ export default function FurnitureCustomizer() {
                                     title="Style"
                                     options={furniture.style}
                                     selectionKey="style"
+                                    selectedIndex={selections.style}
+                                    onSelect={handleSelection}
                                 />
                             )}
 
@@ -437,6 +453,8 @@ export default function FurnitureCustomizer() {
                                     title="Shape"
                                     options={furniture.shape}
                                     selectionKey="shape"
+                                    selectedIndex={selections.shape}
+                                    onSelect={handleSelection}
                                 />
                             )}
                         </div>
@@ -484,7 +502,7 @@ export default function FurnitureCustomizer() {
                             </div>
                         </div>
 
-                    </motion.div>
+                    </Motion.div>
                 </div>
             </div>
         </div>

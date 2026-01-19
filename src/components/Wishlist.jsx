@@ -7,6 +7,20 @@ const Wishlist = () => {
   const { wishlist, removeFromWishlist } = useWishlist();
   const { addToCart } = useCart();
   const navigate = useNavigate();
+  const toRealINR = (price) => {
+    if (typeof price === "number") {
+      const v = price < 5000 ? price * 83 : price;
+      return Math.round(v);
+    }
+    if (typeof price === "string") {
+      const cleaned = price.replace(/[₹,\s]/g, "");
+      const num = parseFloat(cleaned);
+      if (isNaN(num)) return 0;
+      const v = num < 5000 ? num * 83 : num;
+      return Math.round(v);
+    }
+    return 0;
+  };
 
   if (wishlist.length === 0) {
     return (
@@ -77,7 +91,7 @@ const Wishlist = () => {
               </h3>
 
               <p className="text-lg font-bold text-[#C9A24D] mt-2">
-                ₹{item.price}
+                ₹{toRealINR(item.price).toLocaleString()}
               </p>
 
               {/* BUTTONS */}

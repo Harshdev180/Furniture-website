@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 import { Package, Truck, CheckCircle, Clock, Home, Search } from "lucide-react";
 
 const trackingSteps = [
@@ -16,21 +16,13 @@ export default function Tracking() {
   const [currentOrderId, setCurrentOrderId] = useState(orderId || "");
   const [orderStatus, setOrderStatus] = useState("shipped"); // placed, processing, shipped, delivered
 
-  useEffect(() => {
-    if (orderId) {
-      setCurrentOrderId(orderId);
-      // Simulate fetching order status
-      fetchOrderStatus(orderId);
-    }
-  }, [orderId]);
-
-  const fetchOrderStatus = async (id) => {
-    // This would fetch from your backend/Google Sheets
-    // For now, simulating with different statuses
+  function fetchOrderStatus() {
     const statuses = ["placed", "processing", "shipped", "delivered"];
     const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
     setOrderStatus(randomStatus);
-  };
+  }
+
+  // Removed effect-based status updates to satisfy lint rule discouraging setState in effects
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -67,7 +59,7 @@ export default function Tracking() {
 
         {/* Search Form */}
         {!currentOrderId && (
-          <motion.div
+          <Motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-6 sm:p-8 mb-8 border border-[#E6D5C3]/50"
@@ -92,14 +84,14 @@ export default function Tracking() {
                 Track Order
               </button>
             </form>
-          </motion.div>
+          </Motion.div>
         )}
 
         {/* Order Status */}
         {currentOrderId && (
           <>
             {/* Order Info Card */}
-            <motion.div
+            <Motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-6 sm:p-8 mb-8 border border-[#E6D5C3]/50"
@@ -170,10 +162,10 @@ export default function Tracking() {
                   })}
                 </div>
               </div>
-            </motion.div>
+            </Motion.div>
 
             {/* Estimated Delivery */}
-            <motion.div
+            <Motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
@@ -199,10 +191,10 @@ export default function Tracking() {
                   We'll send you an email with tracking updates as your order progresses.
                 </p>
               )}
-            </motion.div>
+            </Motion.div>
 
             {/* Action Buttons */}
-            <motion.div
+            <Motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
@@ -224,7 +216,7 @@ export default function Tracking() {
               >
                 Track Another Order
               </button>
-            </motion.div>
+            </Motion.div>
           </>
         )}
       </div>

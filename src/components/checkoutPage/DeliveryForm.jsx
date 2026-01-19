@@ -44,7 +44,7 @@ const DeliveryForm = ({ formData, onChange }) => {
       </div>
 
       {/* Date and Time */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
+      {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
         <div className="space-y-2">
           <label className="text-xs font-bold uppercase tracking-wider text-[#3E2723]/70 ml-1 flex items-center gap-2">
             <Calendar className="w-3 h-3" />
@@ -76,7 +76,7 @@ const DeliveryForm = ({ formData, onChange }) => {
             <IoIosArrowDown className="absolute right-4 top-1/2 -translate-y-1/2 text-[#3E2723]/50 pointer-events-none" />
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Address Fields */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 pt-2">
@@ -125,7 +125,7 @@ const DeliveryForm = ({ formData, onChange }) => {
           />
         </div>
 
-        <div className="md:col-span-2 space-y-2">
+        {/* <div className="md:col-span-2 space-y-2">
           <label className="text-xs font-bold uppercase tracking-wider text-[#3E2723]/70 ml-1 flex items-center gap-2">
             <MapPin className="w-3 h-3" />
             Country
@@ -146,7 +146,7 @@ const DeliveryForm = ({ formData, onChange }) => {
             </select>
             <IoIosArrowDown className="absolute right-4 top-1/2 -translate-y-1/2 text-[#3E2723]/50 pointer-events-none" />
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

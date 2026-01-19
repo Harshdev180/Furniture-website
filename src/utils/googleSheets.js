@@ -16,7 +16,7 @@ export const submitToGoogleSheets = async (formType, formData) => {
       ...formData,
     };
 
-    const response = await fetch(GOOGLE_SCRIPT_URL, {
+    await fetch(GOOGLE_SCRIPT_URL, {
       method: 'POST',
       mode: 'no-cors', // Required for Google Apps Script
       headers: {
@@ -163,7 +163,6 @@ export const fetchUserData = async (email) => {
   try {
     // Use a different approach since no-cors doesn't allow reading responses
     // We'll use a workaround with a callback or try with cors
-    const scriptUrl = GOOGLE_SCRIPT_URL.replace('/exec', '');
     const response = await fetch(`${GOOGLE_SCRIPT_URL}?action=getUser&email=${encodeURIComponent(email)}`, {
       method: 'GET',
       mode: 'cors',

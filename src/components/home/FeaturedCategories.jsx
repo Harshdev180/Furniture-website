@@ -1,6 +1,7 @@
 import React from "react";
 import { FaArrowRight } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import Picture from "../../utils/Picture";
 
 const FeaturedCategories = () => {
   return (
@@ -52,11 +53,13 @@ const FeaturedCategories = () => {
             </ul>
           </div>
 
-          <img
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyFGNMOsU2-2Ud42KCjtAMMOq44h_zhjgqEKWBriTTiauESLzAzxa1JNk-aIPielA0nTsuAd3Wo8uJYxR5lNrn-W0VV_BhnUvq6kLLFLF8BPb7lxbBUCU5luWUf_FJXuTJ9TLTv3SlqadntKxZZRQsoWdEDAigpvqauzlWGCDO0vCsuVo4NnaX4E4-zj-bhbwHjHf0bkoD6naFqOUH_zgiKimBDzS6QWmpO4S0l3tz5pjM_1mFFCv_kkrGExXw4_oHdOZIv0KQDmTR"
-            alt="Chair"
-            className="md:mt-0 md:w-1/2 h-[240px] object-cover rounded-xl transition-transform group-hover:scale-105 lg:absolute lg:bottom-0 lg:right-0 lg:w-[350px] lg:h-[350px] lg:object-contain"
-          />
+          <div className="flex justify-center items-center">
+            <Picture
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyFGNMOsU2-2Ud42KCjtAMMOq44h_zhjgqEKWBriTTiauESLzAzxa1JNk-aIPielA0nTsuAd3Wo8uJYxR5lNrn-W0VV_BhnUvq6kLLFLF8BPb7lxbBUCU5luWUf_FJXuTJ9TLTv3SlqadntKxZZRQsoWdEDAigpvqauzlWGCDO0vCsuVo4NnaX4E4-zj-bhbwHjHf0bkoD6naFqOUH_zgiKimBDzS6QWmpO4S0l3tz5pjM_1mFFCv_kkrGExXw4_oHdOZIv0KQDmTR"
+              alt="Furniture"
+              className="w-full h-[320px] sm:h-[350px] object-cover rounded-xl transition-all duration-700"
+            />
+          </div>
         </div>
 
         {/* RIGHT SIDE */}
@@ -85,7 +88,7 @@ const FeaturedCategories = () => {
               </Link>
             </div>
 
-            <img
+            <Picture
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9FeUTMced0-A9co76x7LfpULoCRj7VjyVpWiBBJAUcblgwfe9_2-jfSGFBkNHqlLi2aXOrAvUQqqYl1LXd_hNTZHrNChCyyRHRQLCXuMNCVWQx7s5DK99yF5SXlaHZVk9nn4QxdhaB49b47Cqj4XjZcDsbo3Ci6ewJJ2k3AYiY9IWKgOj96r-0R_v5fBAcLFTS62k6xbiQ6Zkgof8YeR0_U8OQcdjgpNP3qteTwa9gj8G8HzzMQxvbNvVzrv2lF_-LW83kPgayZDE"
               alt="Sofa"
               className="mt-6 md:mt-0 md:w-1/2 h-[260px] object-cover rounded-xl transition-transform group-hover:scale-105"
@@ -116,7 +119,7 @@ const FeaturedCategories = () => {
               </Link>
             </div>
 
-            <img
+            <Picture
               src="https://img.freepik.com/free-photo/modern-bedroom-interior-design-with-blue-accent-wall_23-2151995362.jpg"
               alt="Bed"
               className="mt-6 md:mt-0 md:w-1/2 h-[240px] object-cover rounded-xl transition-transform group-hover:scale-105"

@@ -5,7 +5,7 @@ import { useCart } from "./context/AddtocartContext";
 import WishlistButton from "./WishlistButton";
 
 // ✅ Correct way to import image in Vite
-import bannerimg from "/Catelogimg/banner.png";
+import bannerimg from "/Catelogimg/banner.webp";
 
 function FilterContent({
   isMobile = false,
@@ -168,7 +168,7 @@ const CatalogPage = () => {
       desc: "Solid Oak + Seater",
       category: "Dining Tables",
       material: "Walnut",
-      img: "/Catelogimg/TheOsloTablerr.jpg",
+      img: "/Catelogimg/TheOsloTablerr.webp",
     },
     {
       id: 2,
@@ -178,7 +178,7 @@ const CatalogPage = () => {
       desc: "Italian Marble · Brass Legs",
       category: "Dining Tables",
       material: "Marble",
-      img: "/Catelogimg/CarraraRound.jpg",
+      img: "/Catelogimg/CarraraRound.webp",
     },
     {
       id: 3,
@@ -187,7 +187,7 @@ const CatalogPage = () => {
       desc: "Full-grain Leather",
       category: "Sofas & Armchairs",
       material: "Leather",
-      img: "/Catelogimg/VintnerChair.jpg",
+      img: "/Catelogimg/VintnerChair.webp",
     },
     {
       id: 4,
@@ -196,7 +196,7 @@ const CatalogPage = () => {
       desc: "Velvet · Customizable",
       category: "Sofas & Armchairs",
       material: "Velvet",
-      img: "/Catelogimg/CloudModular.jpg",
+      img: "/Catelogimg/CloudModular.webp",
     },
     {
       id: 5,
@@ -205,7 +205,7 @@ const CatalogPage = () => {
       desc: "Matte Black · LED",
       category: "Lighting",
       material: "Brass",
-      img: "/Catelogimg/ArcLamp.jpg",
+      img: "/Catelogimg/ArcLamp.webp",
     },
     {
       id: 6,
@@ -216,9 +216,24 @@ const CatalogPage = () => {
       desc: "Walnut Finish · Set of 2",
       category: "Storage & Shelving",
       material: "Walnut",
-      img: "/Catelogimg/NestingTables.jpg",
+      img: "/Catelogimg/NestingTables.webp",
     },
   ];
+
+  const toRealINR = (price) => {
+    if (typeof price === "number") {
+      const v = price < 5000 ? price * 83 : price;
+      return Math.round(v);
+    }
+    if (typeof price === "string") {
+      const cleaned = price.replace(/[₹,\s]/g, "");
+      const num = parseFloat(cleaned);
+      if (isNaN(num)) return 0;
+      const v = num < 5000 ? num * 83 : num;
+      return Math.round(v);
+    }
+    return 0;
+  };
 
   /* ---------------- FILTER STATES ---------------- */
   const [search, setSearch] = useState("");
@@ -369,7 +384,7 @@ const CatalogPage = () => {
                   </Link>
                   <div className="flex justify-between items-center mt-3">
                     <span className="font-semibold">
-                      ₹{p.price.toLocaleString()}
+                      ₹{toRealINR(p.price).toLocaleString()}
                     </span>
                     <button
                       onClick={(e) => {

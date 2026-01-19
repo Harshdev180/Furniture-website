@@ -11,6 +11,7 @@ import Testimonial from "./Testimonial";
 import Form from "./Form";
 import Inspiration from "./Inspiration";
 import { Link } from "react-router-dom";
+import Picture from "../../utils/Picture";
 
 const Home = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -68,10 +69,10 @@ const Home = () => {
             <div className="mt-8 flex flex-col sm:flex-row sm:items-center gap-4">
               <div className="flex -space-x-3">
                 {[
-                  "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
-                  "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde",
-                  "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
-                  "https://randomuser.me/api/portraits/men/75.jpg",
+                  "https://images.unsplash.com/photo-1633332755192-727a05c4013d?auto=format&fit=crop&w=80&q=80",
+                  "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=80&q=80",
+                  "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=80&q=80",
+                  "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=80&q=80",
                 ].map((img, i) => (
                   <img
                     key={i}
@@ -96,7 +97,7 @@ const Home = () => {
 
           {/* RIGHT */}
           <div className="flex justify-center items-center">
-            <img
+            <Picture
               src={currentCard.image}
               alt="Furniture"
               className="w-full max-w-lg h-[420px] sm:h-[500px] object-cover rounded-xl transition-all duration-700"
@@ -110,8 +111,8 @@ const Home = () => {
             {[
               {
                 icon: <FiTruck />,
-                title: "Free Shipping",
-                text: "Orders above ₹180",
+                title: "Fast Shipping",
+                text: "Orders above ₹10,000",
               },
               {
                 icon: <LuWallet />,
@@ -160,7 +161,7 @@ const Home = () => {
         <Inspiration />
       </section>
 
-      <section className="bg-[#E6D5C3]/20 px-4 sm:px-20 py-16">
+      <section className="bg-[#E6D5C3]/20 px-4 sm:px-20 py-0">
         <Testimonial />
       </section>
     </>

@@ -79,9 +79,17 @@ export const openRazorpay = async ({ total, orderData, onSuccess, onError }) => 
 
     const orderId = orderData?.orderId || `ORD-${Date.now()}`;
 
+    const MAX_AMOUNT_PAISE = 100000000; // ₹1,000,000 cap
+    const MIN_AMOUNT_PAISE = 100; // ₹1.00 minimum
+    const originalAmountPaise = Math.round(total * 100);
+    const clampedAmountPaise = Math.max(
+      MIN_AMOUNT_PAISE,
+      Math.min(originalAmountPaise, MAX_AMOUNT_PAISE)
+    );
+
     const options = {
       key: "rzp_test_vv1FCZvuDRF6lQ", // Replace with your actual Razorpay key
-      amount: Math.round(total * 100), // Convert ₹ to paise
+      amount: clampedAmountPaise, // Convert ₹ to paise and clamp to gateway limits
       currency: "INR",
       name: "Graphura Furniture",
       description: `Order Payment - ${orderId}`,
@@ -105,6 +113,7 @@ export const openRazorpay = async ({ total, orderData, onSuccess, onError }) => 
       notes: {
         order_id: orderId,
         customer_name: orderData?.customerName || "",
+        original_amount_paise: originalAmountPaise,
       },
       theme: {
         color: "#C9A24D",

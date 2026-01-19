@@ -3,7 +3,7 @@ import { FaRegHeart, FaRegUser, FaShoppingCart, FaHeart } from "react-icons/fa";
 import { HiOutlineX } from "react-icons/hi";
 import { IoMenu } from "react-icons/io5";
 import { Link, NavLink } from "react-router-dom";
-import logo from "../assests/images/logo White.png";
+import logo from "../assests/images/logo White.webp";
 import { useWishlist } from "../components/context/WishlistContext";
 import { useCart } from "../components/context/AddtocartContext";
 
@@ -36,16 +36,19 @@ const Navbar = () => {
   }, [open]);
 
   const navLinkClass = ({ isActive }) =>
-    `block px-4 py-3 font-medium transition-colors duration-200 ${isActive ? "text-[#C9A24D]" : "text-[#E6D5C3] hover:text-[#C9A24D]"
+    `block px-4 py-3 font-medium transition-colors duration-200 ${
+      isActive ? "text-[#C9A24D]" : "text-[#E6D5C3] hover:text-[#C9A24D]"
     }`;
 
   return (
     <>
       {/* NAVBAR */}
-      <nav className={`fixed top-0 left-0 w-full z-50 bg-[#3E2723] transition-all duration-300 ${isScrolled ? "shadow-lg" : ""
-        }`}>
+      <nav
+        className={`fixed top-0 left-0 w-full z-50 bg-[#3E2723] transition-all duration-300 ${
+          isScrolled ? "shadow-lg" : ""
+        }`}
+      >
         <div className="flex items-center justify-between px-4 sm:px-6 lg:px-12 xl:px-20 py-3 sm:py-4">
-
           {/* LOGO */}
           <Link to="/" className="shrink-0">
             <img
@@ -57,20 +60,42 @@ const Navbar = () => {
 
           {/* DESKTOP LINKS */}
           <ul className="hidden lg:flex items-center gap-1 xl:gap-2">
-            <li><NavLink to="/" className={navLinkClass}>Home</NavLink></li>
-            <li><NavLink to="/catalogue" className={navLinkClass}>Catalogue</NavLink></li>
-            <li><NavLink to="/categories" className={navLinkClass}>Categories</NavLink></li>
-            <li><NavLink to="/template" className={navLinkClass}>Templates</NavLink></li>
-            <li><NavLink to="/aboutus" className={navLinkClass}>About Us</NavLink></li>
-            <li><NavLink to="/contact" className={navLinkClass}>Contact Us</NavLink></li>
+            <li>
+              <NavLink to="/" className={navLinkClass}>
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/catalogue" className={navLinkClass}>
+                Catalogue
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/categories" className={navLinkClass}>
+                Categories
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/template" className={navLinkClass}>
+                Templates
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/aboutus" className={navLinkClass}>
+                About Us
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/contact" className={navLinkClass}>
+                Contact Us
+              </NavLink>
+            </li>
           </ul>
 
           {/* ICONS */}
           <div className="flex items-center gap-3 sm:gap-4 text-[#E6D5C3]">
-
             {/* DESKTOP ICONS (Hidden on mobile) */}
             <div className="hidden lg:flex items-center gap-3 sm:gap-4">
-
               {/* WISHLIST */}
               <Link to="/wishlist" className="relative group">
                 {wishlistCount > 0 ? (
@@ -93,8 +118,9 @@ const Navbar = () => {
                 title={isAuthenticated ? userEmail : "Sign In"}
               >
                 <FaRegUser
-                  className={`text-xl cursor-pointer hover:text-[#C9A24D] transition-colors ${isAuthenticated ? "text-[#E6D5C3]" : ""
-                    }`}
+                  className={`text-xl cursor-pointer hover:text-[#C9A24D] transition-colors ${
+                    isAuthenticated ? "text-[#E6D5C3]" : ""
+                  }`}
                 />
                 {isAuthenticated && (
                   <span className="absolute -top-1 -right-1 w-2 h-2 bg-green-500 rounded-full border-2 border-[#3E2723]" />
@@ -121,9 +147,7 @@ const Navbar = () => {
             >
               <IoMenu className="text-2xl" />
             </button>
-
           </div>
-
         </div>
       </nav>
 
@@ -239,8 +263,12 @@ const Navbar = () => {
               onClick={() => setOpen(false)}
               className="relative flex flex-col items-center gap-1 text-[#E6D5C3] hover:text-[#C9A24D] transition-colors"
             >
-              <FaRegUser className={`text-xl ${isAuthenticated ? "text-[#E6D5C3]" : ""}`} />
-              <span className="text-xs">{isAuthenticated ? "Profile" : "Sign In"}</span>
+              <FaRegUser
+                className={`text-xl ${isAuthenticated ? "text-[#E6D5C3]" : ""}`}
+              />
+              <span className="text-xs">
+                {isAuthenticated ? "Profile" : "Sign In"}
+              </span>
               {isAuthenticated && (
                 <span className="absolute -top-1 -right-1 w-2 h-2 bg-green-500 rounded-full border-2 border-[#3E2723]" />
               )}

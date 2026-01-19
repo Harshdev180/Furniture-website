@@ -10,7 +10,7 @@ import {
   submitContactForm,
   submitNewsletterForm,
 } from "../../utils/googleSheets";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 
 const Form = () => {
   const [name, setName] = useState("");
@@ -164,7 +164,7 @@ const Form = () => {
             </div>
 
             {submitStatus && (
-              <motion.div
+              <Motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 className={`p-4 rounded-lg ${
@@ -174,7 +174,7 @@ const Form = () => {
                 }`}
               >
                 {submitStatus.message}
-              </motion.div>
+              </Motion.div>
             )}
 
             <button
@@ -224,7 +224,7 @@ const Form = () => {
                 />
 
                 {newsStatus && (
-                  <motion.div
+                  <Motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     className={`p-4 rounded-lg ${
@@ -234,7 +234,7 @@ const Form = () => {
                     }`}
                   >
                     {newsStatus.message}
-                  </motion.div>
+                  </Motion.div>
                 )}
 
                 <button

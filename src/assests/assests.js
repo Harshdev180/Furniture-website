@@ -1,7 +1,6 @@
-
-import banner1 from "./images/banner(1).avif"
-import banner2 from "./images/banner(2).avif"
-import banner3 from "./images/banner(3).avif"
+import banner1 from "./images/banner(1).webp";
+import banner2 from "./images/banner(2).webp";
+import banner3 from "./images/banner(3).webp";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import { LuHeart } from "react-icons/lu";
 import { FiEye } from "react-icons/fi";
@@ -80,20 +79,17 @@ export const products = [
   },
 ];
 
-
-
 export const card = [
   {
-    image: banner1
+    image: banner1,
   },
   {
-    image: banner2
+    image: banner2,
   },
   {
-    image: banner3
-  }
-]
-
+    image: banner3,
+  },
+];
 
 export const orderItems = [
   {
