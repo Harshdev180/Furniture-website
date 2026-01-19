@@ -57,7 +57,7 @@ const FeaturedCategories = () => {
             <Picture
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyFGNMOsU2-2Ud42KCjtAMMOq44h_zhjgqEKWBriTTiauESLzAzxa1JNk-aIPielA0nTsuAd3Wo8uJYxR5lNrn-W0VV_BhnUvq6kLLFLF8BPb7lxbBUCU5luWUf_FJXuTJ9TLTv3SlqadntKxZZRQsoWdEDAigpvqauzlWGCDO0vCsuVo4NnaX4E4-zj-bhbwHjHf0bkoD6naFqOUH_zgiKimBDzS6QWmpO4S0l3tz5pjM_1mFFCv_kkrGExXw4_oHdOZIv0KQDmTR"
               alt="Furniture"
-              className="w-full h-[320px] sm:h-[350px] object-cover rounded-xl transition-all duration-700"
+              className="w-full h-[320px] sm:h-[320px] object-cover rounded-xl transition-all duration-700"
             />
           </div>
         </div>
