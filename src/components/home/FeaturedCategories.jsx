@@ -65,8 +65,8 @@ const FeaturedCategories = () => {
         {/* RIGHT SIDE */}
         <div className="lg:col-span-7 flex flex-col gap-6">
           {/* SOFA */}
-          <div className="bg-[#E6D5C3]/40 rounded-3xl p-6 sm:p-8 border border-[#C9A24D]/40 hover:shadow-xl transition flex flex-col md:flex-row items-left overflow-hidden group">
-            <div className="md:w-1/2 z-10">
+          <div className="bg-[#E6D5C3]/40 rounded-3xl p-6 sm:p-8 border border-[#C9A24D]/40 hover:shadow-xl transition flex flex-col md:flex-row md:items-center items-left overflow-hidden group">
+            <div className="md:w-3/5 z-10">
               <span className="inline-block bg-[#C9A24D] text-xs font-bold px-3 py-1 rounded mb-3">
                 750+ Items
               </span>
@@ -89,15 +89,15 @@ const FeaturedCategories = () => {
             </div>
 
             <Picture
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9FeUTMced0-A9co76x7LfpULoCRj7VjyVpWiBBJAUcblgwfe9_2-jfSGFBkNHqlLi2aXOrAvUQqqYl1LXd_hNTZHrNChCyyRHRQLCXuMNCVWQx7s5DK99yF5SXlaHZVk9nn4QxdhaB49b47Cqj4XjZcDsbo3Ci6ewJJ2k3AYiY9IWKgOj96r-0R_v5fBAcLFTS62k6xbiQ6Zkgof8YeR0_U8OQcdjgpNP3qteTwa9gj8G8HzzMQxvbNvVzrv2lF_-LW83kPgayZDE"
+              src="/Catelogimg/TheOsloTablerr.webp"
               alt="Sofa"
-              className="mt-6 md:mt-0 md:w-1/2 h-[260px] object-cover rounded-xl transition-transform group-hover:scale-105"
+              className="mt-6 md:mt-0 h-[240px] object-cover rounded-xl transition-transform group-hover:scale-105"
             />
           </div>
 
           {/* BED */}
           <div className="bg-[#E6D5C3]/40 rounded-3xl p-6 sm:p-8 border border-[#C9A24D]/40 hover:shadow-xl transition flex flex-col md:flex-row items-left overflow-hidden group">
-            <div className="md:w-1/2 z-10">
+            <div className="md:w-3/5 z-10">
               <span className="inline-block bg-[#C9A24D] text-xs font-bold px-3 py-1 rounded mb-3">
                 450+ Items
               </span>
@@ -122,7 +122,7 @@ const FeaturedCategories = () => {
             <Picture
               src="https://img.freepik.com/free-photo/modern-bedroom-interior-design-with-blue-accent-wall_23-2151995362.jpg"
               alt="Bed"
-              className="mt-6 md:mt-0 md:w-1/2 h-[240px] object-cover rounded-xl transition-transform group-hover:scale-105"
+              className="mt-6 md:mt-0 h-[240px] object-cover rounded-xl transition-transform group-hover:scale-105"
             />
           </div>
         </div>

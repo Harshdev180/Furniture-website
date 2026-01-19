@@ -4,6 +4,7 @@ import QuoteRequest from "../QuoteRequest";
 import { useCart } from "../context/AddtocartContext";
 import WishlistButton from "../WishlistButton";
 import { motion as Motion } from "framer-motion";
+import Picture from "../../utils/Picture";
 const tembanner = "/templateimg/templatebanner.webp";
 
 const categories = [
@@ -78,6 +79,18 @@ export default function Template() {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const navigate = useNavigate();
   const { addToCart } = useCart();
+  const withUnsplashParams = (url) => {
+    try {
+      const u = new URL(url);
+      u.searchParams.set("auto", "format");
+      u.searchParams.set("fit", "crop");
+      u.searchParams.set("w", "1000");
+      u.searchParams.set("q", "80");
+      return u.toString();
+    } catch {
+      return url;
+    }
+  };
   const toRealINR = (price) => {
     if (typeof price === "number") {
       const v = price < 5000 ? price * 83 : price;
@@ -169,8 +182,8 @@ export default function Template() {
             >
               <div className="relative">
                 <Link to={`/product/${item.id}`}>
-                  <img
-                    src={item.image}
+                  <Picture
+                    src={withUnsplashParams(item.image)}
                     alt={item.name}
                     className="h-56 w-full object-cover hover:scale-105 transition-transform duration-300"
                   />
