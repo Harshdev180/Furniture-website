@@ -1,4 +1,4 @@
- import { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import InputGrid from "./InputGrid";
 import DeliveryForm from "./DeliveryForm";
 import Section from "./Section";
@@ -42,7 +42,7 @@ export default function Checkout() {
     address: "",
     city: "",
     zipCode: "",
-    country: "",
+    // country: "",
     deliveryMethod: "delivery",
     deliveryDate: "",
     timeSlot: "",
@@ -50,10 +50,10 @@ export default function Checkout() {
 
   const subtotal = items.reduce(
     (acc, item) => acc + toRealINR(item.price) * item.quantity,
-    0
+    0,
   );
   const discount = subtotal * 0.1;
-  const shipping = formData.deliveryMethod === "pickup" ? 0 : 70;
+  const shipping = formData.deliveryMethod === "pickup" ? 0 : 1000;
   const total = subtotal - discount + shipping;
 
   return (
@@ -150,7 +150,10 @@ export default function Checkout() {
                       </div>
                       <div className="flex flex-col items-end">
                         <p className="text-sm sm:text-base font-bold text-[#3E2723]">
-                          ₹{(toRealINR(item.price) * item.quantity).toLocaleString()}
+                          ₹
+                          {(
+                            toRealINR(item.price) * item.quantity
+                          ).toLocaleString()}
                         </p>
                         {item.quantity > 1 && (
                           <p className="text-xs text-gray-500 mt-1">
@@ -172,13 +175,17 @@ export default function Checkout() {
                   isDiscount={true}
                 />
                 <Row
-                  label={formData.deliveryMethod === "pickup" ? "Pickup" : "Shipping"}
+                  label={
+                    formData.deliveryMethod === "pickup" ? "Pickup" : "Shipping"
+                  }
                   value={`₹${shipping.toLocaleString()}`}
                 />
               </div>
 
               <div className="border-t-2 border-[#C9A24D] pt-4 pb-6 flex justify-between items-center">
-                <span className="text-lg font-semibold text-[#3E2723]">Total</span>
+                <span className="text-lg font-semibold text-[#3E2723]">
+                  Total
+                </span>
                 <span className="text-xl sm:text-2xl font-serif font-bold text-[#C9A24D]">
                   ₹{total.toLocaleString()}
                 </span>
@@ -189,13 +196,26 @@ export default function Checkout() {
                   e.preventDefault();
 
                   // Validate form data
-                  if (!formData.firstName || !formData.lastName || !formData.email || !formData.phone) {
-                    alert("Please fill in all required contact information (Name, Email, Phone)");
+                  if (
+                    !formData.firstName ||
+                    !formData.lastName ||
+                    !formData.email ||
+                    !formData.phone
+                  ) {
+                    alert(
+                      "Please fill in all required contact information (Name, Email, Phone)",
+                    );
                     return;
                   }
 
-                  if (!formData.address || !formData.city || !formData.zipCode || !formData.country) {
-                    alert("Please fill in all required delivery information (Address, City, Zip Code, Country)");
+                  if (
+                    !formData.address ||
+                    !formData.city ||
+                    !formData.zipCode
+                  ) {
+                    alert(
+                      "Please fill in all required delivery information (Address, City, Zip Code)",
+                    );
                     return;
                   }
 
@@ -208,7 +228,7 @@ export default function Checkout() {
                     const orderId = `ORD-${Date.now()}`;
                     const orderData = {
                       orderId,
-                      items: items.map(item => ({
+                      items: items.map((item) => ({
                         name: item.name,
                         quantity: item.quantity,
                         price: toRealINR(item.price) * item.quantity,
@@ -217,7 +237,8 @@ export default function Checkout() {
                       discount,
                       shipping,
                       total,
-                      customerName: `${formData.firstName} ${formData.lastName}`.trim(),
+                      customerName:
+                        `${formData.firstName} ${formData.lastName}`.trim(),
                       customerEmail: formData.email,
                       customerPhone: formData.phone,
                       address: `${formData.address}, ${formData.city}, ${formData.zipCode}, ${formData.country}`,
@@ -241,12 +262,15 @@ export default function Checkout() {
                         country: formData.country,
                         deliveryMethod: orderData.deliveryMethod,
                         deliveryDate: orderData.deliveryDate,
-                        timeSlot: orderData.timeSlot
+                        timeSlot: orderData.timeSlot,
                       });
 
                       await submitOrder(orderData);
                     } catch (sheetError) {
-                      console.warn("Failed to save to Google Sheets:", sheetError);
+                      console.warn(
+                        "Failed to save to Google Sheets:",
+                        sheetError,
+                      );
                       // Continue with payment even if sheet save fails
                     }
 
@@ -265,7 +289,10 @@ export default function Checkout() {
                             razorpaySignature: response.razorpay_signature,
                           });
                         } catch (sheetError) {
-                          console.warn("Failed to update order status:", sheetError);
+                          console.warn(
+                            "Failed to update order status:",
+                            sheetError,
+                          );
                           // Still navigate to thank you page even if sheet update fails
                         }
 
@@ -301,15 +328,21 @@ export default function Checkout() {
               <div className="grid grid-cols-3 gap-3 mt-6 pt-6 border-t border-[#E6D5C3]">
                 <div className="text-center">
                   <Truck className="w-5 h-5 mx-auto mb-1 text-[#C9A24D]" />
-                  <p className="text-xs font-medium text-gray-600">Fast Delivery</p>
+                  <p className="text-xs font-medium text-gray-600">
+                    Fast Delivery
+                  </p>
                 </div>
                 <div className="text-center">
                   <RefreshCcw className="w-5 h-5 mx-auto mb-1 text-[#C9A24D]" />
-                  <p className="text-xs font-medium text-gray-600">Easy Returns</p>
+                  <p className="text-xs font-medium text-gray-600">
+                    Easy Returns
+                  </p>
                 </div>
                 <div className="text-center">
                   <ShieldCheck className="w-5 h-5 mx-auto mb-1 text-[#C9A24D]" />
-                  <p className="text-xs font-medium text-gray-600">Secure Payment</p>
+                  <p className="text-xs font-medium text-gray-600">
+                    Secure Payment
+                  </p>
                 </div>
               </div>
             </div>
